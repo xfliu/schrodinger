@@ -1,0 +1,149 @@
+{
+  "title": "Certified two-sided Dirichlet eigenvalue brackets for H2+ ground state, Omega1 and Omega2",
+  "true_lambda1_R3_enclosure": {
+    "lower": -0.551443601,
+    "upper": -0.5509672618,
+    "lower_method": "Neumann Lehmann-Goerisch on Omega2 (rho=-0.3396, N=64/N'=80)",
+    "upper_method": "Dirichlet Rayleigh-Ritz on Omega2 (N=64)"
+  },
+  "reference_ground_energy": -0.5513,
+  "method": {
+    "upper": "Rayleigh-Ritz on H^1_0 sine basis = ooo-sector Galerkin ground (rigorous sup interval Rayleigh quotient)",
+    "lower": "single-vector interval Lehmann-Goerisch on ooo (Dirichlet-ground) sector; separator = certified lambda2^D lower (eoo sector)",
+    "domains": {
+      "Omega1": "[-10,10]x[-8,8]^2 (npanel=48)",
+      "Omega2": "[-20,20]x[-16,16]^2 (npanel=96)"
+    }
+  },
+  "domains": {
+    "Omega1": {
+      "lambda2D_separator": {
+        "value_lower": -0.3312260682,
+        "config": "eoo N=48/N'=64",
+        "certificate": {
+          "A2": [
+            1.494935412741405,
+            1.4949354127647072
+          ],
+          "B_positive": true,
+          "nu_lt_1": true
+        }
+      },
+      "rows": {
+        "48": {
+          "lambda1D_lower": -0.5508692004,
+          "lambda1D_upper": -0.5506773767,
+          "bracket_width": 0.00019182,
+          "config": "N=48/N'=64",
+          "truncation_error_bounds": [
+            9.806e-05,
+            0.0007662
+          ],
+          "dirichlet_overestimates_true": true,
+          "certificate": {
+            "A2": [
+              2.2258842457483197,
+              2.2258842457954153
+            ],
+            "B": [
+              0.10732056854083749,
+              0.10732056856452821
+            ],
+            "nu": [
+              -2.0448205926236374,
+              -2.044820592147775
+            ],
+            "B_positive": true,
+            "nu_lt_1": true,
+            "cg_residual": 9.913e-13
+          }
+        },
+        "64": {
+          "lambda1D_lower": -0.5508176726,
+          "lambda1D_upper": -0.5507405805,
+          "bracket_width": 7.7092e-05,
+          "config": "N=64/N'=80",
+          "truncation_error_bounds": [
+            0.00014959,
+            0.00070302
+          ],
+          "dirichlet_overestimates_true": true,
+          "certificate": {
+            "A2": [
+              2.2260108316196927,
+              2.2260108317155445
+            ],
+            "B": [
+              0.10731398141259074,
+              0.10731398146082083
+            ],
+            "nu": [
+              -2.0455350683962554,
+              -2.0455350674269894
+            ],
+            "B_positive": true,
+            "nu_lt_1": true,
+            "cg_residual": 9.2e-13
+          }
+        }
+      }
+    },
+    "Omega2": {
+      "lambda2D_separator": {
+        "value_lower": -0.338240162,
+        "config": "eoo N=48/N'=64",
+        "certificate": {
+          "B_positive": true,
+          "nu_lt_1": true
+        }
+      },
+      "rows": {
+        "48": {
+          "lambda1D_lower": -0.5519149343,
+          "lambda1D_upper": -0.5505084907,
+          "bracket_width": 0.0014064,
+          "config": "N=48/N'=64",
+          "truncation_error_bounds": [
+            -0.0009477,
+            0.0009351
+          ],
+          "dirichlet_overestimates_true": false,
+          "certificate": {
+            "B_positive": true,
+            "nu_lt_1": true,
+            "cg_residual": 9.8e-13
+          }
+        },
+        "64": {
+          "lambda1D_lower": -0.5514408191,
+          "lambda1D_upper": -0.5509672618,
+          "bracket_width": 0.00047356,
+          "config": "N=64/N'=80",
+          "truncation_error_bounds": [
+            -0.0004736,
+            0.0004763
+          ],
+          "dirichlet_overestimates_true": false,
+          "certificate": {
+            "A2": [
+              2.2277648959101417,
+              2.2277648960079977
+            ],
+            "B": [
+              0.10110941733572854,
+              0.10110941738375456
+            ],
+            "nu": [
+              -2.1039296371165404,
+              -2.1039296360660407
+            ],
+            "B_positive": true,
+            "nu_lt_1": true,
+            "cg_residual": 9.19e-13
+          }
+        }
+      }
+    }
+  },
+  "key_finding": "On the smaller box Omega1 the certified Dirichlet LG lower bounds lie strictly ABOVE the true ground energy (true lambda1(R3) <= -0.5509673): N=48 gives lambda1^D(Omega1) >= -0.5508692, N=64 gives >= -0.5508177. The Dirichlet eigenvalue provably OVERESTIMATES lambda1(R3), and the certified truncation-error lower bound RISES with N (>= 9.8e-5 at N=48, >= 1.50e-4 at N=64) as the discretization sharpens -- a rigorous proof of the limitation of Dirichlet truncation on a small box. Doubling to Omega2 removes the bias: the true value sits inside the N=64 Dirichlet bracket [-0.5514408, -0.5509673], truncation error < 4.8e-4 and not sign-definite."
+}

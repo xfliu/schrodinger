@@ -1,0 +1,5 @@
+domain,N,Nprime,lambda1D_lower_LG,lambda1D_upper_Ritz,bracket_width,trunc_err_lo,trunc_err_hi,dirichlet_overestimates_true,B_positive,nu_lt_1
+Omega1,48,64,-0.5508692004,-0.5506773767,1.918e-04,9.806e-05,7.662e-04,True,True,True
+Omega1,64,80,-0.5508176726,-0.5507405805,7.709e-05,1.496e-04,7.030e-04,True,True,True
+Omega2,48,64,-0.5519149343,-0.5505084907,1.406e-03,-9.477e-04,9.351e-04,False,True,True
+Omega2,64,80,-0.5514408191,-0.5509672618,4.736e-04,-4.736e-04,4.763e-04,False,True,True

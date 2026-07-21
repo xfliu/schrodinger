@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validation of the A4 / auxiliary-problem condition in the Lehmann–Goerisch computation</title>
+<script>
+MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+ body{font-family:Georgia,"Times New Roman",serif;max-width:860px;margin:2.2em auto;padding:0 1.4em;line-height:1.6;color:#1a1a1a}
+ h1{font-size:1.55em;border-bottom:2px solid #333;padding-bottom:.3em}
+ h2{font-size:1.2em;margin-top:1.8em;color:#0b2b52;border-bottom:1px solid #ccc;padding-bottom:.2em}
+ h3{font-size:1.05em;margin-top:1.3em;color:#333}
+ code{background:#f2f2f2;padding:1px 5px;border-radius:3px;font-family:"SF Mono",Consolas,monospace;font-size:.9em}
+ pre{background:#f6f8fa;border:1px solid #ddd;border-radius:5px;padding:.9em 1.1em;overflow-x:auto;font-size:.86em;line-height:1.45}
+ .box{background:#f5f9ff;border-left:4px solid #2a6fb0;padding:.7em 1.1em;margin:1.1em 0;border-radius:0 4px 4px 0}
+ .key{background:#fff8e6;border-left:4px solid #d69a00;padding:.7em 1.1em;margin:1.1em 0;border-radius:0 4px 4px 0}
+ table{border-collapse:collapse;width:100%;margin:1.1em 0;font-size:.9em}
+ th,td{border:1px solid #ccc;padding:.45em .7em;text-align:left}
+ th{background:#eef2f7}
+ .small{color:#555;font-size:.88em}
+ .tag{font-family:monospace;font-size:.85em;color:#0b5}
+</style>
+</head>
+<body>
+
+<h1>Validation of the A4 (auxiliary-problem) condition in the certified Lehmann–Goerisch computation for H<sub>2</sub><sup>+</sup></h1>
+
+<p class="small">Scope: how the auxiliary/A4 condition of the Lehmann–Goerisch (LG) lower-bound method is handled
+<em>rigorously</em> in the present interval-arithmetic computation, given that the operator contains
+non-separable Coulomb terms $1/|x-a_i|$. The report states the exact algorithm implemented in
+<code>lg_verified.jl</code> / <code>lg_oee.jl</code> / <code>dirichlet_lg.jl</code>, the identity that replaces the
+exact A4 solve, and the resulting certificates.</p>
+
+<div class="key">
+<b>One-sentence answer.</b> The A4 auxiliary problem <em>is never solved exactly</em> — with the Coulomb term
+that is impossible in a finite basis. Instead we use the <b>Goerisch defect identity</b>: solve the auxiliary
+system <em>approximately</em>, then <em>rigorously enclose the missing component</em> of $w_i$ (the exact "shift
+part" the auxiliary solution still needs) by a one-sided interval $[0,\,\lVert r\rVert^2/\lambda_{\min}]$.
+Because the LG bound is monotone in the resulting quantity $A_2$, the enclosed $A_2$ yields a rigorous lower bound.
+</div>
+
+<h2>1. The A4 condition and why it cannot be enforced exactly here</h2>
+
+<p>Write the (shifted, symmetric positive-definite) operator as $H' = H + cI$ on the finite Galerkin space
+$V\subset H^1$ (or $H^1_0$ for the Dirichlet sectors), with $c>0$ chosen so that $H'$ is SPD.
+The single-test-vector LG bound needs, for the normalized test vector $v$, the auxiliary vector</p>
+
+$$ w \;=\; H'^{-1} v, \qquad\text{i.e. the exact solution of}\qquad b\,(H'\,w,\,\phi)=\langle v,\phi\rangle \;\;\forall \phi\in V. $$
+
+<p>This is exactly the A4 statement (“given $v_i$, find $w_i$ with $b(Tw_i,v)=N(v_i,v)$ for all $v$”):
+$T$ is the solution operator of $H'$, and $w=Tv$. The quantity the LG certificate ultimately consumes is</p>
+
+$$ A_2 \;=\; \langle v,\;H'^{-1} v\rangle \;=\; \langle v, w\rangle . $$
+
+<div class="box">
+<b>Why exactness fails.</b> $H'$ contains the Coulomb potential $-\sum_i 1/|x-a_i|$, represented in the
+cosine/sine basis by a <em>dense</em> interval moment matrix (every basis pair couples through the Laplace
+representation $1/r=\tfrac{2}{\sqrt\pi}\int_0^\infty e^{-r^2 t^2}\,dt$). There is no closed form for $H'^{-1}v$
+in the basis, and no finite exact arithmetic that inverts a $D\times D$ dense interval matrix
+($D$ up to $68{,}921$ here). So $w$ can only be computed <em>approximately</em>, and A4 cannot hold exactly.
+</div>
+
+<h2>2. The algorithm actually used: Goerisch defect identity</h2>
+
+<p>Let $\tilde w$ be an <em>approximate</em> solution of $H'w=v$, obtained by conjugate gradients on the
+floating-point <em>midpoint</em> matrix $H'_{\mathrm{mid}}=\mathrm{mid}(H')$. Define the interval residual</p>
+
+$$ r \;=\; v - H'\,\tilde w \qquad(\text{computed with the full interval } H'). $$
+
+<p>The exact value we need obeys the algebraic identity, valid for any SPD $M=H'$ and any $\tilde w$:</p>
+
+$$ \boxed{\;\langle v,\,H'^{-1}v\rangle \;=\; 2\langle \tilde w, v\rangle \;-\; \langle \tilde w, H'\tilde w\rangle \;+\; \langle r,\,H'^{-1} r\rangle\;} \tag{$\star$}$$
+
+<p class="small">Derivation: expand the last term with $r=v-H'\tilde w$ and use self-adjointness,
+$\langle H'\tilde w, H'^{-1}v\rangle=\langle \tilde w,v\rangle$; the $\tilde w$-terms cancel and the identity is exact.
+Everything except $\langle r,H'^{-1}r\rangle$ is directly computable in interval arithmetic.</p>
+
+<p>The single non-computable term is the <b>defect energy</b> $\langle r, H'^{-1} r\rangle$. It is exactly the
+contribution of the still-missing part of $w$ — the component
+$e = H'^{-1}r = H'^{-1}v-\tilde w = w-\tilde w$, i.e. <em>“the part of $w_i$ that a final exact stage would add.”</em>
+We do not compute $e$; we bound its energy rigorously by the two-sided spectral estimate</p>
+
+$$ 0 \;\le\; \langle r,\,H'^{-1} r\rangle \;\le\; \frac{\lVert r\rVert^2}{\lambda_{\min}(H')} , \tag{$\dagger$}$$
+
+<p>giving the certified enclosure</p>
+
+$$ A_2 \;\in\; 2\langle \tilde w, v\rangle - \langle \tilde w, H'\tilde w\rangle \;+\; \Big[\,0,\ \frac{\lVert r\rVert^2}{\lambda_{\min}(H')}\,\Big]. $$
+
+<div class="key">
+<b>This is precisely the “determine the shift part at the final stage” technique, in bounded form.</b>
+Rather than constructing the exact correction $e=H'^{-1}r$ (which would require the exact solve we cannot do),
+we place its entire energy contribution inside the one-sided interval $[0,\lVert r\rVert^2/\lambda_{\min}]$.
+The lower endpoint $0$ is exact (the term is a norm, $\langle r,H'^{-1}r\rangle\ge 0$ since $H'$ is SPD);
+the upper endpoint uses the Rayleigh bound $H'^{-1}\preceq \lambda_{\min}(H')^{-1} I$.
+</div>
+
+<h3>2.1 Corresponding code</h3>
+<pre>
+Hc   = form_H(P, kin; sigma = interval(c))          # H' = H + cI   (SPD)
+Hms  = mid.(Hc)                                      # midpoint (float) matrix
+cg!(w, Symmetric(Hms), v; reltol=1e-12, maxiter=8000)  # approximate solve H'_mid w = v
+Hv   = imatvec(Hc, vI);  A0 = idot(vI, Hv)           # A0 = &lt;v, H'v&gt;
+wI   = interval.(w);  Hw = imatvec(Hc, wI)           # interval H' * w
+r    = vI .- Hw                                       # interval residual r = v - H'w
+wv   = idot(wI, vI);  wHw = idot(wI, Hw);  r2 = idot(r, r)
+lam_min_lb = c + mu_lo_cert                           # rigorous lower bound on lambda_min(H')
+corr = interval(0.0,  sup(r2)/lam_min_lb)             # [0, ||r||^2 / lambda_min]  =  defect enclosure
+A2   = interval(2.0)*wv - wHw + corr                  # certified enclosure of &lt;v, H'^{-1} v&gt;
+</pre>
+
+<p>Note two rigor points: (i) the residual <code>r</code> and <code>r2=||r||²</code> are formed with the
+<em>interval</em> operator <code>Hc</code>, so they capture both the CG inexactness <em>and</em> the interval
+uncertainty of every matrix entry (the Coulomb moments are themselves certified intervals from the composite
+Gauss–Legendre quadrature); (ii) the CG solve uses the <em>midpoint</em> matrix only as a preconditioned guess —
+its inaccuracy does not threaten rigor, because any error re-enters through the enclosed defect term.</p>
+
+<h2>3. The remaining ingredient: a rigorous $\lambda_{\min}(H')$</h2>
+
+<p>The upper bound ($\dagger$) needs a rigorous <em>lower</em> bound on the smallest eigenvalue of $H'=H+cI$:</p>
+
+$$ \lambda_{\min}(H') \;=\; c + \lambda_{\min}(H) \;\ge\; c + \mu_{\mathrm{lo}}, $$
+
+<p>where $\mu_{\mathrm{lo}}$ is a certified lower bound on the smallest eigenvalue of the finite matrix $H$,
+taken as $\inf$ of the verified <code>lehmann_behnke</code> Galerkin enclosure of the sector ground
+($\mu_{\mathrm{lo}}=\inf(\mu_1^{N'})$ in the code, passed as <code>mu_lo_cert</code>). With $c=1.0$ and
+$\mu_{\mathrm{lo}}\approx-0.55$, one has $\lambda_{\min}(H')\ge 0.45>0$, and the assertion
+<code>lam_min_lb &gt; 0</code> in the code verifies SPD-ness at run time. This closes the chain: every quantity in
+($\star$)–($\dagger$) is either computed in interval arithmetic or bounded by a previously-certified interval.</p>
+
+<h2>4. Why the enclosed $A_2$ still gives a <em>rigorous</em> lower bound</h2>
+
+<p>The single-test-vector LG bound is the Möbius transform (with separator $\rho$, shifted $\rho'=\rho+c$)</p>
+
+$$ A=A_0-\rho',\quad B=A_0-2\rho'+\rho'^2 A_2,\quad \nu=A/B,\qquad
+\widehat\lambda \;=\; \rho' - \frac{\rho'}{1-\nu}, \qquad \lambda \;\ge\; \widehat\lambda - c, $$
+
+<p>valid iff $\inf(B)>0$ and $\sup(\nu)<1$ (both checked per run). The map is <em>monotone</em> in $A_2$ in the
+region used, so replacing the exact $A_2$ by its certified <em>enclosure</em> and evaluating the whole Möbius
+transform in interval arithmetic yields an interval $[\inf(\widehat\lambda-c),\ \sup(\widehat\lambda-c)]$ that
+provably contains the true LG bound; we report the <b>infimum</b> as the certified eigenvalue lower bound.
+The defect term entering through the <em>upper</em> end of the $A_2$ interval can only move the reported infimum
+in the safe (downward) direction, so A4-inexactness never inflates the bound.</p>
+
+<h2>5. Magnitude of the defect correction in the actual runs</h2>
+
+<p>Because CG drives the residual to $\lVert r\rVert\sim10^{-13}$, the defect enclosure width
+$\lVert r\rVert^2/\lambda_{\min}$ is of order $10^{-24}$ — many orders below the $A_2$ interval width
+($\sim10^{-10}$, itself set by interval rounding across the $D\!\sim\!35\text{–}69\text{k}$ matvecs).
+So the A4/auxiliary step contributes negligibly to the final width while remaining fully rigorous.</p>
+
+<table>
+<tr><th>certificate</th><th>config</th><th>$A_0$</th><th>$A_2$</th><th>$B=A_0-2\rho'+\rho'^2A_2$</th><th>CG resid $\lVert r\rVert$</th><th>defect $\lVert r\rVert^2/\lambda_{\min}$</th></tr>
+<tr><td>$\lambda_1(\Omega_2)$ Neumann (eee)</td><td>N=64 / N&#39;=80</td><td>[0.4490494043, 0.4490494043]</td><td>[2.2277098615, 2.2277098616]</td><td>$1.367\times10^{-2}>0$</td><td>$9.5\times10^{-13}$</td><td>$\approx2.0\times10^{-24}$</td></tr>
+<tr><td>$\lambda_2(\Omega_2)$ Neumann (oee)</td><td>N=48 / N&#39;=64</td><td>[0.6672097159, 0.6672097159]</td><td>[1.4999810866, 1.4999810866]</td><td>$5.428\times10^{-3}>0$</td><td>$8.5\times10^{-13}$</td><td>$\approx1.6\times10^{-24}$</td></tr>
+<tr><td>$\lambda_2^{D}(\Omega_2)$ Dirichlet (eoo)</td><td>N=48 / N&#39;=64</td><td>[0.6671323114, 0.6671323114]</td><td>[1.5000211548, 1.5000211549]</td><td>$6.748\times10^{-3}>0$</td><td>$9.3\times10^{-13}$</td><td>$\approx1.9\times10^{-24}$</td></tr>
+<tr><td>$\lambda_1^{D}(\Omega_2)$ Dirichlet (ooo)</td><td>N=48 / N&#39;=64</td><td>[0.4494915093, 0.4494915093]</td><td>[2.2269760099, 2.2269760100]</td><td>$1.012\times10^{-1}>0$</td><td>$9.8\times10^{-13}$</td><td>$\approx2.1\times10^{-24}$</td></tr>
+</table>
+
+<p class="small">In every case $\inf(B)>0$ and $\sup(\nu)<1$, so the certificate is valid; the defect correction
+(last column) is $\sim10^{-24}$, i.e. $\sim10^{14}$ times smaller than the reported bound’s interval width.</p>
+
+<h2>6. Summary of the answer to “how is A4 validated?”</h2>
+<ol>
+<li>A4 asks for $w=H'^{-1}v$ exactly; with the Coulomb $1/|x-a_i|$ term this is impossible in a finite basis.</li>
+<li>We compute $\tilde w\approx H'^{-1}v$ by float CG on the midpoint matrix (accuracy irrelevant to rigor).</li>
+<li>The exact quantity needed, $A_2=\langle v,H'^{-1}v\rangle$, is written by the Goerisch defect identity ($\star$)
+    as computable terms plus the single defect energy $\langle r,H'^{-1}r\rangle$, $r=v-H'\tilde w$.</li>
+<li>The defect energy — the exact “shift part’’ of $w$ that A4 would still require — is <em>rigorously enclosed</em>
+    by $[0,\ \lVert r\rVert^2/\lambda_{\min}(H')]$, using $\lambda_{\min}(H')\ge c+\mu_{\mathrm{lo}}$ from the
+    certified Galerkin ground.</li>
+<li>The whole LG Möbius transform is evaluated in interval arithmetic; monotonicity in $A_2$ guarantees the
+    reported infimum is a rigorous lower bound. A4 is thus <em>satisfied in the enclosure sense</em>, not pointwise —
+    which is exactly what a verified lower bound requires.</li>
+</ol>
+
+<p class="small">Source: <code>dom2/lg_verified.jl</code> (Neumann eee), <code>dom2/lg_oee.jl</code> (Neumann oee),
+<code>dom2_dirichlet/dirichlet_lg.jl</code> and <code>dom1_dirichlet/dirichlet_lg.jl</code> (Dirichlet sectors).
+The Goerisch A2 block (identity $\star$ + enclosure $\dagger$) is byte-identical across all four modules.</p>
+
+</body>
+</html>

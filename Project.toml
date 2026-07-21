@@ -1,0 +1,31 @@
+name = "H2plusRigorousBounds"
+authors = ["Xuefeng Liu"]
+
+# Reproduction environment for the H2+ rigorous two-sided eigenvalue bounds.
+# Activate with:  julia --project=.  (from the repository root)
+# then, once:     julia --project=. -e 'using Pkg; Pkg.instantiate()'
+#
+# Veigs (the verified-eigenvalue package: lehmann_behnke) is bundled under lib/Veigs.jl
+# and wired in as a path dependency via the [sources] section below (Julia >= 1.11).
+# On older Julia, instead run everything with  --project=lib/Veigs.jl  and ]dev the extras.
+
+[deps]
+Arpack = "7d9fca2a-8960-54d3-9f78-7d1dccf2cb97"
+IntervalArithmetic = "d1acc4aa-44c8-5952-acd4-ba5d80a2a253"
+IterativeSolvers = "42fd0dbc-a981-5370-80f2-aaf504508153"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+KrylovKit = "0b1a1467-8014-51b9-945f-bf0ae24f4b77"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
+SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
+Veigs = "e7a4c6f1-3f8b-4c2d-9a1e-2b8c5f7d9e3a"
+
+[sources]
+Veigs = {path = "lib/Veigs.jl"}
+
+[compat]
+IntervalArithmetic = "1.0.8"
+KrylovKit = "0.10"
+Arpack = "0.5.4"
+julia = "1.11"
