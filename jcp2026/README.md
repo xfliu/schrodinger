@@ -49,6 +49,28 @@ labelled as estimates wherever they appear. In `data/optimal_box_surface.csv` th
 are annotated `DO_NOT_QUOTE`, because they are float estimates that disagree with the certified
 values at the 1e-4 level. The column `derived_from_LG` names the columns that inherit this.
 
+## Running the drivers
+
+The drivers live in `drivers/` and are run from that directory with the repository root as the
+Julia project. The verified-eigenvalue package `Veigs` (Lehmann-Behnke, verified Cholesky, inertia)
+is bundled at `lib/Veigs.jl` in the repository root and is wired in as a path dependency.
+
+    # once, from the repository root (Julia >= 1.11)
+    julia --project=. -e 'using Pkg; Pkg.instantiate()'
+
+    # the hard gate: bit-for-bit thread-exactness of the interval assembly (exit 0 = pass)
+    cd jcp2026/drivers
+    VEIGS_SRC=../../lib/Veigs.jl/src julia --project=../.. -t 4 cert_selftest.jl
+
+    # a certified configuration (tags: C1, C2, D1, C3a, C3c; see the certificates for their settings)
+    VEIGS_SRC=../../lib/Veigs.jl/src julia --project=../.. -t <threads> run_cert.jl C1
+
+Every `include` in the drivers resolves inside `drivers/`; the chain is
+`run_cert.jl -> cert_core.jl -> moments_verified.jl`, `lg_oee.jl / pipeline2.jl -> assembly_verified.jl`,
+`dirichlet_lg.jl -> dirichlet_assembly.jl`, `run_sweep.jl / run_checks.jl -> sweep_core.jl -> float_core.jl`.
+The production runs need large memory (the certificates record `peak_rss_gb` per stage); the self-test
+runs in seconds on a laptop.
+
 ## Reproducing the figures
 
     cd figure_scripts
@@ -57,8 +79,8 @@ values at the 1e-4 level. The column `derived_from_LG` names the columns that in
     python fig3_convergence.py    # convergence figure, reads figs.json
     python make_fig1_framework.py # schematic, no data
 
-No figure script hardcodes a certified result; each reads the certificates by filename from its own
-directory. The two-sided boundary-condition schematic in the paper is a drawn diagram and has no
+No figure script hardcodes a certified result; each reads the certificates from `../certificates/`
+and the sweep from `../data/`. The two-sided boundary-condition schematic in the paper is a drawn diagram and has no
 generator.
 
 ## Note on file paths inside the certificates

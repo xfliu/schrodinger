@@ -9,9 +9,9 @@ Widths and L are in paper units (energy = 1/2 hartree, length = 2 bohr).
 """
 import json, numpy as np, pandas as pd, matplotlib as mpl, matplotlib.pyplot as plt
 
-SWEEP = "optimal_box_surface.csv"
-CERTS = {"C1": "cert_cmin_C1.json", "C2": "cert_cmatch_C2.json",
-         "C3a": "cert_cmin_C3a.json", "C3c": "cert_cmin_C3c.json"}
+SWEEP = "../data/optimal_box_surface.csv"
+CERTS = {"C1": "../certificates/cert_cmin_C1.json", "C2": "../certificates/cert_cmatch_C2.json",
+         "C3a": "../certificates/cert_cmin_C3a.json", "C3c": "../certificates/cert_cmin_C3c.json"}
 NGRID = [32, 48, 64]
 GREYS = {32: "#b8b8b8", 48: "#6e6e6e", 64: "#1f3f6e"}
 STAR, PRIOR = "#7b3294", "#c0392b"

@@ -84,8 +84,8 @@ PUB_T = 8.5 * 3600
 # figure cannot drift from the tables. Do not hardcode widths here: the values that used to
 # be inlined were the pre-certification ones, obtained before the coercivity shift was
 # certified, and they are 1.02x-2.97x smaller than the certified widths.
-CERT_FILES = {"C1": "cert_cmin_C1.json", "C2": "cert_cmatch_C2.json",
-              "C3a": "cert_cmin_C3a.json", "C3c": "cert_cmin_C3c.json"}
+CERT_FILES = {"C1": "../certificates/cert_cmin_C1.json", "C2": "../certificates/cert_cmatch_C2.json",
+              "C3a": "../certificates/cert_cmin_C3a.json", "C3c": "../certificates/cert_cmin_C3c.json"}
 GEOM = {"C1": dict(system="H2plus", d=2.0, L=12, N=48, Np=64),
         "C2": dict(system="H2plus", d=2.0, L=14, N=64, Np=80),
         "C3a": dict(system="H3plus", d=4.0, L=12, N=32, Np=48),
