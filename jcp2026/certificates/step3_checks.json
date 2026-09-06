@@ -1,0 +1,156 @@
+{
+  "float_validation": {
+    "H2+ a=\u00b12": {
+      "levels": [
+        {
+          "D_eee": 729,
+          "N": 16,
+          "diff_vs_gaussian_ref": 0.00207081303998613,
+          "mu1_float": -0.5492462942074638,
+          "mu2_eee": -0.22001254057665942
+        },
+        {
+          "D_eee": 2197,
+          "N": 24,
+          "diff_vs_gaussian_ref": 0.00023197086422621638,
+          "mu1_float": -0.5510851363832238,
+          "mu2_eee": -0.22026470225158334
+        },
+        {
+          "D_eee": 4913,
+          "N": 32,
+          "diff_vs_gaussian_ref": -0.00022409940398449013,
+          "mu1_float": -0.5515412066514345,
+          "mu2_eee": -0.2203259499218996
+        }
+      ],
+      "reference_paper": -0.55131710724745
+    },
+    "H3^2+ d_paper=2.8": {
+      "levels": [
+        {
+          "D_eee": 729,
+          "N": 16,
+          "diff_vs_gaussian_ref": 0.003292517545885554,
+          "mu1_float": -0.9331671544541145,
+          "mu2_eee": -0.3989724317854524
+        },
+        {
+          "D_eee": 2197,
+          "N": 24,
+          "diff_vs_gaussian_ref": 0.0014823574161060282,
+          "mu1_float": -0.934977314583894,
+          "mu2_eee": -0.4001901320760133
+        },
+        {
+          "D_eee": 4913,
+          "N": 32,
+          "diff_vs_gaussian_ref": 0.00046299801710703026,
+          "mu1_float": -0.935996673982893,
+          "mu2_eee": -0.40036130846898443
+        }
+      ],
+      "reference_paper": -0.936459672
+    },
+    "H3^2+ d_paper=4.0": {
+      "levels": [
+        {
+          "D_eee": 729,
+          "N": 16,
+          "diff_vs_gaussian_ref": 0.0025444552427763556,
+          "mu1_float": -0.7595355417572236,
+          "mu2_eee": -0.4219415669694653
+        },
+        {
+          "D_eee": 2197,
+          "N": 24,
+          "diff_vs_gaussian_ref": 0.0005349814101683892,
+          "mu1_float": -0.7615450155898316,
+          "mu2_eee": -0.4231912012630872
+        },
+        {
+          "D_eee": 4913,
+          "N": 32,
+          "diff_vs_gaussian_ref": 3.681576963621147e-05,
+          "mu1_float": -0.7620431812303637,
+          "mu2_eee": -0.42366319490158744
+        }
+      ],
+      "reference_paper": -0.762079997
+    }
+  },
+  "moment_s0_containment": {
+    "s=+4.0 (outer nucleus, d_paper=4)": {
+      "fail": 0,
+      "maxrel_mid": 1.0000000000000007,
+      "maxwidth": 1.922018100231071e-12,
+      "tests": 112
+    },
+    "s=-2.0 (H2+ nucleus)": {
+      "fail": 0,
+      "maxrel_mid": 5.631849292777912,
+      "maxwidth": 1.922018100231071e-12,
+      "tests": 112
+    },
+    "s=0.0 (origin nucleus)": {
+      "fail": 0,
+      "maxrel_mid": 1624050009.9842184,
+      "maxwidth": 1.9255708139098715e-12,
+      "tests": 112
+    }
+  },
+  "moment_width_vs_s_larget": {
+    "0.0": 6.661338147750939e-16,
+    "2.0": 6.661338147750939e-16,
+    "4.0": 6.661338147750939e-16,
+    "6.0": 6.661338147750939e-16,
+    "8.0": 2.813379418320494e-08,
+    "9.0": 0.009157819444369792,
+    "9.9": 4.803947195761639
+  },
+  "nt_convergence": {
+    "H2+ a=\u00b12": {
+      "delta_48_64": 3.6504133049675147e-13,
+      "mu1": [
+        -0.5510851363835643,
+        -0.5510851363831495,
+        -0.5510851363832238,
+        -0.5510851363828587
+      ],
+      "nt": [
+        24,
+        32,
+        48,
+        64
+      ]
+    },
+    "H3^2+ d_paper=4.0": {
+      "delta_48_64": 3.197442310920451e-14,
+      "mu1": [
+        -0.7615450156049507,
+        -0.7615450155902277,
+        -0.7615450155898316,
+        -0.7615450155897996
+      ],
+      "nt": [
+        24,
+        32,
+        48,
+        64
+      ]
+    }
+  },
+  "regression": {
+    "N16": {
+      "D": 729,
+      "Kdiag_bit_identical": true,
+      "P_bit_identical": true
+    },
+    "N8": {
+      "D": 125,
+      "Kdiag_bit_identical": true,
+      "P_bit_identical": true
+    }
+  },
+  "note_reference_constants": "H2+ reference is the EXACT prolate-spheroidal value -1.1026342144949/2 = -0.55131710724745 (h2plus_R2_bounds.csv). The two H3^2+ references are converged floating-Gaussian UPPER bounds from Step 1/2, not exact. An earlier run of this driver used a truncated H2+ constant (-0.551317010); the H2+ residual column was recomputed against the exact value, which shifts it by 9.7e-8 - four orders of magnitude below the residuals reported (1e-5..3e-3), so no result or conclusion changes."
+}

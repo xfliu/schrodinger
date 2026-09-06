@@ -1,0 +1,567 @@
+{
+ "CERTIFIED_ENCLOSURE": {
+  "contains_reference": true,
+  "lambda1_lower": -0.9365443657837298,
+  "lambda1_upper": -0.9363042804864575,
+  "lower_source": "cert_D1_stagelg.json : lambda1_lower_certified (eee Lehmann-Goerisch, separator certified_oee_mu2)",
+  "upper_source": "cert_D1_stagedir.json : lambda1_upper_certified (Dirichlet Rayleigh quotient sup)",
+  "valid": true,
+  "width": 0.00024008529727226335
+ },
+ "N": 64,
+ "Nprime": 80,
+ "box": {
+  "LX": 12.0,
+  "LY": 9.600000000000001,
+  "LZ": 9.600000000000001,
+  "label": "[-12.0,12.0] x [-9.600000000000001,9.600000000000001]^2"
+ },
+ "config": "D1",
+ "confinement": {
+  "formula": "sigma = inf_{x notin Omega} V, evaluated at the six face centres",
+  "holds": true,
+  "lambda_ref": -0.936459577,
+  "margin": 0.6322929103333335,
+  "sigma": -0.3041666666666666
+ },
+ "d_paper": 2.8,
+ "decisive_test": {
+  "VIOLATES_best_estimate": false,
+  "VIOLATES_variational_upper_bound": false,
+  "best_estimate": -0.936459577,
+  "best_estimate_error": 3.8e-07,
+  "certification_moved_lower_bound_by": -0.0001431204581390233,
+  "certified_lower": -0.9365443657837298,
+  "float_lower_signed_gap_to_variational_upper": 4.348867440917559e-05,
+  "note": "a POSITIVE signed gap means the certified lower bound EXCEEDS a verified variational upper bound, which is a correctness failure in the chain and not a width issue",
+  "question": "does the CERTIFIED lower bound respect an independently verified variational UPPER bound on lambda_1? A rigorous lower bound must lie strictly below it.",
+  "signed_gap_certified_lower_minus_best_estimate": -8.478878372975007e-05,
+  "signed_gap_certified_lower_minus_variational_upper": -9.963178372984771e-05,
+  "variational_upper_bound": -0.936444734
+ },
+ "driver": {
+  "core": "cert_core.jl",
+  "invocation": "julia -t <threads> run_cert.jl D1",
+  "moments": "moments_verified.jl (bundle, unmodified)",
+  "output_file": "cert_D1.json",
+  "script": "run_cert.jl",
+  "stage_files": {
+   "A": "cert_D1_stageA.json",
+   "dirichlet": "cert_D1_stagedir.json",
+   "lg": "cert_D1_stagelg.json",
+   "mu2": "cert_D1_stagemu2.json"
+  }
+ },
+ "float_comparison": {
+  "certified_contains_float_lower": true,
+  "certified_contains_float_upper": true,
+  "certified_width": 0.00024008529727226335,
+  "float_LG_lower": -0.9364012453255908,
+  "float_dirichlet_upper": -0.9363042804935516,
+  "float_width": 9.6964832039359e-05,
+  "interval_inflation_width_ratio": 2.476003848228297,
+  "lower_endpoint_gap_certified_minus_float": -0.0001431204581390233,
+  "source": "optimal_box_surface.csv, same (system, d_paper, L, N, N') cell",
+  "upper_endpoint_gap_certified_minus_float": 7.094103082749825e-12
+ },
+ "goerisch_shift": {
+  "c": 1.5,
+  "certified_lambda_min_lower_bound": 0.2515461702316837,
+  "raised_above_H2plus_default": true,
+  "rule": "c = max(1.0, ceil((-inf(L1)+0.25)*4)/4). H+cI must be CERTIFIED positive definite, i.e. c + inf(L1) > 0. c=1.0 is an H2+-tuned value that FAILS for H3^2+ at d_paper=2.8 (c+inf(L1) = -0.0515). c is a free parameter of the Goerisch construction, so raising it to satisfy the prerequisite is required by the method and is not a tuning of the result.",
+  "stageA_inf_L1": -1.2484538297683163
+ },
+ "julia": "1.12.7",
+ "peak_rss_gb": 930.9507713317871,
+ "purpose": "DECISIVE TEST: does the CERTIFIED lower bound respect an independently verified variational upper bound?",
+ "quadrature": {
+  "clearance": 9.2,
+  "moment_tail_bound_at_t_star": 1.8946422789623004e-38,
+  "n_p": 24,
+  "npanel": 58,
+  "npanel_rule": "npanel = round(4.8*LX); reproduces the published defaults 48 at LX=10 and 96 at LX=20",
+  "nt": 48,
+  "t_star": 1.0,
+  "t_star_rule": "t_star = 1.0 raised in 0.25 steps until the large-t moment tail bound <= 1e-13"
+ },
+ "reference": {
+  "error": 3.8e-07,
+  "kind": "corrected extended-precision floating-Gaussian best estimate; companion variational upper bound -0.936444734",
+  "value": -0.936459577
+ },
+ "relative_accuracy": {
+  "abs_lambda_ref": 0.936459577,
+  "certified_relative_width": 0.00025637550532761903,
+  "certified_relative_width_percent": 0.0256375505327619,
+  "certified_width": 0.00024008529727226335,
+  "factor_inside_target": 195.02643178062442,
+  "meets_target": true,
+  "reference_status": "PROVISIONAL floating-Gaussian value; relative figures must be requoted if the corrected extended-precision value differs",
+  "target_absolute_width": 0.04682297885,
+  "target_relative": 0.05
+ },
+ "separator_resolution": {
+  "N_sep": 32,
+  "Nprime_sep": 48,
+  "note": "Stage-A (C_eps, L1, L2) and the certified oee mu2 separator are computed at N_sep/Nprime_sep, not at N/Nprime. Both are rigorous lower bounds on their targets at ANY resolution, so this is sound; it is also the published pattern (the Omega2 N=64/N'=80 run used the N=48/N'=64 oee separator). It is required here because the Lehmann-Behnke path needs several dense interval copies and only ~159 GB is available on this host."
+ },
+ "stages": {
+  "A": {
+   "Ceps": {
+    "0.3": [
+     7.073625980691987,
+     7.073625980691987
+    ],
+    "0.4": [
+     4.634481266122737,
+     4.634481266122737
+    ]
+   },
+   "Ceps_width": {
+    "0.3": 0.0,
+    "0.4": 0.0
+   },
+   "Deee": 59319,
+   "Doee": 57798,
+   "L1": [
+    -1.2484538297683163,
+    -1.2484538297403787
+   ],
+   "L1_width": 2.793765219166744e-11,
+   "L2": [
+    -1.007596633535162,
+    -1.0075966335122
+   ],
+   "L2_width": 2.2962076684507338e-11,
+   "N": 76,
+   "N_stageA": 76,
+   "N_stageA_configured": 32,
+   "N_stageA_overridden": true,
+   "eps1": 0.4,
+   "eps2": 0.4,
+   "eta_1N_ritz_diagnostic_not_a_bound": {
+    "COMMENT": "DIAGNOSTIC ONLY -- NOT A BOUND AND NOT THE SHIFT. eta_1N is the auxiliary Rayleigh-Ritz value lambda_1(eps*K + P) on the cosine space, which is a subspace of H^1(Omega); Rayleigh-Ritz therefore bounds it from ABOVE, eta_1N >= eta, so -eta_1N <= C_eps^opt and using it DIRECTLY as a coercivity shift is INADMISSIBLE. Reported in the paper only as an estimate that locates the optimum. The shift actually used is under the 'sigma_loc' key with its source named by 'shift_source'; when that is 'certified_eta_based' the shift derives from a VERIFIED ENCLOSURE of eta_1N pushed through the projection bound on the normalised operator B = A_eps/eps, which is admissible -- not from this float Ritz value.",
+    "computed_as": "float Ritz value from eigs(Symmetric(mid(H_aux)); nev=1, which=:SR); NOT a verified enclosure, since it is explicitly not a bound",
+    "minus_eta_would_have_been": {
+     "0.3": 1.5572648457235596,
+     "0.4": 1.3662633543272433
+    },
+    "shift_actually_used": {
+     "0.3": 7.073625980691987,
+     "0.4": 4.634481266122737
+    },
+    "shift_source": "certified_eta_based",
+    "values": {
+     "0.3": -1.5572648457235596,
+     "0.4": -1.3662633543272433
+    }
+   },
+   "geometry": {
+    "LX": 12.0,
+    "LY": 9.600000000000001,
+    "LZ": 9.600000000000001,
+    "Ztot": 3.0,
+    "r1_r2_rule": "r1 = rho/2, r2 = rho",
+    "rho": 9.2,
+    "rho_rule": "rho = min over nuclei of dist(nucleus, boundary), computed from the geometry record"
+   },
+   "goerisch_shift_admissibility": {
+    "adaptive_rule_would_give": 1.5,
+    "admissible_at_c_1": false,
+    "inf_L1": -1.2484538297683163,
+    "lambda_min_at_c_1": -0.24845382976831631
+   },
+   "lehmann_behnke_rho_sigma": {
+    "eee": [
+     -1.0063778744496479,
+     -0.662120008621524
+    ],
+    "oee": [
+     -0.717181137735864,
+     -0.46315367267526353
+    ],
+    "source": "auto from approximate spectrum"
+   },
+   "memory_profile": [
+    {
+     "hwm_delta_gb": 85.11009979248047,
+     "hwm_gb": 85.11009979248047,
+     "rss_gb": 80.36696243286133,
+     "step": "eee assembly done (interval matrix live)"
+    },
+    {
+     "hwm_delta_gb": 0.0,
+     "hwm_gb": 85.11009979248047,
+     "rss_gb": 80.36927032470703,
+     "step": "eee form_H_inplace!"
+    },
+    {
+     "hwm_delta_gb": 20.46080780029297,
+     "hwm_gb": 105.57090759277344,
+     "rss_gb": 105.57090759277344,
+     "step": "eee mid_matrix formed"
+    },
+    {
+     "hwm_delta_gb": 0.019756317138671875,
+     "hwm_gb": 105.59066390991211,
+     "rss_gb": 105.59066390991211,
+     "step": "after eigs (float midpoint live)"
+    },
+    {
+     "hwm_delta_gb": 1.9073486328125e-05,
+     "hwm_gb": 105.59068298339844,
+     "rss_gb": 105.58184051513672,
+     "step": "float midpoint freed"
+    },
+    {
+     "hwm_delta_gb": 367.44996643066406,
+     "hwm_gb": 473.0406494140625,
+     "rss_gb": 473.0406494140625,
+     "step": "after lehmann_behnke verification"
+    },
+    {
+     "hwm_delta_gb": 0.0001678466796875,
+     "hwm_gb": 473.0408172607422,
+     "rss_gb": 106.00721740722656,
+     "step": "eee mu1 enclosure complete"
+    },
+    {
+     "hwm_delta_gb": 0.0,
+     "hwm_gb": 473.0408172607422,
+     "rss_gb": 132.23018646240234,
+     "step": "eta diag eps=0.40 mid formed"
+    },
+    {
+     "hwm_delta_gb": 0.0,
+     "hwm_gb": 473.0408172607422,
+     "rss_gb": 132.23781967163086,
+     "step": "eta diag eps=0.40 done"
+    },
+    {
+     "hwm_delta_gb": 0.0,
+     "hwm_gb": 473.0408172607422,
+     "rss_gb": 158.4571876525879,
+     "step": "eta diag eps=0.30 mid formed"
+    },
+    {
+     "hwm_delta_gb": 0.0,
+     "hwm_gb": 473.0408172607422,
+     "rss_gb": 132.24083709716797,
+     "step": "eta diag eps=0.30 done"
+    },
+    {
+     "hwm_delta_gb": 0.0,
+     "hwm_gb": 473.0408172607422,
+     "rss_gb": 132.24083709716797,
+     "step": "eee block released"
+    },
+    {
+     "hwm_delta_gb": 0.0,
+     "hwm_gb": 473.0408172607422,
+     "rss_gb": 227.35749435424805,
+     "step": "oee assembly done"
+    },
+    {
+     "hwm_delta_gb": 0.0,
+     "hwm_gb": 473.0408172607422,
+     "rss_gb": 231.87886810302734,
+     "step": "oee mid_matrix formed"
+    },
+    {
+     "hwm_delta_gb": 0.0,
+     "hwm_gb": 473.0408172607422,
+     "rss_gb": 231.87985610961914,
+     "step": "after eigs (float midpoint live)"
+    },
+    {
+     "hwm_delta_gb": 0.0,
+     "hwm_gb": 473.0408172607422,
+     "rss_gb": 231.88027954101562,
+     "step": "float midpoint freed"
+    },
+    {
+     "hwm_delta_gb": 107.2413444519043,
+     "hwm_gb": 580.2821617126465,
+     "rss_gb": 580.2821617126465,
+     "step": "after lehmann_behnke verification"
+    },
+    {
+     "hwm_delta_gb": 3.814697265625e-06,
+     "hwm_gb": 580.2821655273438,
+     "rss_gb": 231.8295669555664,
+     "step": "oee mu2 enclosure complete, block released"
+    }
+   ],
+   "mu1N_galerkin": [
+    -0.9363778744631194,
+    -0.9363778744361684
+   ],
+   "mu1N_width": 2.6950996989683063e-11,
+   "mu2N_galerkin": [
+    -0.6471811377467312,
+    -0.6471811377249426
+   ],
+   "mu2N_width": 2.178868196978101e-11,
+   "peak_rss_gb": 580.2821655273438,
+   "separation_certificate": {
+    "L2_gt_U1": false,
+    "U1_sup_mu1N": -0.9363778744361684,
+    "inf_L2": -1.007596633535162,
+    "margin": -0.07121875909899367,
+    "note": "L_2 > U_1 is required for the separator to separate. Under the analytic sigma_loc shift this failed at N_stageA=64 and forced 80 (72 used in practice); under the certified eta-based shift the margin is far larger. Verified here, not assumed."
+   },
+   "shift_description": "CERTIFIED eta-based shift: Ceps_cert = -eps*inf(nu_1 lower bound), where nu_1 = lambda_min(B) with B = A_eps/eps = -Lap + V/eps. ADMISSIBLE because the projection bound is applied to an operator whose Laplacian coefficient is normalised to 1. Distinct from the INADMISSIBLE raw -eta_1N: Rayleigh-Ritz bounds eta from above on the cosine subspace of H^1(Omega), so -eta_1N <= C_eps^opt at every N. Here the verified ENCLOSURE of eta_1N feeds the projection bound rather than being used as the shift directly.",
+   "shift_source": "certified_eta_based",
+   "sigma_loc": {
+    "0.3": {
+     "C_star": [
+      37.844923005223585,
+      37.84492300522362
+     ],
+     "Ceps_cert": 7.073625980691987,
+     "N_aux": 80,
+     "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+     "alpha": 0.2239,
+     "analytic_comparator": 8.804347826086957,
+     "delta": 0.03244927536231884,
+     "eps_star": [
+      0.7463333333333333,
+      0.7463333333333334
+     ],
+     "eta_1N_certified": [
+      -1.5576601859829335,
+      -1.557660185918688
+     ],
+     "file": "ceps_certified_D1geo_N80.json",
+     "improvement_over_analytic": 0.6126042492438114,
+     "nu1N_enclosure": [
+      -5.1922006199431125,
+      -5.19220061972896
+     ],
+     "nu1_lower_certified": -23.57875326897329,
+     "source": "certified_eta_based"
+    },
+    "0.4": {
+     "C_star": [
+      23.604450035380125,
+      23.604450035380147
+     ],
+     "Ceps_cert": 4.634481266122737,
+     "N_aux": 80,
+     "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+     "alpha": 0.2765,
+     "analytic_comparator": 6.929347826086957,
+     "delta": 0.04007246376811595,
+     "eps_star": [
+      0.6912499999999999,
+      0.69125
+     ],
+     "eta_1N_certified": [
+      -1.3663777159364385,
+      -1.3663777158854196
+     ],
+     "file": "ceps_certified_D1geo_N80.json",
+     "improvement_over_analytic": 0.7552085765421902,
+     "nu1N_enclosure": [
+      -3.4159442898410965,
+      -3.4159442897135484
+     ],
+     "nu1_lower_certified": -11.586203165306841,
+     "source": "certified_eta_based"
+    }
+   },
+   "stage": "A",
+   "t_assemble": 1525.0298905670002,
+   "t_eta": 72.978113377,
+   "t_ritz": 855.351034996,
+   "wall_seconds": 2911.523018836975
+  },
+  "dirichlet": {
+   "D": 35937,
+   "N": 64,
+   "RQ_interval": [
+    -0.936304280500706,
+    -0.9363042804864575
+   ],
+   "RQ_width": 1.4248491275736797e-11,
+   "float_lambda1D_N": -0.9363042804935438,
+   "lambda1_upper_certified": -0.9363042804864575,
+   "mass_den": [
+    0.9999999999979873,
+    1.0000000000019758
+   ],
+   "modes_per_axis": 33,
+   "peak_rss_gb": 930.9507713317871,
+   "stage": "dirichlet",
+   "t_assemble": 342.521206704,
+   "wall_seconds": 1132.8874049186707
+  },
+  "lg": {
+   "A0": [
+    0.563694004662785,
+    0.5636940046707414
+   ],
+   "A0_width": 7.956413305976184e-12,
+   "A2": [
+    1.7742559528749944,
+    1.774255952934176
+   ],
+   "A2_residual_corr_hi": 2.1430735474771496e-22,
+   "A2_width": 5.91815485506686e-11,
+   "B": [
+    0.1307124927701626,
+    0.13071249281937858
+   ],
+   "B_positive": true,
+   "D_aux": 68921,
+   "L1_LG": [
+    -0.9365443657837298,
+    -0.9365443657093697
+   ],
+   "L1_LG_width": 7.436007365413388e-11,
+   "N": 64,
+   "Nprime": 80,
+   "c": 1.5,
+   "certificate_valid": true,
+   "cg_residual": 8.909008626074586e-13,
+   "hypothesis_rho_gt_Lambda_n": {
+    "Lambda_n": -0.9363059953292586,
+    "holds": true,
+    "margin": 0.2712674480962408,
+    "note": "Lambda_n = sup(A0) - c, using A1 = <v,v> = 1; checked before the pencil was formed",
+    "rho": -0.6650385472330178
+   },
+   "lam_min_lb": 0.2515461702316837,
+   "lambda1_lower_certified": -0.9365443657837298,
+   "mu1_primary_float_unshifted": -0.9363059953332391,
+   "nu": [
+    -2.075298560644685,
+    -2.075298559802422
+   ],
+   "nu_lt_1": true,
+   "peak_rss_gb": 930.9507713317871,
+   "r2_hi": 5.390819433927053e-23,
+   "separator_candidates": {
+    "certified_oee_mu2": -0.6650385472330178,
+    "stageA_L2": -1.007596633535162
+   },
+   "separator_rho": -0.6650385472330178,
+   "separator_source": "certified_oee_mu2",
+   "separator_variants": {
+    "certified_oee_mu2": {
+     "B": [
+      0.1307124927701626,
+      0.13071249281937858
+     ],
+     "B_positive": true,
+     "L1_LG": [
+      -0.9365443657837298,
+      -0.9365443657093697
+     ],
+     "L1_LG_width": 7.436007365413388e-11,
+     "certificate_valid": true,
+     "nu": [
+      -2.075298560644685,
+      -2.075298559802422
+     ],
+     "nu_lt_1": true,
+     "rho": -0.6650385472330178
+    },
+    "stageA_L2": {
+     "B": [
+      0.00907527793508417,
+      0.009075277957389882
+     ],
+     "B_positive": true,
+     "L1_LG": [
+      -0.9357703612546904,
+      -0.9357703610432148
+     ],
+     "L1_LG_width": 2.114756147975072e-10,
+     "certificate_valid": false,
+     "nu": [
+      7.855477103034178,
+      7.855477123218511
+     ],
+     "nu_lt_1": false,
+     "rho": -1.007596633535162
+    }
+   },
+   "stage": "lg",
+   "t_assemble": 972.934793521,
+   "t_cg": 5218.261009268,
+   "wall_seconds": 6975.252652168274
+  },
+  "mu2": {
+   "A0": [
+    0.853637796427685,
+    0.853637796429411
+   ],
+   "A0_width": 1.7259527140822684e-12,
+   "A2": [
+    1.172587424974836,
+    1.172587425020271
+   ],
+   "A2_residual_corr_hi": 2.115390369281785e-22,
+   "A2_width": 4.543498910436483e-11,
+   "B": [
+    0.0026347896010338046,
+    0.0026347896389210534
+   ],
+   "B_positive": true,
+   "D_aux": 83248,
+   "L2_LG": [
+    -0.6650385472330178,
+    -0.6650385464613139
+   ],
+   "L2_LG_width": 7.717039229859779e-10,
+   "N": 32,
+   "Nprime": 86,
+   "Nprime_sep_configured": 48,
+   "Nprime_sep_overridden": true,
+   "c": 1.5,
+   "certificate_valid": true,
+   "cg_residual": 9.091109818361703e-13,
+   "lam_min_lb": 0.2515461702316837,
+   "lehmann_behnke_rho_sigma": {
+    "mu2": [
+     -0.7172016616536141,
+     -0.46316510968770674
+    ],
+    "mu3": [
+     -0.3491285577218112,
+     -0.22393292760117742
+    ]
+   },
+   "mu2N_galerkin": [
+    -0.6472016616692223,
+    -0.6472016616380686
+   ],
+   "mu2N_width": 3.115374624940159e-11,
+   "mu2_Omega_lower_certified": -0.6650385472330178,
+   "mu3N_galerkin": [
+    -0.2791285577252003,
+    -0.2791285577184126
+   ],
+   "mu3N_width": 6.787681527953282e-12,
+   "nu": [
+    -14.606850301178731,
+    -14.606850090482848
+   ],
+   "nu_lt_1": true,
+   "oee2nd_sharpL_separator": -0.6078762262949118,
+   "peak_rss_gb": 930.9507713317871,
+   "r2_hi": 5.321183459378201e-23,
+   "sep_eps": 0.4,
+   "sep_valid": true,
+   "stage": "mu2",
+   "t_assemble": 1378.731786743,
+   "t_cg": 53.279447935,
+   "wall_seconds": 4528.697944164276
+  }
+ },
+ "system": "H3plus",
+ "threads": 32,
+ "three_centre_note": "Three collinear unit charges at (-d,0,0), (0,0,0), (+d,0,0). No new mathematics and no special branch was required: the centre at the ORIGIN is the case s=0 of the SAME moments_verified.jl routine used for H2+ (moment_smallt integrates cos(kappa(x+L))exp(-t^2(x-s)^2) over [-L,L] with its per-panel Bernstein remainder, and moment_larget is the infinite-domain form plus a Gaussian tail bound; neither has an s-dependent branch). The Coulomb singularity is never evaluated pointwise because the Gaussian representation 1/r = (2/sqrt(pi)) int exp(-t^2 r^2) dt removes it analytically. The only structural addition is the grouping of centres sharing a transverse position, which sums their Bx factors before the Kronecker product and keeps the cost identical to the two-centre case.",
+ "wall_seconds_total": 15564.952350139618
+}

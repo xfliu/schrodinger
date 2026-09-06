@@ -1,0 +1,900 @@
+{
+ "goal": "UNCONDITIONAL certified sharp lower bound on mu_1(Omega) for H3^2+ at d_paper=2.8, with Theorem 8's own prescription m_1 = the m_1 of the block the bound is applied to",
+ "revision": "v5 -- HEADLINE: the oee candidate is taken entirely from the (oee, N=86) certificate, removing the last foreign quantity. Adds a machine-checkable per-quantity provenance manifest and the impact check on recorded quantities. | v6: two label defects fixed in place (top-level nu_star was carrying the eoe row's N=76 value unlabelled; impact evidence item 4 mislabelled stages.mu2 as N=76). No value recomputed.",
+ "configuration": {
+  "system": "H3^2+ linear, three unit charges at x = -2.8, 0, +2.8 (paper units)",
+  "d_paper": 2.8,
+  "box": [
+   12.0,
+   9.6,
+   9.6
+  ],
+  "N_stageA": 76,
+  "sigma": 4.634481266122737,
+  "eps": 0.4,
+  "nt": 48,
+  "npanel": 58,
+  "t_star": 1.0,
+  "units": "energies half-hartree, lengths twice bohr"
+ },
+ "theorem_used": "mu_2(Omega) = min{lambda_2^eee, lambda_1^oee, lambda_1^eoe}; no sector identification",
+ "nu_star": {
+  "READ_THIS_FIRST": "nu_star is PER CANDIDATE, not a single value for the chain. The binding candidate is lambda_1^oee at N=86; its nu_star is 129.69277033306486. The value 101.59181335774097 that this field previously held unlabelled is the N=76 value and belongs to the eee and eoe rows only. Authoritative per-row values are candidates[].nu_star.",
+  "binding_candidate": {
+   "quantity": "lambda_1^oee",
+   "block": "oee",
+   "N": 86,
+   "nu_star": 129.69277033306486,
+   "true_first_omitted": 129.69277033306486,
+   "minimising_triple": "(87, 0, 0)",
+   "conservative": true,
+   "note": "EXACT rather than merely conservative: ((N+1)pi/2Lx)^2 = lambda(87,0,0) and 87 is odd, hence admissible in the oee parity class; enumeration confirms (87,0,0) is the smallest omitted mode"
+  },
+  "non_binding_candidates": [
+   {
+    "quantity": "lambda_2^eee",
+    "block": "eee",
+    "N": 76,
+    "nu_star": 101.59181335774099,
+    "true_first_omitted": 104.24769648650636,
+    "minimising_triple": "(78, 0, 0)",
+    "conservative": true
+   },
+   {
+    "quantity": "lambda_1^eoe",
+    "block": "eoe",
+    "N": 76,
+    "nu_star": 101.59181335774099,
+    "true_first_omitted": 104.2744695019173,
+    "minimising_triple": "(78, 1, 0)",
+    "conservative": true
+   }
+  ],
+  "driver_formula": "((N+1) pi / (2 Lx))^2, Lx = 12, evaluated at each candidate's own N",
+  "defect_fixed": "this field previously held the eoe row's N=76 value (101.59181335774097) with an eoe-specific first_omitted and no block label, which a reader scanning the top level could take for the binding candidate's. Restructured per candidate; no value was recomputed."
+ },
+ "candidates": [
+  {
+   "quantity": "lambda_2^eee",
+   "block": "eee",
+   "k": 2,
+   "N": 76,
+   "D": 59319,
+   "eta2_last_failing": 0.4,
+   "eta2_first_verifying": 0.45,
+   "ritz_lower_m_k": -0.3878621427963112,
+   "m1_used_in_Chat2": -0.9363778744525874,
+   "m1_reading": "own block",
+   "nu_star": 101.59181335774099,
+   "nu_star_true_first_omitted": 104.24769648650636,
+   "nu_star_minimising_triple": "(78, 0, 0)",
+   "nu_star_conservative": true,
+   "theorem8_lower_bound": -0.6956629936825744,
+   "exceeds_U1": true,
+   "margin_above_rho": 0.16663947869440188,
+   "source_file": "formfactor_h3d2p8_eee_N76_sig4p634481266122737.json"
+  },
+  {
+   "quantity": "lambda_1^oee",
+   "block": "oee",
+   "k": 1,
+   "N": 86,
+   "D": 83248,
+   "eta2_last_failing": 0.4,
+   "eta2_first_verifying": 0.45,
+   "ritz_lower_m_k": -0.647201661657146,
+   "m1_used_in_Chat2": -0.647201661657146,
+   "m1_reading": "own block",
+   "nu_star": 129.69277033306486,
+   "nu_star_true_first_omitted": 129.69277033306486,
+   "nu_star_minimising_triple": "(87, 0, 0)",
+   "nu_star_conservative": true,
+   "nu_star_note": "EXACT rather than merely conservative: ((N+1)pi/2Lx)^2 = lambda(87,0,0) and 87 is odd, hence admissible in the oee parity class; enumeration confirms (87,0,0) is the smallest omitted mode",
+   "theorem8_lower_bound": -0.8623024723769763,
+   "exceeds_U1": true,
+   "margin_above_rho": 0.0,
+   "binds": true,
+   "source_file": "formfactor_h3d2p8_oee_N86_sig4p634481266122737.json"
+  },
+  {
+   "quantity": "lambda_1^eoe",
+   "block": "eoe",
+   "k": 1,
+   "N": 76,
+   "D": 57798,
+   "eta2_last_failing": 0.03,
+   "eta2_first_verifying": 0.04,
+   "ritz_lower_m_k": -0.4234506802198693,
+   "m1_used_in_Chat2": -0.4234506802198693,
+   "m1_reading": "own block",
+   "nu_star": 101.59181335774099,
+   "nu_star_true_first_omitted": 104.2744695019173,
+   "nu_star_minimising_triple": "(78, 1, 0)",
+   "nu_star_conservative": true,
+   "theorem8_lower_bound": -0.697983503259199,
+   "exceeds_U1": true,
+   "margin_above_rho": 0.16431896911777732,
+   "source_file": "formfactor_h3d2p8_eoe_N76_sig4p634481266122737.json"
+  }
+ ],
+ "rho": {
+  "value": -0.8623024723769763,
+  "attained_by": "lambda_1^oee at N=86",
+  "binding_constraint": "lambda_1^oee",
+  "eee_margin_above_rho": 0.16663947869440188,
+  "eoe_margin_above_rho": 0.16431896911777732,
+  "U1": -0.9363778744361684,
+  "exceeds_U1": true,
+  "margin_over_U1": 0.07407540205919205,
+  "Lambda_n": -0.9363059953292586,
+  "exceeds_Lambda_n": true,
+  "margin_over_Lambda_n": 0.0740035229522823,
+  "note": "mixed resolutions are legitimate: Theorem 8 holds at any N, so each candidate is a valid bound on its own sector quantity and the min of valid bounds is valid"
+ },
+ "lehmann_goerisch": {
+  "moments_source": "cert_cmatch_D1.json stages.lg (A0, A2, c) -- moments of the eee trial vector, rho-independent",
+  "A0": [
+   0.563694004662785,
+   0.5636940046707414
+  ],
+  "A2": [
+   1.7742559528749944,
+   1.774255952934176
+  ],
+  "c": 1.5,
+  "arithmetic": "200-bit outward-rounded interval arithmetic (mpmath iv)",
+  "rho": -0.8623024723769763,
+  "rho_prime": 0.6376975276230237,
+  "B": [
+   0.009814569306556468,
+   0.009814569338579547
+  ],
+  "B_positive": true,
+  "nu": [
+   -7.540170194814541,
+   -7.540170169401723
+  ],
+  "nu_lt_1": true,
+  "L1_unconditional": -0.9369728261256414,
+  "U1": -0.9363778744361684,
+  "bracket_mu1_Omega": [
+   -0.9369728261256414,
+   -0.9363778744361684
+  ],
+  "bracket_width": 0.0005949516894729889,
+  "recorded_assumption_dependent_width": 0.00024008529727226335,
+  "width_ratio": 2.478084648383517,
+  "implementation_check": {
+   "fed_recorded_rho": -0.6650385472330178,
+   "recorded_L1": -0.9365443657837298,
+   "reproduced_L1": -0.9365443657837296,
+   "abs_difference": 2.2815493159822763e-16,
+   "tolerance_required": 1e-10,
+   "passed": true
+  }
+ },
+ "conservativeness_of_the_foreign_m1_reading": {
+  "verdict": "CONFIRMED: unsharp, not wrong -- subject to the stated proof-reading caveat",
+  "monotonicity": "dL/dChat^2 = -(m_k+sigma)^2/(1+Chat^2(m_k+sigma))^2 < 0 for m_k+sigma > 0, and dChat^2/dm_1 = -eta_V^2/((1-eps) nu_star (m_1+sigma)^2) < 0, so dL/dm_1 > 0 strictly: replacing m_1 by any smaller value strictly LOWERS L. For the analytic route eta_V^2 = eps/(1-eps) + Ceps/(m_1+sigma) also decreases in m_1, reinforcing the same direction.",
+  "coercivity": "the substitution is legitimate exactly when m_1 enters only through a_sigma(v_N,v_N) >= (m_1+sigma)||v_N||^2 on the trial space. mu_{1,N} is the minimum of the Rayleigh quotient over V_N, so that inequality holds on V_N^oee with its own mu_{1,N}^oee and hence a fortiori with any smaller constant. The eee m_1 is smaller in every configuration (verified: 11/11).",
+  "numerically_verified": {
+   "m1_eee_le_m1_own_all_rows": true,
+   "m1_eee_plus_sigma_positive_all_rows": true,
+   "recorded_L2_below_corrected_L2_all_rows": true,
+   "n_rows": 14
+  },
+  "caveat": "I cannot check this against the paper's own statement of Theorem 8: the form-factor certificates themselves record that the paper's Remark app:rem:si-tail is not in the reproduction bundle. The confirmation is of the monotonicity (exact arithmetic) and of the coercivity reading that the code implements; it is not a verification of the published theorem's hypotheses."
+ },
+ "scope_survey": {
+  "table": "stagea_L2_m1_reading.csv",
+  "n_rows": 14,
+  "certificates_covered": [
+   "cert_cmatch_C2.json",
+   "cert_cmatch_D1.json",
+   "cert_cmin_C1.json",
+   "cert_cmin_C3a.json",
+   "cert_cmin_C3c.json",
+   "cert_etashift_C1.json",
+   "cert_etashift_C2_final.json",
+   "cert_etashift_D1_final.json",
+   "cert_etashift_SL1.json",
+   "cert_sigmaloc_SL1.json",
+   "cert_sigmaloc_SL1_np80.json",
+   "h3_stageA_bounds.csv (row 'H3   d=2.8 L=12')",
+   "h3_stageA_bounds.csv (row 'H3   d=4 L=12 (a)')",
+   "h3_stageA_bounds.csv (row 'H3   d=4 L=12 (c)')"
+  ],
+  "universal_pattern": "every recorded Stage-A L_2 -- all 11 certificates and all 3 tail rows -- reproduces from the eee reading to <= 1.8e-12 and from the own reading to no better than 1.6e-3",
+  "separation_verdict_changes": [
+   {
+    "config": "C2 L=14",
+    "certificate": "cert_cmatch_C2.json",
+    "L2_recorded": -0.5668741093188796,
+    "L2_corrected": -0.5419644633777314,
+    "U1": -0.5511231249994741,
+    "recorded": false,
+    "corrected": true
+   }
+  ],
+  "rho_and_LG_move": [
+   {
+    "config": "SL1 / Omega_1 L=10",
+    "certificate": "cert_sigmaloc_SL1.json",
+    "separator_source": "stageA_L2",
+    "rho_recorded": -0.5309482944057748,
+    "rho_corrected": -0.5233092559408297,
+    "L1_LG_recorded": -0.5523900412105581,
+    "L1_LG_corrected": -0.5522482898453571,
+    "B_positive": true,
+    "nu_lt_1": true,
+    "rho_gt_Lambda_n": true
+   },
+   {
+    "config": "C1 L=12",
+    "certificate": "cert_etashift_C1.json",
+    "separator_source": "stageA_L2",
+    "rho_recorded": -0.5120978637704456,
+    "rho_corrected": -0.4890015557784323,
+    "L1_LG_recorded": -0.552589694982629,
+    "L1_LG_corrected": -0.5521114623382701,
+    "B_positive": true,
+    "nu_lt_1": true,
+    "rho_gt_Lambda_n": true
+   }
+  ],
+  "unaffected": "in the other 9 certificates and all 3 tail rows the separator is certified_oee_mu2 (the Lehmann-Behnke mu2 stage), so Stage-A L_2 is only a candidate and no recorded LG value moves"
+ },
+ "cost": {
+  "new_production_runs": 0,
+  "source": "all values from existing certificates plus exact interval arithmetic"
+ },
+ "gates": {
+  "G1": "PASS (unchanged)",
+  "G2": "PASS (unchanged)",
+  "G3": "PASS (unchanged)"
+ },
+ "superseded_reading": {
+  "rho": -0.9177454629525983,
+  "L1": -0.9387260284476097,
+  "bracket_width": 0.0023481540114412836,
+  "width_ratio": 9.780499006477736,
+  "why_superseded": "its eta_V^2 = 0.45 was certified on (eee, N=76) and on (oee, N=86) but never on (oee, N=76), and eta'^2 is not monotone in N, so it does not transfer -- the headline reading takes every oee input from one file at one resolution and carries no foreign quantity."
+ },
+ "provenance_manifest": {
+  "configuration_required": {
+   "box": [
+    12.0,
+    9.600000000000001,
+    9.600000000000001
+   ],
+   "sigma": 4.634481266122737,
+   "eps": 0.4,
+   "geometry": [
+    {
+     "Z": 1.0,
+     "x": -2.8,
+     "y": 0.0,
+     "z": 0.0
+    },
+    {
+     "Z": 1.0,
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    },
+    {
+     "Z": 1.0,
+     "x": 2.8,
+     "y": 0.0,
+     "z": 0.0
+    }
+   ]
+  },
+  "n_quantities": 16,
+  "all_quantities_match": true,
+  "check_definition": "for each quantity: box, sigma and geometry must equal the configuration's; sector and N must equal those of the candidate the quantity serves. The five pencil/U_1 quantities are matched on (box, sigma, geometry) only, with the reason recorded per row.",
+  "quantities": [
+   {
+    "symbol": "m_1^oee",
+    "quantity": "first Ritz value lower bound of the oee block",
+    "value": -0.647201661657146,
+    "source_file": "formfactor_h3d2p8_oee_N86_sig4p634481266122737.json",
+    "source_field": "galerkin.mu1_lower",
+    "serves_candidate": "lambda_1^oee",
+    "required_sector": "oee",
+    "required_N": 86,
+    "file_sector": "oee",
+    "file_N": 86,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 83248,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true
+   },
+   {
+    "symbol": "eta_V^2 (oee)",
+    "quantity": "certified form factor on V_86^oee",
+    "value": 0.45,
+    "source_file": "formfactor_h3d2p8_oee_N86_sig4p634481266122737.json",
+    "source_field": "eta_prime_sq_certified_upper",
+    "serves_candidate": "lambda_1^oee",
+    "required_sector": "oee",
+    "required_N": 86,
+    "file_sector": "oee",
+    "file_N": 86,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 83248,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true,
+    "note": "first verifying ladder rung; last failing rung 0.40 (trials['mu=0.4'].verified = false)"
+   },
+   {
+    "symbol": "nu_star (oee)",
+    "quantity": "first omitted Neumann-Laplacian eigenvalue used in Chat^2",
+    "value": 129.69277033306486,
+    "source_file": "formfactor_h3d2p8_oee_N86_sig4p634481266122737.json",
+    "source_field": "theorem8_evaluation (implicit: ((N+1)pi/2Lx)^2 at N=86, Lx=12)",
+    "serves_candidate": "lambda_1^oee",
+    "required_sector": "oee",
+    "required_N": 86,
+    "file_sector": "oee",
+    "file_N": 86,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 83248,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true,
+    "note": "EXACT for this block, not merely conservative: ((N+1)pi/2Lx)^2 = lambda(87,0,0) and 87 is odd, hence in the oee parity class, and enumeration confirms (87,0,0) is the smallest omitted mode"
+   },
+   {
+    "symbol": "L(lambda_1^oee)",
+    "quantity": "Theorem 8 lower bound, k=1",
+    "value": -0.8623024723769763,
+    "source_file": "formfactor_h3d2p8_oee_N86_sig4p634481266122737.json",
+    "source_field": "theorem8_evaluation.keeps_1_minus_eps_0p4.L1_lower",
+    "serves_candidate": "lambda_1^oee",
+    "required_sector": "oee",
+    "required_N": 86,
+    "file_sector": "oee",
+    "file_N": 86,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 83248,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true,
+    "note": "independent 200-bit recomputation from the three inputs above gives -0.8623024723769748, agreeing to 1.6e-15; the certificate's value is quoted because it is the more conservative"
+   },
+   {
+    "symbol": "m_1^eee",
+    "quantity": "first Ritz value lower bound of the eee block",
+    "value": -0.9363778744525874,
+    "source_file": "formfactor_h3d2p8_eee_N76_sig4p634481266122737.json",
+    "source_field": "galerkin.mu1_lower",
+    "serves_candidate": "lambda_2^eee",
+    "required_sector": "eee",
+    "required_N": 76,
+    "file_sector": "eee",
+    "file_N": 76,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 59319,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true
+   },
+   {
+    "symbol": "m_2^eee",
+    "quantity": "second Ritz value lower bound of the eee block",
+    "value": -0.3878621427963112,
+    "source_file": "formfactor_h3d2p8_eee_N76_sig4p634481266122737.json",
+    "source_field": "galerkin.mu2_lower",
+    "serves_candidate": "lambda_2^eee",
+    "required_sector": "eee",
+    "required_N": 76,
+    "file_sector": "eee",
+    "file_N": 76,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 59319,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true
+   },
+   {
+    "symbol": "eta_V^2 (eee)",
+    "quantity": "certified form factor on V_76^eee",
+    "value": 0.45,
+    "source_file": "formfactor_h3d2p8_eee_N76_sig4p634481266122737.json",
+    "source_field": "eta_prime_sq_certified_upper",
+    "serves_candidate": "lambda_2^eee",
+    "required_sector": "eee",
+    "required_N": 76,
+    "file_sector": "eee",
+    "file_N": 76,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 59319,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true,
+    "note": "first verifying rung; last failing 0.40"
+   },
+   {
+    "symbol": "L(lambda_2^eee)",
+    "quantity": "Theorem 8 lower bound, k=2",
+    "value": -0.6956629936825744,
+    "source_file": "formfactor_h3d2p8_eee_N76_sig4p634481266122737.json",
+    "source_field": "theorem8_evaluation.keeps_1_minus_eps_0p4.L2_lower",
+    "serves_candidate": "lambda_2^eee",
+    "required_sector": "eee",
+    "required_N": 76,
+    "file_sector": "eee",
+    "file_N": 76,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 59319,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true
+   },
+   {
+    "symbol": "m_1^eoe",
+    "quantity": "first Ritz value lower bound of the eoe block",
+    "value": -0.4234506802198693,
+    "source_file": "formfactor_h3d2p8_eoe_N76_sig4p634481266122737.json",
+    "source_field": "galerkin.mu1_lower",
+    "serves_candidate": "lambda_1^eoe",
+    "required_sector": "eoe",
+    "required_N": 76,
+    "file_sector": "eoe",
+    "file_N": 76,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 57798,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true
+   },
+   {
+    "symbol": "eta_V^2 (eoe)",
+    "quantity": "certified form factor on V_76^eoe",
+    "value": 0.04,
+    "source_file": "formfactor_h3d2p8_eoe_N76_sig4p634481266122737.json",
+    "source_field": "eta_prime_sq_certified_upper",
+    "serves_candidate": "lambda_1^eoe",
+    "required_sector": "eoe",
+    "required_N": 76,
+    "file_sector": "eoe",
+    "file_N": 76,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 57798,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true,
+    "note": "first verifying rung; last failing 0.03"
+   },
+   {
+    "symbol": "L(lambda_1^eoe)",
+    "quantity": "Theorem 8 lower bound, k=1",
+    "value": -0.697983503259199,
+    "source_file": "formfactor_h3d2p8_eoe_N76_sig4p634481266122737.json",
+    "source_field": "theorem8_evaluation.keeps_1_minus_eps_0p4.L1_lower",
+    "serves_candidate": "lambda_1^eoe",
+    "required_sector": "eoe",
+    "required_N": 76,
+    "file_sector": "eoe",
+    "file_N": 76,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 57798,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true
+   },
+   {
+    "symbol": "A_0",
+    "quantity": "zeroth/first moment of the eee trial vector",
+    "value": [
+     0.563694004662785,
+     0.5636940046707414
+    ],
+    "source_file": "cert_cmatch_D1.json",
+    "source_field": "stages.lg.A0",
+    "serves_candidate": "the Lehmann-Goerisch pencil for this configuration",
+    "required_sector": "eee",
+    "required_N": 64,
+    "file_sector": "eee",
+    "file_N": 64,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 68921,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true,
+    "note": "matched on (box, sigma, geometry, eps) only. These are properties of the CONFIGURATION, not of the separator: A_0/A_2/c are moments of the eee trial vector at the pencil's own N=64/N'=80 (D_aux=68921) and enter as rho-independent scalars, and U_1 is the eee block's Ritz supremum. No match against the oee candidate's N=86 is required or meaningful."
+   },
+   {
+    "symbol": "A_2",
+    "quantity": "second moment of the eee trial vector",
+    "value": [
+     1.7742559528749944,
+     1.774255952934176
+    ],
+    "source_file": "cert_cmatch_D1.json",
+    "source_field": "stages.lg.A2",
+    "serves_candidate": "the Lehmann-Goerisch pencil for this configuration",
+    "required_sector": "eee",
+    "required_N": 64,
+    "file_sector": "eee",
+    "file_N": 64,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 68921,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true,
+    "note": "matched on (box, sigma, geometry, eps) only. These are properties of the CONFIGURATION, not of the separator: A_0/A_2/c are moments of the eee trial vector at the pencil's own N=64/N'=80 (D_aux=68921) and enter as rho-independent scalars, and U_1 is the eee block's Ritz supremum. No match against the oee candidate's N=86 is required or meaningful."
+   },
+   {
+    "symbol": "c",
+    "quantity": "Goerisch shift",
+    "value": 1.5,
+    "source_file": "cert_cmatch_D1.json",
+    "source_field": "stages.lg.c",
+    "serves_candidate": "the Lehmann-Goerisch pencil for this configuration",
+    "required_sector": "eee",
+    "required_N": 64,
+    "file_sector": "eee",
+    "file_N": 64,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 68921,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true,
+    "note": "matched on (box, sigma, geometry, eps) only. These are properties of the CONFIGURATION, not of the separator: A_0/A_2/c are moments of the eee trial vector at the pencil's own N=64/N'=80 (D_aux=68921) and enter as rho-independent scalars, and U_1 is the eee block's Ritz supremum. No match against the oee candidate's N=86 is required or meaningful."
+   },
+   {
+    "symbol": "Lambda_n",
+    "quantity": "pencil hypothesis threshold",
+    "value": -0.9363059953292586,
+    "source_file": "cert_cmatch_D1.json",
+    "source_field": "stages.lg.hypothesis_rho_gt_Lambda_n.Lambda_n",
+    "serves_candidate": "the Lehmann-Goerisch pencil for this configuration",
+    "required_sector": "eee",
+    "required_N": 64,
+    "file_sector": "eee",
+    "file_N": 64,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 68921,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true,
+    "note": "matched on (box, sigma, geometry, eps) only. These are properties of the CONFIGURATION, not of the separator: A_0/A_2/c are moments of the eee trial vector at the pencil's own N=64/N'=80 (D_aux=68921) and enter as rho-independent scalars, and U_1 is the eee block's Ritz supremum. No match against the oee candidate's N=86 is required or meaningful."
+   },
+   {
+    "symbol": "U_1",
+    "quantity": "certified upper bound on mu_1(Omega)",
+    "value": -0.9363778744361684,
+    "source_file": "cert_cmatch_D1.json",
+    "source_field": "stages.A.separation_certificate.U1_sup_mu1N",
+    "serves_candidate": "the Lehmann-Goerisch pencil for this configuration",
+    "required_sector": "eee",
+    "required_N": 64,
+    "file_sector": "eee",
+    "file_N": 64,
+    "file_box": [
+     12.0,
+     9.600000000000001,
+     9.600000000000001
+    ],
+    "file_sigma": 4.634481266122737,
+    "file_D": 68921,
+    "file_nt": 48,
+    "checks": {
+     "box_matches": true,
+     "sigma_matches": true,
+     "geometry_matches": true,
+     "sector_matches": true,
+     "N_matches": true
+    },
+    "all_match": true,
+    "note": "matched on (box, sigma, geometry, eps) only. These are properties of the CONFIGURATION, not of the separator: A_0/A_2/c are moments of the eee trial vector at the pencil's own N=64/N'=80 (D_aux=68921) and enter as rho-independent scalars, and U_1 is the eee block's Ritz supremum. No match against the oee candidate's N=86 is required or meaningful."
+   }
+  ]
+ },
+ "impact_of_raising_oee_to_N86": {
+  "question": "does raising the oee candidate from N=76 to N=86 change the separation verdict or any other recorded quantity for this configuration?",
+  "answer": "No. Read from the files, not inferred.",
+  "evidence": [
+   {
+    "recorded_quantity": "stages.A.separation_certificate",
+    "value": {
+     "L2_gt_U1": false,
+     "U1_sup_mu1N": -0.9363778744361684,
+     "inf_L2": -1.007596633535162,
+     "margin": -0.07121875909899367,
+     "note": "L_2 > U_1 is required for the separator to separate. Under the analytic sigma_loc shift this failed at N_stageA=64 and forced 80 (72 used in practice); under the certified eta-based shift the margin is far larger. Verified here, not assumed."
+    },
+    "unchanged": true,
+    "why": "its two inputs are stages.A.L2 (the ANALYTIC Stage-A L_2 at N_stageA=76, -1.007596633535162) and U1_sup_mu1N (the eee block's Ritz supremum at N=76). Neither references any oee form-factor run at any N, so the recorded L2_gt_U1 = false is untouched and stays false."
+   },
+   {
+    "recorded_quantity": "stages.A.mu1N_galerkin / stages.A.mu2N_galerkin",
+    "value": [
+     [
+      -0.9363778744631194,
+      -0.9363778744361684
+     ],
+     [
+      -0.6471811377467312,
+      -0.6471811377249426
+     ]
+    ],
+    "unchanged": true,
+    "why": "Stage-A Galerkin enclosures computed at N_stageA=76 (Deee=59319, Doee=57798); properties of that run"
+   },
+   {
+    "recorded_quantity": "stages.lg.A0 / A2 / c / D_aux",
+    "value": [
+     [
+      0.563694004662785,
+      0.5636940046707414
+     ],
+     [
+      1.7742559528749944,
+      1.774255952934176
+     ],
+     1.5,
+     68921
+    ],
+    "unchanged": true,
+    "why": "moments of the eee trial vector at the pencil's own N=64/N'=80 (D_aux=68921); the certificate states they do not depend on rho, so a different separator cannot move them"
+   },
+   {
+    "recorded_quantity": "stages.A.separation_certificate.U1_sup_mu1N",
+    "value": -0.9363778744361684,
+    "unchanged": true,
+    "why": "the eee block's Ritz supremum at N=76; independent of the oee candidate"
+   },
+   {
+    "recorded_quantity": "stages.mu2.mu2_Omega_lower_certified",
+    "value": -0.6650385472330178,
+    "resolution_of_that_field": {
+     "stages.mu2.N": 32,
+     "stages.mu2.Nprime": 86,
+     "stages.mu2.D_aux": 83248
+    },
+    "unchanged": true,
+    "why": "the Lehmann-Behnke oee bound computed at stages.mu2.N = 32 with auxiliary space stages.mu2.Nprime = 86 (stages.mu2.D_aux = 83248) -- NOT at N=76, as an earlier draft of this field mislabelled it; and it is unaffected by the separator choice because it is an independently recorded bound on lambda_1^oee produced by a different route, not a function of rho, so which candidate is selected as rho cannot alter it.",
+    "defect_fixed": "the label 'the Lehmann-Behnke oee bound at N=76' was wrong: the field enumeration in this same record shows stages.mu2 carries N=32 and Nprime=86. Label corrected; the value is unchanged and was not recomputed."
+   },
+   {
+    "recorded_quantity": "every N-like field in the file",
+    "value": [
+     [
+      "N",
+      64
+     ],
+     [
+      "Nprime",
+      80
+     ],
+     [
+      "stages.A.Deee",
+      59319
+     ],
+     [
+      "stages.A.Doee",
+      57798
+     ],
+     [
+      "stages.A.N",
+      76
+     ],
+     [
+      "stages.A.N_stageA",
+      76
+     ],
+     [
+      "stages.A.sigma_loc.0.3.N_aux",
+      80
+     ],
+     [
+      "stages.A.sigma_loc.0.4.N_aux",
+      80
+     ],
+     [
+      "stages.dirichlet.N",
+      64
+     ],
+     [
+      "stages.lg.D_aux",
+      68921
+     ],
+     [
+      "stages.lg.N",
+      64
+     ],
+     [
+      "stages.lg.Nprime",
+      80
+     ],
+     [
+      "stages.mu2.D_aux",
+      83248
+     ],
+     [
+      "stages.mu2.N",
+      32
+     ],
+     [
+      "stages.mu2.Nprime",
+      86
+     ]
+    ],
+    "unchanged": true,
+    "why": "Two fields DO reference 86, and they are a consistency point rather than a dependency: stages.mu2.Nprime = 86 with stages.mu2.D_aux = 83248, which equals the oee certificate's own D exactly (formfactor_h3d2p8_oee_N86_sig4p634481266122737.json, field D). The configuration's recorded mu2 stage therefore ALREADY works in the same oee space at N'=86 that the form-factor run certifies; its recorded value -0.6650385472330178 was computed at that resolution and cannot move because a different bound on the same block is chosen as rho. No field of the certificate is derived from the form-factor run itself: the eta_V^2 certificates feed the tail-refined route, which is external to this file's stages."
+   }
+  ],
+  "what_does_change": "only the separator fed to the Lehmann-Goerisch map, and hence L_1 -- both outputs of the unconditional chain, not recorded quantities of the certificate. The chain's own separation check rho > U_1 does not change verdict either: it holds with margin 0.07407540205919205 at N=86 against 0.018632411483570088 at N=76, i.e. it strengthens.",
+  "correction_note": "an earlier draft of this record asserted that no field of cert_cmatch_D1.json equals 86; the mechanical enumeration above refuted that, and the claim is replaced by the accurate one."
+ }
+}

@@ -1,0 +1,504 @@
+{
+ "provenance": {
+  "generated_from": "optimal_box_surface.csv (144 dense cells + 42 LG cells, float only)",
+  "box_family": "Omega(L) = [-L,L] x [-0.8L,0.8L]^2 (the recorded Omega1 aspect ratio)",
+  "npanel_rule": "npanel = round(4.8*L); reproduces the published defaults exactly (48 at L=10, 96 at L=20)",
+  "t_star_rule": "t_star = 1.0, raised in steps of 0.25 until the large-t moment tail <= 1e-13; fired only at L=8 (H3^2+)",
+  "separator_rule": "rho = mu2N_oee_Ritz(N) - 6.2257424e-3, where the allowance is the deficit actually realised by the published certified mu2 separator on Omega2 at N=64 (Ritz -0.3333398828 vs certified -0.3395656252). LG_lower_ideal_rho uses rho = mu2N_oee_Ritz itself.",
+  "width_definition": "W = lambda1D_Ritz(Omega,N) - LG_lower(Omega,N,N'), the whole-space two-sided enclosure width",
+  "validation": {
+   "published_width_reproduced": {
+    "config": "H2+ L=20 N=64 N'=80",
+    "recorded": "4.763392e-04",
+    "reproduced": "4.763392e-04",
+    "note": "the certified (interval) width is reproduced to 7 digits by the float width, i.e. interval-arithmetic inflation is negligible against discretisation+truncation at these widths"
+   },
+   "lg_machinery": {
+    "A0": "0.4490494043097504 in recorded [0.44904940430719203, 0.4490494043123164]",
+    "A2": "2.2277098615147142 in recorded [2.2277098614668827, 2.2277098615624906]",
+    "LG_at_published_mu2_separator": "-0.5514436009222 in recorded [-0.551443600958, -0.551443600887]",
+    "LG_at_published_stageA_separator": "-0.5520185976174 in recorded [-0.5520185976971724, -0.5520185975376072]"
+   },
+   "assembly_vs_interval_assembler": "my float mu1N at Omega1 matches step3_checks.json float_validation to 2.1e-13 (N=24) and 3.1e-13 (N=32) for H3^2+ d_paper=2.8",
+   "krylov_vs_lapack": "shift-invert Lanczos vs eigen(Symmetric,1:2) at D=15625: 1.95e-14 / 1.24e-14, 5.8x faster",
+   "t_grid": "nt = 48 -> 160 moves every reported quantity by <= 3.2e-15 on four probe cells"
+  },
+  "sign_diagnostic": "trunc_gap_discrete = lambda1D_Ritz - mu1N_Ritz; positive = truncation-limited, negative = discretisation-limited"
+ },
+ "per_system": {
+  "H2plus d=2": {
+   "32": {
+    "L_star": 12.0,
+    "W_min": 0.0015942620575553,
+    "Nprime": 48,
+    "L_grid": [
+     10.0,
+     12.0,
+     14.0,
+     16.0,
+     20.0
+    ],
+    "W_grid": [
+     0.0017723517959401,
+     0.0015942620575553,
+     0.0017533075648935,
+     0.002828007110342,
+     0.0057402683934918
+    ]
+   },
+   "48": {
+    "L_star": 12.0,
+    "W_min": 0.0004715610172789,
+    "Nprime": 64,
+    "L_grid": [
+     10.0,
+     12.0,
+     14.0,
+     16.0,
+     20.0
+    ],
+    "W_grid": [
+     0.0013113321713347,
+     0.0004715610172789,
+     0.0005279184717204,
+     0.0007689641169201,
+     0.0014088840974684
+    ]
+   },
+   "64": {
+    "L_star": 14.0,
+    "W_min": 0.0002236010141073,
+    "Nprime": 80,
+    "L_grid": [
+     12.0,
+     14.0,
+     16.0,
+     20.0
+    ],
+    "W_grid": [
+     0.0002515359924045,
+     0.0002236010141073,
+     0.0002901434720823,
+     0.0004763391629341
+    ]
+   },
+   "truncation_branch": {
+    "model": "Delta(L) = A exp(-k L), Delta = lambda1D_Ritz - mu1N_Ritz at N=64, L<=12",
+    "rate": 1.0374029678785237,
+    "prefactor": 34.39508489238741,
+    "r2": 0.9999367030602496,
+    "n": 3,
+    "k_predicted_0p8_2sqrtlam": 1.1880115824351207
+   },
+   "discretisation_branch": {
+    "L=12": {
+     "model": "W = a N^(-p)",
+     "exponent_p": 2.6863807239464106,
+     "prefactor": 16.964780704667866,
+     "r2": 0.9928732461839026,
+     "n": 3
+    },
+    "L=14": {
+     "model": "W = a N^(-p)",
+     "exponent_p": 2.9703759776861554,
+     "prefactor": 51.90837348804676,
+     "r2": 0.9999941558618498,
+     "n": 3
+    },
+    "L=16": {
+     "model": "W = a N^(-p)",
+     "exponent_p": 3.280148044216207,
+     "prefactor": 246.67435400604415,
+     "r2": 0.9997776259676212,
+     "n": 3
+    },
+    "L=20": {
+     "model": "W = a N^(-p)",
+     "exponent_p": 3.582746385103446,
+     "prefactor": 1437.5182901617623,
+     "r2": 0.9994412586085819,
+     "n": 3
+    }
+   },
+   "L_star_of_N": {
+    "32": 12.0,
+    "48": 12.0,
+    "64": 14.0
+   },
+   "sign_flip_L_at_N64": "between L=10 and L=12 for all three systems",
+   "reference_status": "exact_spheroidal"
+  },
+  "H3plus d=4": {
+   "32": {
+    "L_star": 10.0,
+    "W_min": 0.0011775899000501,
+    "Nprime": 48,
+    "L_grid": [
+     10.0,
+     12.0,
+     14.0,
+     16.0,
+     20.0
+    ],
+    "W_grid": [
+     0.0011775899000501,
+     0.0013106719624234,
+     0.0014233009109122,
+     0.0022698550135135,
+     0.0048316890124584
+    ]
+   },
+   "48": {
+    "L_star": 12.0,
+    "W_min": 0.0003215618044313,
+    "Nprime": 64,
+    "L_grid": [
+     10.0,
+     12.0,
+     14.0,
+     16.0,
+     20.0
+    ],
+    "W_grid": [
+     0.0008190398389918,
+     0.0003215618044313,
+     0.000427055176555,
+     0.0006156621562357,
+     0.0011920827240309
+    ]
+   },
+   "64": {
+    "L_star": 12.0,
+    "W_min": 0.0001503991991408,
+    "Nprime": 80,
+    "L_grid": [
+     12.0,
+     14.0,
+     16.0,
+     20.0
+    ],
+    "W_grid": [
+     0.0001503991991408,
+     0.0001751608325364,
+     0.0002320401115513,
+     0.0003742751312779
+    ]
+   },
+   "truncation_branch": {
+    "model": "Delta(L) = A exp(-k L), Delta = lambda1D_Ritz - mu1N_Ritz at N=64, L<=12",
+    "rate": 1.21819690519865,
+    "prefactor": 121.68521590616896,
+    "r2": 0.9999365846592287,
+    "n": 3,
+    "k_predicted_0p8_2sqrtlam": 1.3967550942059956
+   },
+   "discretisation_branch": {
+    "L=12": {
+     "model": "W = a N^(-p)",
+     "exponent_p": 3.145883551594892,
+     "prefactor": 68.55153625983216,
+     "r2": 0.9947386598962428,
+     "n": 3
+    },
+    "L=14": {
+     "model": "W = a N^(-p)",
+     "exponent_p": 3.0189770522594754,
+     "prefactor": 50.10624496789817,
+     "r2": 0.9998594534316438,
+     "n": 3
+    },
+    "L=16": {
+     "model": "W = a N^(-p)",
+     "exponent_p": 3.2854159707764254,
+     "prefactor": 201.61627565959358,
+     "r2": 0.9997839609414335,
+     "n": 3
+    },
+    "L=20": {
+     "model": "W = a N^(-p)",
+     "exponent_p": 3.6746842781876774,
+     "prefactor": 1684.8958702433933,
+     "r2": 0.9981137121556684,
+     "n": 3
+    }
+   },
+   "L_star_of_N": {
+    "32": 10.0,
+    "48": 12.0,
+    "64": 12.0
+   },
+   "sign_flip_L_at_N64": "between L=10 and L=12 for all three systems",
+   "reference_status": "gaussian_consistent"
+  },
+  "H3plus d=2.8": {
+   "32": {
+    "L_star": 10.0,
+    "W_min": 0.0005345260713065,
+    "Nprime": 48,
+    "L_grid": [
+     10.0,
+     12.0,
+     14.0,
+     16.0,
+     20.0
+    ],
+    "W_grid": [
+     0.0005345260713065,
+     0.000859560236785,
+     0.0014039474531697,
+     0.0015585033950661,
+     0.0023494714004743
+    ]
+   },
+   "48": {
+    "L_star": 12.0,
+    "W_min": 0.0002414474391627,
+    "Nprime": 64,
+    "L_grid": [
+     10.0,
+     12.0,
+     14.0,
+     16.0,
+     20.0
+    ],
+    "W_grid": [
+     0.000252006266063,
+     0.0002414474391627,
+     0.0003292075192339,
+     0.0003236837079289,
+     0.0012288855923698
+    ]
+   },
+   "64": {
+    "L_star": 12.0,
+    "W_min": 9.6964832039359e-05,
+    "Nprime": 80,
+    "L_grid": [
+     10.0,
+     12.0,
+     14.0,
+     20.0
+    ],
+    "W_grid": [
+     0.0001813846034804,
+     9.6964832039359e-05,
+     9.884955005823315e-05,
+     0.0001921996195456
+    ]
+   },
+   "truncation_branch": {
+    "model": "Delta(L) = A exp(-k L), Delta = lambda1D_Ritz - mu1N_Ritz at N=64, L<=12",
+    "rate": 1.7631838536712443,
+    "prefactor": 3493.85246465999,
+    "r2": 0.9818584474406713,
+    "n": 3,
+    "k_predicted_0p8_2sqrtlam": 1.5483335431421745
+   },
+   "discretisation_branch": {
+    "L=12": {
+     "model": "W = a N^(-p)",
+     "exponent_p": 3.1469869111972892,
+     "prefactor": 46.963067094386055,
+     "r2": 0.9999878011557399,
+     "n": 3
+    },
+    "L=14": {
+     "model": "W = a N^(-p)",
+     "exponent_p": 3.811630129580374,
+     "prefactor": 788.0310967406022,
+     "r2": 0.9980613986178836,
+     "n": 3
+    },
+    "L=20": {
+     "model": "W = a N^(-p)",
+     "exponent_p": 3.47951695219846,
+     "prefactor": 507.368393681395,
+     "r2": 0.8696805020965545,
+     "n": 3
+    }
+   },
+   "L_star_of_N": {
+    "32": 10.0,
+    "48": 12.0,
+    "64": 12.0
+   },
+   "sign_flip_L_at_N64": "between L=10 and L=12 for all three systems",
+   "reference_status": "gaussian_CONFLICT"
+  }
+ },
+ "recommended_interval_cells": [
+  {
+   "system": "H2plus",
+   "d_paper": 2.0,
+   "L": 14.0,
+   "N": 64,
+   "Nprime": 80,
+   "D": 35937,
+   "D_aux": 68921,
+   "float_enclosure": [
+    -0.5513927107345395,
+    -0.5511691097204322
+   ],
+   "float_width": 0.0002236010141073,
+   "improvement_vs_published_4p7634em4": 2.130308778934576,
+   "reference_status": "exact_spheroidal",
+   "rationale": "best width at the published cost: same N=64/N'=80 and the same D_aux=68921 as the published Omega2 run, only the box changes",
+   "separator_sensitivity_LG_range_over_0_to_4x_allowance": [
+    -0.551406675893205,
+    -0.5513885886164667
+   ],
+   "separator_sensitivity_span": 1.808727673835442e-05
+  },
+  {
+   "system": "H2plus",
+   "d_paper": 2.0,
+   "L": 12.0,
+   "N": 64,
+   "Nprime": 80,
+   "D": 35937,
+   "D_aux": 68921,
+   "float_enclosure": [
+    -0.5514182890715332,
+    -0.5511667530791285
+   ],
+   "float_width": 0.0002515359924045,
+   "improvement_vs_published_4p7634em4": 1.8937218438522492,
+   "reference_status": "exact_spheroidal",
+   "rationale": "second best; adjacent grid point, brackets L* from below",
+   "separator_sensitivity_LG_range_over_0_to_4x_allowance": [
+    -0.5514260843459444,
+    -0.551415988724462
+   ],
+   "separator_sensitivity_span": 1.0095621482464345e-05
+  },
+  {
+   "system": "H2plus",
+   "d_paper": 2.0,
+   "L": 12.0,
+   "N": 48,
+   "Nprime": 64,
+   "D": 15625,
+   "D_aux": 35937,
+   "float_enclosure": [
+    -0.5515394845756576,
+    -0.5510679235583786
+   ],
+   "float_width": 0.0004715610172789,
+   "improvement_vs_published_4p7634em4": 1.0101326994333144,
+   "reference_status": "exact_spheroidal",
+   "rationale": "matches the published width at N=48/N'=64, i.e. D_aux=35937 instead of 68921",
+   "separator_sensitivity_LG_range_over_0_to_4x_allowance": [
+    -0.5515627745910308,
+    -0.5515326115106043
+   ],
+   "separator_sensitivity_span": 3.0163080426470756e-05
+  },
+  {
+   "system": "H3plus",
+   "d_paper": 4.0,
+   "L": 12.0,
+   "N": 64,
+   "Nprime": 80,
+   "D": 35937,
+   "D_aux": 68921,
+   "float_enclosure": [
+    -0.7621123570892455,
+    -0.7619619578901046
+   ],
+   "float_width": 0.0001503991991408,
+   "improvement_vs_published_4p7634em4": 3.1671658230408406,
+   "reference_status": "gaussian_consistent",
+   "rationale": "best H3^2+ width; primary study geometry",
+   "separator_sensitivity_LG_range_over_0_to_4x_allowance": [
+    -0.7621193609102177,
+    -0.7621103541051698
+   ],
+   "separator_sensitivity_span": 9.006805047895305e-06
+  },
+  {
+   "system": "H3plus",
+   "d_paper": 4.0,
+   "L": 12.0,
+   "N": 48,
+   "Nprime": 64,
+   "D": 15625,
+   "D_aux": 35937,
+   "float_enclosure": [
+    -0.7621822407924568,
+    -0.7618606789880255
+   ],
+   "float_width": 0.0003215618044313,
+   "improvement_vs_published_4p7634em4": 1.481330172822881,
+   "reference_status": "gaussian_consistent",
+   "rationale": "cheap H3^2+ option",
+   "separator_sensitivity_LG_range_over_0_to_4x_allowance": [
+    -0.7622029309801165,
+    -0.7621763232361825
+   ],
+   "separator_sensitivity_span": 2.660774393403731e-05
+  },
+  {
+   "system": "H3plus",
+   "d_paper": 2.8,
+   "L": 12.0,
+   "N": 64,
+   "Nprime": 80,
+   "D": 35937,
+   "D_aux": 68921,
+   "float_enclosure": [
+    -0.9364012453255908,
+    -0.9363042804935516
+   ],
+   "float_width": 9.6964832039359e-05,
+   "improvement_vs_published_4p7634em4": 4.9124944922103735,
+   "reference_status": "gaussian_CONFLICT",
+   "rationale": "best width of any cell, but see reference_conflict",
+   "separator_sensitivity_LG_range_over_0_to_4x_allowance": [
+    -0.9364024803402373,
+    -0.9364008690960671
+   ],
+   "separator_sensitivity_span": 1.6112441701965352e-06
+  }
+ ],
+ "reasoning": "Interval cost depends on N and N' only -- D = (N/2+1)^3 is independent of L -- so moving the box to L* is FREE in compute terms and is the single cheapest available width improvement. At N=64/N'=80 the width falls from 4.763e-4 (published, L=20) to 2.236e-4 at L=14 for H2+, a 2.13x tightening at identical cost and memory. The L=12/N=48/N'=64 cell reaches 4.716e-4, i.e. it MATCHES the published width with D_aux=35937 instead of 68921, so if the goal is to reproduce rather than improve, the certified run gets ~9x cheaper. The separator is not the binding constraint: varying rho over the full 0-4x allowance range moves LG by at most 3.0e-05 across the six recommended cells (1.8e-05 at the top one), so the certified phase can use a coarse (cheap) mu2 separator. Priority for the small number of affordable interval runs: (1) H2+ L=14 N=64 as the headline improvement, (2) H3^2+ d=4 L=12 N=64 as the second system, (3) H2+ L=12 N=48 as the cost-reduction demonstration.",
+ "blockers": [
+  {
+   "id": "H3_d2p8_reference_conflict",
+   "severity": "blocks the d_paper=2.8 decomposition and any agreement claim",
+   "statement": "For linear H3^2+ at d_paper=2.8 the float two-sided chain places lambda_1 ABOVE the supplied reference -0.936459672195 (h3plus_reference.json reference_value.secondary, stated as a variational UPPER bound with error 5e-8). At L=12,N=64,N'=80 the enclosure is [-0.9364012453, -0.9363042805], which EXCLUDES the reference by 5.8427e-05 -- a factor 1168.5 over the stated 5e-8 error bar. 12 of 14 d=2.8 LG cells show the same sign.",
+   "what_was_ruled_out": [
+    "outer t-quadrature (nt 48->160 changes results by <=3.2e-15)",
+    "3-centre assembly (matches the independent interval assembler step3_checks.json to 3.1e-13 at this very geometry)",
+    "LG implementation (reproduces the published certified H2+ A0, A2 and both separator variants inside their recorded intervals)",
+    "separator validity (rho <= min(eee2, oee, eoe) with a 6.2e-3 margin; pushing rho down 20x moves LG by only 1.3e-5, still above the reference)",
+    "confinement hypothesis (sigma = -0.304 > lambda_1 at L=12, margin 0.63)",
+    "geometry mismatch (V_nn_std = 1.7857142857 in the artifact confirms adjacent spacing 1.4 std = 2.8 paper, matching the centres used)"
+   ],
+   "pattern": "Smallest (lambda_ref - LG_lower) over all LG cells of a system: +7.571e-05 for H2+ (at L=14 N=64, EXACT spheroidal reference), +4.618e-06 for H3^2+ d=4 (at L=20 N=64, Gaussian reference), -1.084e-03 for H3^2+ d=2.8 (at L=20 N=32, Gaussian reference). Only the Gaussian-referenced systems are tight or negative, and d=4 is not comfortable either: its margin is down to 4.6e-6, so a further bias of that size in the same direction would put d=4 in conflict too. The d=4 reference should therefore not be relied on below ~1e-5 despite its quoted 1.5e-7.",
+   "consequence": "the H3^2+ Gaussian value cannot serve as an independent cross-check at the 5e-8 level it claims. For d=2.8 it cannot be used at all. W and L*(N) are reference-INDEPENDENT and remain valid for all three systems; only truncation_term and LG_discretisation_term are affected (they are reported but must not be used for d=2.8).",
+   "recommended_next_step": "recompute the H3^2+ floating-Gaussian reference at both geometries with a convergence ladder carried until successive decrements fall below 1e-8, and check it against the spectral LOWER bound, which is the constraint that actually excludes the present value: at d=2.8, L=12, N=64, N'=80 the Lehmann-Goerisch bound gives lambda_1 >= -0.9364012453, so any reference more negative than that is too low. (The Dirichlet Ritz value is an UPPER bound, lambda_1 <= -0.9363103469 at L=10 N=64, and is consistent with the present reference -- it is not the binding constraint.)",
+   "margins_per_system": {
+    "H2plus d=2": {
+     "min_margin": 7.571073453960242e-05,
+     "at": "L=14 N=64",
+     "LG": -0.5513927107345395,
+     "lref": -0.551317
+    },
+    "H3plus d=4": {
+     "min_margin": 4.618321459037844e-06,
+     "at": "L=20 N=64",
+     "LG": -0.7620846156614589,
+     "lref": -0.7620799973399999
+    },
+    "H3plus d=2.8": {
+     "min_margin": -0.0010840439229838905,
+     "at": "L=20 N=32",
+     "LG": -0.9353756282720161,
+     "lref": -0.936459672195
+    }
+   },
+   "separator_ruled_out_quantitatively": "In every one of the 36 cells where a three-N extrapolation of mu2 is available (geometric extrapolation of the oee Ritz decrements over N = 32/48/64), rho lies below the extrapolated true mu2 by 1.85e-03 to 6.20e-03. That includes all 10 violating d=2.8 cells it covers, and no cell anywhere has an unsafe separator, so no violation can be attributed to the separator.",
+   "violating_cells": 12
+  }
+ ]
+}
