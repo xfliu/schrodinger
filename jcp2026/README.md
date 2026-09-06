@@ -61,6 +61,15 @@ certificates bit-for-bit), `corrected/gates_record.json` the four gate verdicts,
 `corrected/results_final.json` the per-configuration summary. `ceps_certified_*g_N80.json` are the
 admissibility-gate constants C_eps'. Path strings inside these files were reduced to bare filenames.
 
+## The separator without a sector identification
+
+`certificates/sector_free/` holds the two further certified sector bounds per operator-certified
+configuration (Theorem 18 of the paper): `formfactor_eee_*` carries the eee block's second Ritz value
+and its Theorem-9 bound at k=2, `formfactor_eoe_*` the eoe block's ground bound at k=1, each with the
+form factor re-certified on that block. `assumption_free_separator.csv` collects the three candidates
+per configuration and shows that rho = min is the oee value at all three, so the separator carries no
+sector identification. The N=24 eoe/eeo pair is the transverse-symmetry smoke test.
+
 ## Running the drivers
 
 The drivers live in `drivers/` and are run from that directory with the repository root as the
