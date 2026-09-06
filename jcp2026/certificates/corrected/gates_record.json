@@ -1,0 +1,473 @@
+{
+ "G1_reduction": {
+  "gate": "with the discretization term forced to zero (CERT_G_DISC=0), the corrected code path must reproduce the recorded certificates bit-identically",
+  "verdict": "PASS on every field the gate names, at two configurations",
+  "within_run_form": {
+   "statement": "inside the SAME process, corrected A_2 with disc=0 vs the shipped A_2 -- immune to cross-run scatter",
+   "SL1_bit_identical": true
+  },
+  "cross_run_SL1": {
+   "source_new": "step5/g1d/cert_SL1.json",
+   "source_recorded": "cert_etashift_SL1.json",
+   "fields_bit_identical": 19,
+   "fields_total": 20,
+   "failing": [
+    "mu3^N' galerkin"
+   ],
+   "per_field": {
+    "A_0  (lg, eee primary)": true,
+    "A_2  (lg)": true,
+    "rho  (lg separator)": true,
+    "B    (lg)": true,
+    "nu   (lg)": true,
+    "L_1  (lg)": true,
+    "L_1 width": true,
+    "lambda_1 lower certified": true,
+    "A_0  (mu2, oee separator)": true,
+    "A_2  (mu2)": true,
+    "B    (mu2)": true,
+    "nu   (mu2)": true,
+    "L_2  (mu2)": true,
+    "oee sharp-L separator": true,
+    "mu_2(Omega) lower": true,
+    "mu2^N' galerkin": true,
+    "mu3^N' galerkin": false,
+    "ENCLOSURE lower": true,
+    "ENCLOSURE upper": true,
+    "ENCLOSURE width": true
+   }
+  },
+  "cross_run_C1": {
+   "source_new": "step5/prod/cert_C1.json",
+   "source_recorded": "cert_cmin_C1.json",
+   "fields_bit_identical": 19,
+   "fields_total": 20,
+   "failing": [
+    "mu2^N' galerkin"
+   ],
+   "per_field": {
+    "A_0  (lg, eee primary)": true,
+    "A_2  (lg)": true,
+    "rho  (lg separator)": true,
+    "B    (lg)": true,
+    "nu   (lg)": true,
+    "L_1  (lg)": true,
+    "L_1 width": true,
+    "lambda_1 lower certified": true,
+    "A_0  (mu2, oee separator)": true,
+    "A_2  (mu2)": true,
+    "B    (mu2)": true,
+    "nu   (mu2)": true,
+    "L_2  (mu2)": true,
+    "oee sharp-L separator": true,
+    "mu_2(Omega) lower": true,
+    "mu2^N' galerkin": false,
+    "mu3^N' galerkin": true,
+    "ENCLOSURE lower": true,
+    "ENCLOSURE upper": true,
+    "ENCLOSURE width": true
+   }
+  },
+  "disclosed_difference": {
+   "field": "mu3^N' galerkin inf (SL1); mu2^N' galerkin sup (C1)",
+   "magnitude": "1 ulp",
+   "in_gate_field_list": false,
+   "cause": "the recorded runs computed Stage A in the same process, so Arpack's starting vector came from a different RNG state; these runs read Stage A from the recorded stage file",
+   "propagates": false,
+   "evidence": "the sharp-L separator and L_2, which consume mu2^N'/mu3^N', are bit-identical in both configurations, and all three of these runs share the same offset"
+  },
+  "excluded_fields": [
+   "wall_seconds_total",
+   "wall_seconds",
+   "t_assemble",
+   "t_cg",
+   "t_vsq",
+   "t_ritz",
+   "peak_rss_gb",
+   "memory_profile",
+   "threads",
+   "julia",
+   "goerisch",
+   "goerisch_variants",
+   "A2_galerkin",
+   "A2_galerkin_width",
+   "eps_prime_used",
+   "corrected_realization_used",
+   "corrected_goerisch",
+   "stage source strings",
+   "provenance_host / width_comparison / architecture_finding / float_comparison (annotation blocks present only in the canonical artifact)"
+  ],
+  "defect_found_by_this_gate": "r[i]*r[i] on a zero-straddling residual returns [-e^2,e^2] rather than [0,e^2]; the spurious negative infimum dropped inf(A_2) by one ulp. Fixed by squaring (r[i]^2). The supremum is unaffected, so no reported bound moved."
+ },
+ "G2_direction": {
+  "gate": "A_2^G >= A_2^Galerkin and L_1^corrected <= L_1^recorded, in every case computed",
+  "verdict": "PASS in all three configurations",
+  "per_config": {
+   "SL1  H2+  L=10  Omega_1": {
+    "A2_corr_ge_A2_gal_same_run": true,
+    "A2_corr_ge_A2_recorded": true,
+    "L1_corr_le_L1_recorded": true,
+    "A2_gal_sup": 2.2314467452068056,
+    "A2_corr_sup": 2.233402675481127,
+    "L1_corrected": -0.553458273581282,
+    "L1_recorded": -0.5519142771258511
+   },
+   "C1   H2+  L=12": {
+    "A2_corr_ge_A2_gal_same_run": true,
+    "A2_corr_ge_A2_recorded": true,
+    "L1_corr_le_L1_recorded": true,
+    "A2_gal_sup": 2.228659319873829,
+    "A2_corr_sup": 2.2360152180536352,
+    "L1_corrected": -0.5570665681963256,
+    "L1_recorded": -0.5515463542565361
+   },
+   "C2   H2+  L=14": {
+    "A2_corr_ge_A2_gal_same_run": true,
+    "A2_corr_ge_A2_recorded": true,
+    "L1_corr_le_L1_recorded": true,
+    "A2_gal_sup": 2.228405741354278,
+    "A2_corr_sup": 2.2358455218025877,
+    "L1_corrected": -0.5579503349109411,
+    "L1_recorded": -0.55141170833771
+   }
+  }
+ },
+ "G3_admissibility": {
+  "gate": "certify C_eps' at the chosen eps' and verify each configuration's RECORDED c >= C_eps'; c never raised",
+  "verdict": "PASS in all three configurations, at N_aux=80, with c left at its recorded value of 1.0",
+  "per_config": {
+   "SL1  H2+  L=10  Omega_1": {
+    "eps_prime": 0.65,
+    "C_eps_prime_certified": 0.9721831346972867,
+    "c_recorded": 1.0,
+    "margin": 0.027816865302713323,
+    "holds": true
+   },
+   "C1   H2+  L=12": {
+    "eps_prime": 0.7,
+    "C_eps_prime_certified": 0.976869436620307,
+    "c_recorded": 1.0,
+    "margin": 0.023130563379692992,
+    "holds": true
+   },
+   "C2   H2+  L=14": {
+    "eps_prime": 0.75,
+    "C_eps_prime_certified": 0.979558340370842,
+    "c_recorded": 1.0,
+    "margin": 0.020441659629158004,
+    "holds": true
+   }
+  },
+  "sources": {
+   "SL1": "ceps_certified_SL1g_N80.json",
+   "C1": "ceps_certified_C1g_N80.json",
+   "C2": "ceps_certified_C2g_N80.json"
+  },
+  "smallest_admissible_eps_prime": {
+   "SL1": 0.65,
+   "C1": 0.7,
+   "C2": 0.75,
+   "note": "eps' below these fails c > C_eps' and was discarded by the admissibility test, not by its effect on the bound"
+  },
+  "not_in_scope": {
+   "D1": "C_eps' certified at N_aux=92 (ceps_certified_D1g_N92.json): admissible at eps'=0.95 (1.4181777185) and 0.90 (1.4917359257), not at 0.85 (1.5768819197), against the recorded c=1.5. The enclosure itself was not recomputed, by decision.",
+   "C3": "C_eps' at N_aux=92 admissible at eps'=0.95 (1.2966063993) and 0.90 (1.3705656641) against c=1.5; that run was stopped by the scope decision before its JSON was written, so these two values are log-sourced (p1_ceps_C3g92.log)."
+  }
+ },
+ "G4_self_consistency": {
+  "gate": "every quantity entering A_2^G comes from that configuration's own (box, N', sector, sigma), machine-checked",
+  "verdict": "PASS -- every check True in all three configurations",
+  "checks_recorded_by_the_C2_run": {
+   "lg_goerisch": {
+    "all_pass": true,
+    "checks": {
+     "V2 Nprime == LG Nprime": true,
+     "ceps geometry: LX": true,
+     "ceps geometry: Ztot": true,
+     "ceps geometry: d_paper": true,
+     "ceps geometry: system": true,
+     "npanel/t_star from this run": true,
+     "nx*ny*nz == D_aux": true
+    },
+    "values": {
+     "D_aux": 68921,
+     "LX": 14.0,
+     "LY": 11.200000000000001,
+     "Nprime": 80,
+     "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+     "ceps_N_aux": 80,
+     "ceps_file": "ceps_certified_C2g_N80.json",
+     "n_per_axis": 41,
+     "npanel": 67,
+     "nt": 48,
+     "t_star": 1.0
+    }
+   },
+   "mu2_goerisch": {
+    "all_pass": true,
+    "checks": {
+     "V2 Nprime == separator Nprime": true,
+     "V2 sector == oee separator sector": true,
+     "ceps geometry: LX": true,
+     "ceps geometry: Ztot": true,
+     "ceps geometry: d_paper": true,
+     "ceps geometry: system": true,
+     "npanel/t_star from this run": true,
+     "nx*ny*nz == D_aux": true
+    },
+    "values": {
+     "D_aux": 49284,
+     "LX": 14.0,
+     "LY": 11.200000000000001,
+     "Nprime_sep": 72,
+     "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+     "ceps_N_aux": 80,
+     "ceps_file": "ceps_certified_C2g_N80.json",
+     "npanel": 67,
+     "nt": 48,
+     "nx": 36,
+     "ny": 37,
+     "t_star": 1.0
+    }
+   },
+   "stageA_from_file": {
+    "all_pass": true,
+    "checks": {
+     "file N_stageA == this run's N_stageA": true,
+     "file Ztot": true,
+     "file box LX": true,
+     "file box LY": true,
+     "file box LZ": true,
+     "file has L1,L2,Ceps": true,
+     "file rho": true
+    },
+    "values": {
+     "Ceps": {
+      "0.3": [
+       2.9473432043854664,
+       2.9473432043854664
+      ],
+      "0.4": [
+       1.991749904742849,
+       1.991749904742849
+      ]
+     },
+     "L1": [
+      -0.7304844421961987,
+      -0.7304844421880741
+     ],
+     "L2": [
+      -0.5668741093188796,
+      -0.5668741093119447
+     ],
+     "N_stageA": 56,
+     "file": "cert_C2src_stageA.json",
+     "geometry": {
+      "LX": 14.0,
+      "LY": 11.200000000000001,
+      "LZ": 11.200000000000001,
+      "Ztot": 2.0,
+      "r1_r2_rule": "r1 = rho/2, r2 = rho",
+      "rho": 11.200000000000001,
+      "rho_rule": "rho = min over nuclei of dist(nucleus, boundary), computed from the geometry record"
+     }
+    }
+   },
+   "stagedir_from_file": {
+    "all_pass": true,
+    "checks": {
+     "file N == config N": true,
+     "file has certified upper": true
+    },
+    "values": {
+     "N": 64,
+     "file": "cert_C2src_stagedir.json",
+     "upper": -0.5511691097156336
+    }
+   }
+  },
+  "all_pass": {
+   "SL1  H2+  L=10  Omega_1": true,
+   "C1   H2+  L=12": true,
+   "C2   H2+  L=14": true
+  },
+  "literal_true_entries_in_the_reported_runs": {
+   "finding": "two of the eight entries in each gate_G4! call were hardcoded to the literal boolean true ('V2 Nprime == separator/LG Nprime' and 'npanel/t_star from this run'), so in the runs that produced the reported certificates those two performed no comparison and would have reported pass regardless. Raised by review, and correct.",
+   "remediation_in_code": "run_cert_g.jl now builds the 1-D moment closures so that they record the N', npanel, t_star, LX and LY they were actually called with; gate_G4! compares those recorded values against the stage's own variables and additionally requires that both closures were called at least once. No literal-true entry remains in any gate_G4! call.",
+   "post_hoc_verification_of_the_reported_runs": {
+    "SL1": {
+     "checks": {
+      "mu2_V2_Nprime_eq_separator_Nprime": true,
+      "lg_V2_Nprime_eq_LG_Nprime": true,
+      "mu2_npanel_eq_run_npanel": true,
+      "mu2_tstar_eq_run_tstar": true,
+      "lg_npanel_eq_run_npanel": true,
+      "lg_tstar_eq_run_tstar": true,
+      "mu2_LX_eq_box_LX": true,
+      "lg_LX_eq_box_LX": true,
+      "mu2_LY_eq_box_LY": true,
+      "lg_LY_eq_box_LY": true,
+      "mu2_nx_ny_nz_eq_D_aux": true,
+      "lg_n_per_axis_cubed_eq_D_aux": true
+     },
+     "all_pass": true,
+     "values": {
+      "run_npanel": 48,
+      "run_t_star": 1.0,
+      "box": {
+       "LX": 10.0,
+       "LY": 8.0,
+       "LZ": 8.0,
+       "label": "[-10.0,10.0] x [-8.0,8.0]^2"
+      },
+      "mu2_Nprime": 48,
+      "lg_Nprime": 80,
+      "mu2_values": {
+       "D_aux": 15000,
+       "LX": 10.0,
+       "LY": 8.0,
+       "Nprime_sep": 48,
+       "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+       "ceps_N_aux": 80,
+       "ceps_file": "ceps_certified_SL1g_N80.json",
+       "npanel": 48,
+       "nt": 48,
+       "nx": 24,
+       "ny": 25,
+       "t_star": 1.0
+      },
+      "lg_values": {
+       "D_aux": 68921,
+       "LX": 10.0,
+       "LY": 8.0,
+       "Nprime": 80,
+       "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+       "ceps_N_aux": 80,
+       "ceps_file": "ceps_certified_SL1g_N80.json",
+       "n_per_axis": 41,
+       "npanel": 48,
+       "nt": 48,
+       "t_star": 1.0
+      }
+     },
+     "source_file": "prod3_cert_SL1.json"
+    },
+    "C1": {
+     "checks": {
+      "mu2_V2_Nprime_eq_separator_Nprime": true,
+      "lg_V2_Nprime_eq_LG_Nprime": true,
+      "mu2_npanel_eq_run_npanel": true,
+      "mu2_tstar_eq_run_tstar": true,
+      "lg_npanel_eq_run_npanel": true,
+      "lg_tstar_eq_run_tstar": true,
+      "mu2_LX_eq_box_LX": true,
+      "lg_LX_eq_box_LX": true,
+      "mu2_LY_eq_box_LY": true,
+      "lg_LY_eq_box_LY": true,
+      "mu2_nx_ny_nz_eq_D_aux": true,
+      "lg_n_per_axis_cubed_eq_D_aux": true
+     },
+     "all_pass": true,
+     "values": {
+      "run_npanel": 58,
+      "run_t_star": 1.0,
+      "box": {
+       "LX": 12.0,
+       "LY": 9.600000000000001,
+       "LZ": 9.600000000000001,
+       "label": "[-12.0,12.0] x [-9.600000000000001,9.600000000000001]^2"
+      },
+      "mu2_Nprime": 60,
+      "lg_Nprime": 64,
+      "mu2_values": {
+       "D_aux": 28830,
+       "LX": 12.0,
+       "LY": 9.600000000000001,
+       "Nprime_sep": 60,
+       "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+       "ceps_N_aux": 80,
+       "ceps_file": "ceps_certified_C1g_N80.json",
+       "npanel": 58,
+       "nt": 48,
+       "nx": 30,
+       "ny": 31,
+       "t_star": 1.0
+      },
+      "lg_values": {
+       "D_aux": 35937,
+       "LX": 12.0,
+       "LY": 9.600000000000001,
+       "Nprime": 64,
+       "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+       "ceps_N_aux": 80,
+       "ceps_file": "ceps_certified_C1g_N80.json",
+       "n_per_axis": 33,
+       "npanel": 58,
+       "nt": 48,
+       "t_star": 1.0
+      }
+     },
+     "source_file": "prod_cert_C1.json"
+    },
+    "C2": {
+     "checks": {
+      "mu2_V2_Nprime_eq_separator_Nprime": true,
+      "lg_V2_Nprime_eq_LG_Nprime": true,
+      "mu2_npanel_eq_run_npanel": true,
+      "mu2_tstar_eq_run_tstar": true,
+      "lg_npanel_eq_run_npanel": true,
+      "lg_tstar_eq_run_tstar": true,
+      "mu2_LX_eq_box_LX": true,
+      "lg_LX_eq_box_LX": true,
+      "mu2_LY_eq_box_LY": true,
+      "lg_LY_eq_box_LY": true,
+      "mu2_nx_ny_nz_eq_D_aux": true,
+      "lg_n_per_axis_cubed_eq_D_aux": true
+     },
+     "all_pass": true,
+     "values": {
+      "run_npanel": 67,
+      "run_t_star": 1.0,
+      "box": {
+       "LX": 14.0,
+       "LY": 11.200000000000001,
+       "LZ": 11.200000000000001,
+       "label": "[-14.0,14.0] x [-11.200000000000001,11.200000000000001]^2"
+      },
+      "mu2_Nprime": 72,
+      "lg_Nprime": 80,
+      "mu2_values": {
+       "D_aux": 49284,
+       "LX": 14.0,
+       "LY": 11.200000000000001,
+       "Nprime_sep": 72,
+       "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+       "ceps_N_aux": 80,
+       "ceps_file": "ceps_certified_C2g_N80.json",
+       "npanel": 67,
+       "nt": 48,
+       "nx": 36,
+       "ny": 37,
+       "t_star": 1.0
+      },
+      "lg_values": {
+       "D_aux": 68921,
+       "LX": 14.0,
+       "LY": 11.200000000000001,
+       "Nprime": 80,
+       "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+       "ceps_N_aux": 80,
+       "ceps_file": "ceps_certified_C2g_N80.json",
+       "n_per_axis": 41,
+       "npanel": 67,
+       "nt": 48,
+       "t_star": 1.0
+      }
+     },
+     "source_file": "prod_cert_C2.json"
+    }
+   },
+   "post_hoc_note": "the two omitted comparisons were carried out after the fact from the saved certificates themselves (each run records the V^2 block's N', npanel, t_star, LX, LY, nx/ny/nz and D_aux alongside the run's own quadrature and per-stage values), so the provenance of the reported numbers is verified by comparison rather than by a structural argument. All checks pass in all three configurations."
+  }
+ }
+}

@@ -49,6 +49,18 @@ labelled as estimates wherever they appear. In `data/optimal_box_surface.csv` th
 are annotated `DO_NOT_QUOTE`, because they are float estimates that disagree with the certified
 values at the 1e-4 level. The column `derived_from_LG` names the columns that inherit this.
 
+## Two tiers of certificate
+
+`certificates/*.json` are the **Galerkin-tier** certificates: the Lehmann-Goerisch stage is realized on
+the auxiliary Galerkin space, so they certify the auxiliary Galerkin eigenvalue, not lambda_1 (Section 6.1
+of the paper). `certificates/corrected/` holds the **operator-certified** runs (Omega_1, C1, C2), produced
+by `drivers/run_cert_g.jl` with the corrected Goerisch block `drivers/lg_goerisch_correct2.jl`; these are
+the certified lower bounds on lambda_1(R^3) reported in Table 13 and Eq. (headline). `corrected/gate/`
+holds the G1 reduction-gate runs (discretization term forced to zero; they reproduce the Galerkin-tier
+certificates bit-for-bit), `corrected/gates_record.json` the four gate verdicts, and
+`corrected/results_final.json` the per-configuration summary. `ceps_certified_*g_N80.json` are the
+admissibility-gate constants C_eps'. Path strings inside these files were reduced to bare filenames.
+
 ## Running the drivers
 
 The drivers live in `drivers/` and are run from that directory with the repository root as the
@@ -64,6 +76,8 @@ is bundled at `lib/Veigs.jl` in the repository root and is wired in as a path de
 
     # a certified configuration (tags: C1, C2, D1, C3a, C3c; see the certificates for their settings)
     VEIGS_SRC=../../lib/Veigs.jl/src julia --project=../.. -t <threads> run_cert.jl C1
+    # operator-certified (corrected realization); CERT_G_DISC=0 reproduces the G1 gate run
+    VEIGS_SRC=../../lib/Veigs.jl/src julia --project=../.. -t <threads> run_cert_g.jl C2
 
 Every `include` in the drivers resolves inside `drivers/`; the chain is
 `run_cert.jl -> cert_core.jl -> moments_verified.jl`, `lg_oee.jl / pipeline2.jl -> assembly_verified.jl`,

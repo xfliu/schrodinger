@@ -1,0 +1,40 @@
+{
+  "infinite_domain_reference": -0.551317,
+  "note": "bracket [lg_lower, ritz_upper] rigorously encloses the BOX (Neumann Q') ground energy; its width is the finite-N discretization+arithmetic error. Domain truncation = box energy minus infinite-domain reference (box lies BELOW the reference).",
+  "rows": [
+    {
+      "N": 32,
+      "aux_Nprime": 64,
+      "ritz_upper": -0.5515412066508355,
+      "lg_lower": -0.5534801777162314,
+      "bracket_width": 0.001938971065395867,
+      "ritz_enclosure": [
+        -0.5515412066523541,
+        -0.5515412066508355
+      ],
+      "lg_enclosure": [
+        -0.5534801777162314,
+        -0.5534801776585249
+      ],
+      "trunc_shift_min": 0.0002242066508355567,
+      "trunc_shift_max": 0.0021631777162314236
+    },
+    {
+      "N": 48,
+      "aux_Nprime": 64,
+      "ritz_upper": -0.5517637904035132,
+      "lg_lower": -0.5520546045508988,
+      "bracket_width": 0.0002908141473856318,
+      "ritz_enclosure": [
+        -0.5517637904077528,
+        -0.5517637904035132
+      ],
+      "lg_enclosure": [
+        -0.5520546045508988,
+        -0.5520546045056937
+      ],
+      "trunc_shift_min": 0.00044679040351325305,
+      "trunc_shift_max": 0.0007376045508988849
+    }
+  ]
+}

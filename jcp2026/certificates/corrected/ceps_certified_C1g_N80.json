@@ -1,0 +1,303 @@
+{
+  "D_eee": 68921,
+  "N_aux": 80,
+  "box": {
+    "LX": 12.0,
+    "LY": 9.600000000000001,
+    "LZ": 9.600000000000001,
+    "Ztot": 2.0,
+    "r1": 4.800000000000001,
+    "r2": 9.600000000000001,
+    "rho": 9.600000000000001
+  },
+  "centres": [
+    [
+      [
+        -2.0,
+        0.0,
+        0.0
+      ],
+      1.0
+    ],
+    [
+      [
+        2.0,
+        0.0,
+        0.0
+      ],
+      1.0
+    ]
+  ],
+  "d_paper": 2.0,
+  "julia": "1.12.7",
+  "peak_rss_gb": 638.1723976135254,
+  "quadrature": {
+    "moment_tail_bound": 1.968698953435614e-41,
+    "n_p": 24,
+    "npanel": 58,
+    "t_star": 1.0
+  },
+  "results": {
+    "0.65": {
+      "C_star": [
+        5.533119362906596,
+        5.533119362906598
+      ],
+      "Ceps_cert": 1.0481611206989807,
+      "Ceps_cert_interval": [
+        1.0481611206722965,
+        1.0481611206989807
+      ],
+      "Ceps_point_used_downstream": 1.0481611206989807,
+      "Chat_squared": [
+        0.031272067964639674,
+        0.03127206796478744
+      ],
+      "LX": 12.0,
+      "N_aux": 80,
+      "S": [
+        4.468409254756663,
+        4.468409254796033
+      ],
+      "Ztot": 2.0,
+      "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+      "alpha": 0.3619,
+      "delta": 0.07539583333333333,
+      "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+      "eps": 0.65,
+      "eps_star": [
+        0.5567692307692307,
+        0.5567692307692308
+      ],
+      "etaV_squared": [
+        2.494436031226288,
+        2.4944360312372
+      ],
+      "eta_1N_certified": [
+        -0.6920615702974555,
+        -0.6920615702718678
+      ],
+      "eta_1N_width": 2.5587754137745833e-11,
+      "eta_lower_certified": -1.0481611206989807,
+      "hypotheses": {
+        "0_lt_alpha_lt_eps": true,
+        "S_positive": true,
+        "eps_star_lt_1": true,
+        "r1_lt_r2": true
+      },
+      "identity_eps_nu1N_encloses_eta1N": true,
+      "improvement_over_analytic": 2.2628151578577986,
+      "nu1N_enclosure": [
+        -1.0647101081499317,
+        -1.0647101081105657
+      ],
+      "nu1N_width": 3.9366065962553876e-11,
+      "nu1_lower_certified": -1.612555570306124,
+      "r1": 4.800000000000001,
+      "r2": 9.600000000000001,
+      "sigma_loc_alpha": [
+        3.5965275858892873,
+        3.5965275858892887
+      ],
+      "sigma_loc_analytic_comparator": 2.3717948717948714,
+      "t_enclosure": 569.885654011
+    },
+    "0.7": {
+      "C_star": [
+        4.937057435090479,
+        4.937057435090482
+      ],
+      "Ceps_cert": 0.976869436620307,
+      "Ceps_cert_interval": [
+        0.9768694365949073,
+        0.976869436620307
+      ],
+      "Ceps_point_used_downstream": 0.976869436620307,
+      "Chat_squared": [
+        0.031473682587725496,
+        0.03147368258788252
+      ],
+      "LX": 12.0,
+      "N_aux": 80,
+      "S": [
+        3.985807640008409,
+        3.9858076400431517
+      ],
+      "Ztot": 2.0,
+      "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+      "alpha": 0.3813,
+      "delta": 0.07943749999999998,
+      "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+      "eps": 0.7,
+      "eps_star": [
+        0.5447142857142857,
+        0.5447142857142858
+      ],
+      "etaV_squared": [
+        2.4350822015067286,
+        2.4350822015175275
+      ],
+      "eta_1N_certified": [
+        -0.6658748565574487,
+        -0.6658748565331314
+      ],
+      "eta_1N_width": 2.4317325930667266e-11,
+      "eta_lower_certified": -0.976869436620307,
+      "hypotheses": {
+        "0_lt_alpha_lt_eps": true,
+        "S_positive": true,
+        "eps_star_lt_1": true,
+        "r1_lt_r2": true
+      },
+      "identity_eps_nu1N_encloses_eta1N": true,
+      "improvement_over_analytic": 2.3154627190817996,
+      "nu1N_enclosure": [
+        -0.9512497950820697,
+        -0.9512497950473305
+      ],
+      "nu1N_width": 3.4739211507428536e-11,
+      "nu1_lower_certified": -1.3955277666004386,
+      "r1": 4.800000000000001,
+      "r2": 9.600000000000001,
+      "sigma_loc_alpha": [
+        3.455940204563335,
+        3.455940204563337
+      ],
+      "sigma_loc_analytic_comparator": 2.261904761904762,
+      "t_enclosure": 574.377919046
+    },
+    "0.75": {
+      "C_star": [
+        4.441946318039246,
+        4.44194631803925
+      ],
+      "Ceps_cert": 0.9172835324825439,
+      "Ceps_cert_interval": [
+        0.9172835324582633,
+        0.9172835324825439
+      ],
+      "Ceps_point_used_downstream": 0.9172835324825439,
+      "Chat_squared": [
+        0.031759838683577186,
+        0.03175983868374372
+      ],
+      "LX": 12.0,
+      "N_aux": 80,
+      "S": [
+        3.5854484409738743,
+        3.585448441004842
+      ],
+      "Ztot": 2.0,
+      "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+      "alpha": 0.4003,
+      "delta": 0.08339583333333332,
+      "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+      "eps": 0.75,
+      "eps_star": [
+        0.5337333333333333,
+        0.5337333333333334
+      ],
+      "etaV_squared": [
+        2.3835771136926556,
+        2.3835771137033577
+      ],
+      "eta_1N_certified": [
+        -0.642373407799029,
+        -0.642373407775806
+      ],
+      "eta_1N_width": 2.322297909529425e-11,
+      "eta_lower_certified": -0.9172835324825439,
+      "hypotheses": {
+        "0_lt_alpha_lt_eps": true,
+        "S_positive": true,
+        "eps_star_lt_1": true,
+        "r1_lt_r2": true
+      },
+      "identity_eps_nu1N_encloses_eta1N": true,
+      "improvement_over_analytic": 2.3620468371461785,
+      "nu1N_enclosure": [
+        -0.856497877065372,
+        -0.8564978770344079
+      ],
+      "nu1N_width": 3.0964009134493153e-11,
+      "nu1_lower_certified": -1.2230447099767252,
+      "r1": 4.800000000000001,
+      "r2": 9.600000000000001,
+      "sigma_loc_alpha": [
+        3.331459738529435,
+        3.331459738529437
+      ],
+      "sigma_loc_analytic_comparator": 2.1666666666666665,
+      "t_enclosure": 579.321727086
+    },
+    "0.8": {
+      "C_star": [
+        4.027810957158781,
+        4.027810957158784
+      ],
+      "Ceps_cert": 0.8666386991627822,
+      "Ceps_cert_interval": [
+        0.8666386991394933,
+        0.8666386991627822
+      ],
+      "Ceps_point_used_downstream": 0.8666386991627822,
+      "Chat_squared": [
+        0.03206406959052529,
+        0.03206406959070095
+      ],
+      "LX": 12.0,
+      "N_aux": 80,
+      "S": [
+        3.2514962853074403,
+        3.2514962853352727
+      ],
+      "Ztot": 2.0,
+      "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+      "alpha": 0.4186,
+      "delta": 0.08720833333333333,
+      "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+      "eps": 0.8,
+      "eps_star": [
+        0.52325,
+        0.5232500000000001
+      ],
+      "etaV_squared": [
+        2.3362915265333593,
+        2.336291526543965
+      ],
+      "eta_1N_certified": [
+        -0.6210517374810726,
+        -0.621051737458809
+      ],
+      "eta_1N_width": 2.226352435741319e-11,
+      "eta_lower_certified": -0.8666386991627822,
+      "hypotheses": {
+        "0_lt_alpha_lt_eps": true,
+        "S_positive": true,
+        "eps_star_lt_1": true,
+        "r1_lt_r2": true
+      },
+      "identity_eps_nu1N_encloses_eta1N": true,
+      "improvement_over_analytic": 2.403923728937954,
+      "nu1N_enclosure": [
+        -0.7763146718513407,
+        -0.7763146718235112
+      ],
+      "nu1N_width": 2.782951646906895e-11,
+      "nu1_lower_certified": -1.0832983739534776,
+      "r1": 4.800000000000001,
+      "r2": 9.600000000000001,
+      "sigma_loc_alpha": [
+        3.222248765727026,
+        3.222248765727027
+      ],
+      "sigma_loc_analytic_comparator": 2.083333333333333,
+      "t_enclosure": 599.579296555
+    }
+  },
+  "sector_justification": "Step 2 uses the eee block, and that is a THEOREM here, not an assumption: B commutes with the three coordinate reflections; its Neumann ground state on a connected domain is unique and strictly positive (positivity-improving semigroup); a reflection maps the one-dimensional ground eigenspace to itself so Ru = +-u; and u > 0 excludes the minus sign. Hence the ground state is even under all three reflections. Unlike the lambda_2 sector assignment this needs no hypothesis.",
+  "system": "H2plus",
+  "tag": "C1g",
+  "threads": 32,
+  "wall_seconds": 6648.922720193863
+}

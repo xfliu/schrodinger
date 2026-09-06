@@ -1,0 +1,67 @@
+{
+  "domain": "Omega2 [-20,20]x[-16,16]^2",
+  "primary_N": 64,
+  "aux_Nprime_eee": 80,
+  "aux_Nprime_oee": 64,
+  "certified_lambda2_lower_bound": {
+    "value": -0.3395656251550855,
+    "method": "oee-sector single-vector Lehmann-Goerisch, primary N=48 / aux N'=64",
+    "A0": [
+      0.6672097158554962,
+      0.6672097158592402
+    ],
+    "A2": [
+      1.4999810865826135,
+      1.499981086607029
+    ],
+    "B": [
+      0.005427650694547426,
+      0.005427650711082199
+    ],
+    "nu": [
+      -10.424341136969877,
+      -10.424341104523402
+    ],
+    "oee2nd_separator": -0.27621060173223,
+    "cg_residual": 8.454063484675528e-13,
+    "note": "rigorous lower bound on the true 2nd Neumann eigenvalue on Omega2"
+  },
+  "lambda1_lower_bounds": {
+    "rho_-0.4732_stageA_separator": {
+      "rho": -0.4732191311224503,
+      "L1_LG": [
+        -0.5520185976971724,
+        -0.5520185975376072
+      ],
+      "width": 1.5956524990201615e-10
+    },
+    "rho_-0.3396_certified_mu2_separator": {
+      "rho": -0.3395656251550855,
+      "L1_LG": [
+        -0.551443600958,
+        -0.551443600887
+      ],
+      "width": 7.098e-11,
+      "B_positive": true,
+      "nu_lt_1": true
+    }
+  },
+  "two_sided_enclosure_N64": {
+    "lower_certified_best": -0.551443600958,
+    "upper_dirichlet": -0.550967261755,
+    "enclosure_width": 0.0004763392030000535,
+    "lower_with_stageA_separator": -0.5520185976971724,
+    "enclosure_width_stageA_separator": 0.0010513359421724378
+  },
+  "eee_A0_A2": {
+    "A0": [
+      0.44904940430719203,
+      0.4490494043123164
+    ],
+    "A2": [
+      2.2277098614668827,
+      2.2277098615624906
+    ],
+    "note": "rho-independent; reused across separators"
+  }
+}
