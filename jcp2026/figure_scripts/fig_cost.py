@@ -162,8 +162,8 @@ ax.annotate("better", (4.4, 3.0e-4), fontsize=7, color="#6a6a6a", ha="center",
             rotation=-34, va="center")
 ax.set_xscale("log"); ax.set_yscale("log")
 ax.set_xlim(0.22, 55); ax.set_ylim(1.95e-4, 7.2e-4)
-ax.set_xlabel("certified end-to-end wall time  (h)")
-ax.set_ylabel(r"certified enclosure width" "\n" r"(paper units, $=\frac{1}{2}$ Ha)")
+ax.set_xlabel("end-to-end wall time (Galerkin tier)  (h)")
+ax.set_ylabel(r"Galerkin-tier enclosure width" "\n" r"(paper units, $=\frac{1}{2}$ Ha)")
 ax.set_title("Choosing the box moves the\ncost–accuracy frontier", loc="left")
 set_frame(ax); panel_letter(ax, "b")
 

@@ -1,4 +1,4 @@
-"""Regenerate Figure 4 (fig_optimal_box): certified enclosure width against truncation box size.
+"""Regenerate Figure 4 (fig_optimal_box): Galerkin-tier enclosure width against truncation box size.
 
 Data sources (both artifacts of the certified pipeline):
   optimal_box_surface.csv  -- the sweep; column `enclosure_width` is the Lehmann-Goerisch
@@ -8,6 +8,58 @@ Curves are the float sweep at the certified grid; the overlaid stars are certifi
 Widths and L are in paper units (energy = 1/2 hartree, length = 2 bohr).
 """
 import json, numpy as np, pandas as pd, matplotlib as mpl, matplotlib.pyplot as plt
+
+
+def apply_figure_style(*, frame="open", font=None, sizes=(8, 7, 6), grid=False):
+    import matplotlib as mpl
+    if frame not in ("open", "boxed", "none"):
+        raise ValueError(f"frame must be 'open'|'boxed'|'none', got {frame!r}")
+
+    try:
+        import os, sys, glob, matplotlib.font_manager as fm
+        fdir = os.path.join(os.environ.get("CONDA_PREFIX") or sys.prefix, "fonts")
+        if os.path.isdir(fdir):
+            known = {f.fname for f in fm.fontManager.ttflist}
+            for f in glob.glob(os.path.join(fdir, "*.ttf")):
+                if f not in known:
+                    fm.fontManager.addfont(f)
+    except Exception:
+        pass
+    base, secondary, tick = sizes
+    boxed = (frame == "boxed")
+    rc = {
+        "font.family": "sans-serif",
+        "font.size": base,
+        "axes.labelsize": base,
+        "axes.titlesize": base,
+        "legend.fontsize": secondary,
+        "xtick.labelsize": tick,
+        "ytick.labelsize": tick,
+        "axes.linewidth": 0.6,
+        "xtick.direction": "out", "ytick.direction": "out",
+        "xtick.major.size": 3, "ytick.major.size": 3,
+        "xtick.major.width": 0.6, "ytick.major.width": 0.6,
+        "axes.spines.top": boxed, "axes.spines.right": boxed,
+        "axes.spines.left": frame != "none", "axes.spines.bottom": frame != "none",
+        "axes.grid": bool(grid),
+        "legend.frameon": False,
+        "figure.dpi": 200,
+        "savefig.dpi": 300,
+        "savefig.bbox": "tight",
+        "axes.titleweight": "normal",
+        "axes.titlelocation": "left",
+        "axes.labelweight": "normal",
+        "lines.linewidth": 1.2,
+        "patch.linewidth": 0.6,
+        "pdf.fonttype": 42, "ps.fonttype": 42,
+    }
+    if font:
+        rc["font.sans-serif"] = [font, "DejaVu Sans"]
+    mpl.rcParams.update(rc)
+
+
+
+apply_figure_style(frame="open")
 
 SWEEP = "../data/optimal_box_surface.csv"
 CERTS = {"C1": "../certificates/cert_cmin_C1.json", "C2": "../certificates/cert_cmatch_C2.json",
@@ -39,7 +91,7 @@ def panel(ax, sub, stars, cw, ref_lambda=None, prior=None):
         c = cw[lab]
         ax.plot([c["L"]], [c["width"]], "*", color=STAR, ms=15, zorder=5,
                 mec="white", mew=0.6,
-                label="certified enclosure" if k == 0 else None)
+                label="Galerkin-tier enclosure" if k == 0 else None)
         ax.annotate(lab, (c["L"], c["width"]), xytext=(9, -1),
                     textcoords="offset points", color=STAR, fontsize=6, va="center")
     if prior is not None:
@@ -60,12 +112,12 @@ def build():
     a = sw[sw.system == "H2plus"]
     prior = a[(a.L == 20) & (a.N == 64)].enclosure_width
     panel(axa, a, ["C1", "C2"], cw, prior=(20, float(prior.iloc[0])) if len(prior) else None)
-    axa.set_ylabel("certified enclosure width\n(paper units, $=\\frac{1}{2}$ Ha)")
+    axa.set_ylabel("Galerkin-tier enclosure width\n(paper units, $=\\frac{1}{2}$ Ha)")
     axa.set_title("H$_2^+$: the balance point is interior in $L$", fontsize=8, loc="left")
     axa.legend(frameon=False, fontsize=6, loc="upper left")
     b = sw[(sw.system == "H3plus") & (sw.d_paper == 4.0)]
     panel(axb, b, ["C3a", "C3c"], cw, ref_lambda=float(b.lambda_ref.dropna().iloc[0]))
-    axb.set_title("Linear H$_3^{2+}$, $d=4$: certified widths exceed the float estimates",
+    axb.set_title("Linear H$_3^{2+}$, $d=4$: Galerkin-tier widths exceed the float estimates",
                   fontsize=8, loc="left")
     for ax, L in ((axa, "a"), (axb, "b")):
         ax.text(-0.16, 1.06, L, transform=ax.transAxes, fontweight="bold", fontsize=10)
