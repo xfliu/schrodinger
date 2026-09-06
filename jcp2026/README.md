@@ -49,6 +49,12 @@ labelled as estimates wherever they appear. In `data/optimal_box_surface.csv` th
 are annotated `DO_NOT_QUOTE`, because they are float estimates that disagree with the certified
 values at the 1e-4 level. The column `derived_from_LG` names the columns that inherit this.
 
+## A note on one field name
+
+`certified_optimum.json` carries a field named `published_baseline`. The name is a misnomer kept for
+provenance: the L=20, N=64 configuration it records is an earlier run of this same code by the same
+authors, not a published result. The manuscript describes it as such throughout.
+
 ## Two tiers of certificate
 
 `certificates/*.json` are the **Galerkin-tier** certificates: the Lehmann-Goerisch stage is realized on

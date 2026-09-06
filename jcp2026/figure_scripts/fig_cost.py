@@ -122,7 +122,7 @@ nice2 = {"A": "Stage A\n(projection)", "mu2": "separator\n(oee LG)",
          "lg": "LG bound\n(eee)", "dirichlet": "Dirichlet\nupper"}
 order2 = [nice2[s] for s in stages]
 
-pts = [("published\n$L$=20, $N$=64", PUB_T, PUB_W, "#c1440e", "s", 8),
+pts = [("our earlier run\n$L$=20, $N$=64", PUB_T, PUB_W, "#c1440e", "s", 8),
        ("C1  $L$=12, $N$=48", tot1, CERT["C1"]["w"], "#7b2d8e", "*", 15),
        ("C2  $L$=14, $N$=64", tot2, CERT["C2"]["w"], "#7b2d8e", "*", 15)]
 
@@ -147,9 +147,9 @@ set_frame(ax); panel_letter(ax, "a")
 ax = axes[1]
 for lab, t, wv, col, mk, ms in pts:
     ax.plot([t / 3600], [wv], mk, color=col, ms=ms, mec="white", mew=0.8, zorder=6, clip_on=False)
-ax.annotate("published\n$L$=20, $N$=64", (PUB_T / 3600, PUB_W), xytext=(9, 2),
+ax.annotate("our earlier run\n$L$=20, $N$=64", (PUB_T / 3600, PUB_W), xytext=(9, 2),
             textcoords="offset points", ha="left", va="center", fontsize=7.5, color="#c1440e")
-ax.annotate("C1  $L$=12, $N$=48\nsame width as published", (tot1 / 3600, CERT["C1"]["w"]),
+ax.annotate("C1  $L$=12, $N$=48\nsame width, smaller basis", (tot1 / 3600, CERT["C1"]["w"]),
             xytext=(7, -13), textcoords="offset points", ha="left", va="top",
             fontsize=7.5, color="#7b2d8e")
 ax.annotate(f"C2  $L$=14, $N$=64\n{PUB_W / CERT['C2']['w']:.2f}$\\times$ tighter (box choice)",
@@ -170,5 +170,5 @@ set_frame(ax); panel_letter(ax, "b")
 fig.tight_layout(w_pad=2.6)
 fig.savefig("fig_cost.png", dpi=300, bbox_inches="tight")
 
-ax.annotate("horizontal axis mixes two implementations:\nthe published point predates the threaded assembly", (0.5, 0.02), xycoords="axes fraction", fontsize=6.0, color="#6a6a6a", ha="center", va="bottom")
+ax.annotate("horizontal axis mixes two implementations:\nthe earlier point predates the threaded assembly", (0.5, 0.02), xycoords="axes fraction", fontsize=6.0, color="#6a6a6a", ha="center", va="bottom")
 fig.savefig("fig_cost.pdf", bbox_inches="tight")
