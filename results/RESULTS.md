@@ -1,5 +1,12 @@
 # RESULTS — certified bounds and reference values
 
+> **Superseded, and at the earlier box labelling.** These are the FIRST campaign's results, at the
+> Galerkin-tier realization of the Lehmann-Goerisch stage. Here `Omega_1` and `Omega_2` mean the
+> boxes of half-length L = 10 and L = 20, which the current manuscript calls **Omega_2 and
+> Omega_3**; the manuscript's Omega_1 (L = 8) does not appear below. The manuscript reports
+> operator-certified bounds from the corrected realization, which are not comparable with these and
+> are found in `jcp2026/certificates/jcp2026/`.
+
 All values are **rigorous interval-arithmetic outputs** (Julia + IntervalArithmetic 1.0.8, CRlibm
 directed rounding). Energies in Hartree. Every certificate satisfies the two Lehmann–Goerisch
 validity conditions B > 0 and ν < 1 (verified in the JSON `B_positive` / `nu_lt_1` fields).

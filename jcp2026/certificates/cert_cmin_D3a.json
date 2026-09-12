@@ -1,22 +1,22 @@
 {
  "CERTIFIED_ENCLOSURE": {
   "contains_reference": true,
-  "lambda1_lower": -0.768033045202862,
-  "lambda1_upper": -0.7608465196778073,
-  "lower_source": "cert_C3c_stagelg.json : lambda1_lower_certified (eee Lehmann-Goerisch, separator certified_oee_mu2)",
-  "upper_source": "cert_C3c_stagedir.json : lambda1_upper_certified (Dirichlet Rayleigh quotient sup)",
+  "lambda1_lower": -0.7644770508821489,
+  "lambda1_upper": -0.7613458958438912,
+  "lower_source": "cert_D3a_stagelg.json : lambda1_lower_certified (eee Lehmann-Goerisch, separator certified_oee_mu2)",
+  "upper_source": "cert_D3a_stagedir.json : lambda1_upper_certified (Dirichlet Rayleigh quotient sup)",
   "valid": true,
-  "width": 0.007186525525054721
+  "width": 0.0031311550382576714
  },
- "N": 24,
- "Nprime": 40,
+ "N": 32,
+ "Nprime": 48,
  "box": {
   "LX": 12.0,
   "LY": 9.600000000000001,
   "LZ": 9.600000000000001,
   "label": "[-12.0,12.0] x [-9.600000000000001,9.600000000000001]^2"
  },
- "config": "C3c",
+ "config": "D3a",
  "confinement": {
   "formula": "sigma = inf_{x notin Omega} V, evaluated at the six face centres",
   "holds": true,
@@ -28,28 +28,28 @@
  "decisive_test": null,
  "driver": {
   "core": "cert_core.jl",
-  "invocation": "julia -t <threads> run_cert.jl C3c",
+  "invocation": "julia -t <threads> run_cert.jl D3a",
   "moments": "moments_verified.jl (bundle, unmodified)",
-  "output_file": "cert_C3c.json",
+  "output_file": "cert_D3a.json",
   "script": "run_cert.jl",
   "stage_files": {
-   "A": "cert_C3c_stageA.json",
-   "dirichlet": "cert_C3c_stagedir.json",
-   "lg": "cert_C3c_stagelg.json",
-   "mu2": "cert_C3c_stagemu2.json"
+   "A": "cert_D3a_stageA.json",
+   "dirichlet": "cert_D3a_stagedir.json",
+   "lg": "cert_D3a_stagelg.json",
+   "mu2": "cert_D3a_stagemu2.json"
   }
  },
  "float_comparison": {
-  "certified_contains_float_lower": null,
+  "certified_contains_float_lower": true,
   "certified_contains_float_upper": true,
-  "certified_width": 0.007186525525054721,
-  "float_LG_lower": null,
-  "float_dirichlet_upper": -0.7608465196784,
-  "float_width": null,
-  "interval_inflation_width_ratio": null,
-  "lower_endpoint_gap_certified_minus_float": null,
+  "certified_width": 0.0031311550382576714,
+  "float_LG_lower": -0.7626565678073515,
+  "float_dirichlet_upper": -0.7613458958449281,
+  "float_width": 0.0013106719624234,
+  "interval_inflation_width_ratio": 2.3889692676939873,
+  "lower_endpoint_gap_certified_minus_float": -0.0018204830747974299,
   "source": "optimal_box_surface.csv, same (system, d_paper, L, N, N') cell",
-  "upper_endpoint_gap_certified_minus_float": 5.927480728473711e-13
+  "upper_endpoint_gap_certified_minus_float": 1.0368372826974337e-12
  },
  "goerisch_shift": {
   "c": 1.5,
@@ -59,8 +59,8 @@
   "stageA_inf_L1": -1.2187121760631672
  },
  "julia": "1.12.7",
- "peak_rss_gb": 1386.027919769287,
- "purpose": "certificate robustness across N on the three-centre operator (coarsest LG cell; no float LG comparison exists at this cell -- dense tier only in the sweep)",
+ "peak_rss_gb": 1386.2589721679688,
+ "purpose": "de-risking: first production run of the three-centre interval assembly",
  "quadrature": {
   "clearance": 8.0,
   "moment_tail_bound_at_t_star": 2.0047636131857974e-29,
@@ -78,18 +78,18 @@
  },
  "relative_accuracy": {
   "abs_lambda_ref": 0.76207999734,
-  "certified_relative_width": 0.009430145851011585,
-  "certified_relative_width_percent": 0.9430145851011585,
-  "certified_width": 0.007186525525054721,
-  "factor_inside_target": 5.302144928610667,
+  "certified_relative_width": 0.004108696001977224,
+  "certified_relative_width_percent": 0.4108696001977224,
+  "certified_width": 0.0031311550382576714,
+  "factor_inside_target": 12.169311133249709,
   "meets_target": true,
   "reference_status": "PROVISIONAL floating-Gaussian value; relative figures must be requoted if the corrected extended-precision value differs",
   "target_absolute_width": 0.038103999867,
   "target_relative": 0.05
  },
  "separator_resolution": {
-  "N_sep": 24,
-  "Nprime_sep": 40,
+  "N_sep": 32,
+  "Nprime_sep": 48,
   "note": "Stage-A (C_eps, L1, L2) and the certified oee mu2 separator are computed at N_sep/Nprime_sep, not at N/Nprime. Both are rigorous lower bounds on their targets at ANY resolution, so this is sound; it is also the published pattern (the Omega2 N=64/N'=80 run used the N=48/N'=64 oee separator). It is required here because the Lehmann-Behnke path needs several dense interval copies and only ~159 GB is available on this host."
  },
  "stages": {
@@ -122,7 +122,7 @@
    "L2_width": 1.1021406010058854e-11,
    "N": 64,
    "N_stageA": 64,
-   "N_stageA_configured": 24,
+   "N_stageA_configured": 32,
    "N_stageA_overridden": true,
    "eps1": 0.4,
    "eps2": 0.4,
@@ -171,111 +171,111 @@
    },
    "memory_profile": [
     {
-     "hwm_delta_gb": 31.68268585205078,
-     "hwm_gb": 31.68268585205078,
-     "rss_gb": 29.922340393066406,
+     "hwm_delta_gb": 32.15065002441406,
+     "hwm_gb": 32.15065002441406,
+     "rss_gb": 29.56122589111328,
      "step": "eee assembly done (interval matrix live)"
     },
     {
      "hwm_delta_gb": 0.0,
-     "hwm_gb": 31.68268585205078,
-     "rss_gb": 29.92426300048828,
+     "hwm_gb": 32.15065002441406,
+     "rss_gb": 29.563175201416016,
      "step": "eee form_H_inplace!"
     },
     {
-     "hwm_delta_gb": 7.494659423828125,
-     "hwm_gb": 39.177345275878906,
-     "rss_gb": 39.177345275878906,
+     "hwm_delta_gb": 7.024871826171875,
+     "hwm_gb": 39.17552185058594,
+     "rss_gb": 39.17552185058594,
      "step": "eee mid_matrix formed"
     },
     {
-     "hwm_delta_gb": 0.01753997802734375,
-     "hwm_gb": 39.19488525390625,
-     "rss_gb": 39.19488525390625,
+     "hwm_delta_gb": 0.013702392578125,
+     "hwm_gb": 39.18922424316406,
+     "rss_gb": 39.18922424316406,
      "step": "after eigs (float midpoint live)"
     },
     {
-     "hwm_delta_gb": 7.2479248046875e-05,
-     "hwm_gb": 39.1949577331543,
-     "rss_gb": 39.18966293334961,
+     "hwm_delta_gb": 0.0001068115234375,
+     "hwm_gb": 39.1893310546875,
+     "rss_gb": 39.18417739868164,
      "step": "float midpoint freed"
     },
     {
-     "hwm_delta_gb": 135.11562728881836,
-     "hwm_gb": 174.31058502197266,
-     "rss_gb": 174.31058502197266,
+     "hwm_delta_gb": 135.1137237548828,
+     "hwm_gb": 174.3030548095703,
+     "rss_gb": 174.3030548095703,
      "step": "after lehmann_behnke verification"
     },
     {
-     "hwm_delta_gb": 0.0,
-     "hwm_gb": 174.31058502197266,
-     "rss_gb": 39.5999870300293,
+     "hwm_delta_gb": 9.1552734375e-05,
+     "hwm_gb": 174.3031463623047,
+     "rss_gb": 39.592552185058594,
      "step": "eee mu1 enclosure complete"
     },
     {
      "hwm_delta_gb": 0.0,
-     "hwm_gb": 174.31058502197266,
-     "rss_gb": 49.228214263916016,
+     "hwm_gb": 174.3031463623047,
+     "rss_gb": 49.22134017944336,
      "step": "eta diag eps=0.40 mid formed"
     },
     {
      "hwm_delta_gb": 0.0,
-     "hwm_gb": 174.31058502197266,
-     "rss_gb": 49.233619689941406,
+     "hwm_gb": 174.3031463623047,
+     "rss_gb": 49.22686004638672,
      "step": "eta diag eps=0.40 done"
     },
     {
      "hwm_delta_gb": 0.0,
-     "hwm_gb": 174.31058502197266,
-     "rss_gb": 58.8580436706543,
+     "hwm_gb": 174.3031463623047,
+     "rss_gb": 58.850772857666016,
      "step": "eta diag eps=0.30 mid formed"
     },
     {
      "hwm_delta_gb": 0.0,
-     "hwm_gb": 174.31058502197266,
-     "rss_gb": 49.23586654663086,
+     "hwm_gb": 174.3031463623047,
+     "rss_gb": 49.22877883911133,
      "step": "eta diag eps=0.30 done"
     },
     {
      "hwm_delta_gb": 0.0,
-     "hwm_gb": 174.31058502197266,
-     "rss_gb": 49.23586654663086,
+     "hwm_gb": 174.3031463623047,
+     "rss_gb": 49.22877883911133,
      "step": "eee block released"
     },
     {
      "hwm_delta_gb": 0.0,
-     "hwm_gb": 174.31058502197266,
-     "rss_gb": 77.89342880249023,
+     "hwm_gb": 174.3031463623047,
+     "rss_gb": 77.89125061035156,
      "step": "oee assembly done"
     },
     {
      "hwm_delta_gb": 0.0,
-     "hwm_gb": 174.31058502197266,
-     "rss_gb": 85.46441268920898,
+     "hwm_gb": 174.3031463623047,
+     "rss_gb": 85.457763671875,
      "step": "oee mid_matrix formed"
     },
     {
      "hwm_delta_gb": 0.0,
-     "hwm_gb": 174.31058502197266,
-     "rss_gb": 85.47317123413086,
+     "hwm_gb": 174.3031463623047,
+     "rss_gb": 85.4635009765625,
      "step": "after eigs (float midpoint live)"
     },
     {
      "hwm_delta_gb": 0.0,
-     "hwm_gb": 174.31058502197266,
-     "rss_gb": 85.47335433959961,
+     "hwm_gb": 174.3031463623047,
+     "rss_gb": 85.4637451171875,
      "step": "float midpoint freed"
     },
     {
-     "hwm_delta_gb": 37.84110641479492,
-     "hwm_gb": 212.15169143676758,
-     "rss_gb": 212.15169143676758,
+     "hwm_delta_gb": 37.83763885498047,
+     "hwm_gb": 212.14078521728516,
+     "rss_gb": 212.14078521728516,
      "step": "after lehmann_behnke verification"
     },
     {
      "hwm_delta_gb": 0.0,
-     "hwm_gb": 212.15169143676758,
-     "rss_gb": 85.4114761352539,
+     "hwm_gb": 212.14078521728516,
+     "rss_gb": 85.40609741210938,
      "step": "oee mu2 enclosure complete, block released"
     }
    ],
@@ -289,7 +289,7 @@
     -0.5867404240272219
    ],
    "mu2N_width": 1.0449641152376898e-11,
-   "peak_rss_gb": 212.15169143676758,
+   "peak_rss_gb": 212.14078521728516,
    "separation_certificate": {
     "L2_gt_U1": false,
     "U1_sup_mu1N": -0.7620158715048053,
@@ -358,157 +358,157 @@
     }
    },
    "stage": "A",
-   "t_assemble": 536.719170228,
-   "t_eta": 26.18277362,
-   "t_ritz": 301.14226213999996,
-   "wall_seconds": 989.3807339668274
+   "t_assemble": 539.506902965,
+   "t_eta": 25.777878979,
+   "t_ritz": 303.324477847,
+   "wall_seconds": 975.602343082428
   },
   "dirichlet": {
-   "D": 2197,
-   "N": 24,
+   "D": 4913,
+   "N": 32,
    "RQ_interval": [
-    -0.7608465196789712,
-    -0.7608465196778073
+    -0.7613458958459555,
+    -0.7613458958438912
    ],
-   "RQ_width": 1.1639578190170141e-12,
-   "float_lambda1D_N": -0.7608465196783882,
-   "lambda1_upper_certified": -0.7608465196778073,
+   "RQ_width": 2.0642376696855536e-12,
+   "float_lambda1D_N": -0.7613458958449362,
+   "lambda1_upper_certified": -0.7613458958438912,
    "mass_den": [
-    0.9999999999998765,
-    1.0000000000001206
+    0.9999999999997305,
+    1.000000000000276
    ],
-   "modes_per_axis": 13,
-   "peak_rss_gb": 1386.027919769287,
+   "modes_per_axis": 17,
+   "peak_rss_gb": 1386.2589721679688,
    "stage": "dirichlet",
-   "t_assemble": 35.539600606,
-   "wall_seconds": 36.26052212715149
+   "t_assemble": 50.916009835,
+   "wall_seconds": 53.48285508155823
   },
   "lg": {
    "A0": [
-    0.7393481668414447,
-    0.7393481668423619
+    0.7386503397366355,
+    0.7386503397381187
    ],
-   "A0_width": 9.172662629453043e-13,
+   "A0_width": 1.4831469385967466e-12,
    "A2": [
-    1.3545078744723744,
-    1.3545078744785803
+    1.3548036289567966,
+    1.3548036289672427
    ],
-   "A2_residual_corr_hi": 1.0320971740595418e-23,
-   "A2_width": 6.2059246630497e-12,
+   "A2_residual_corr_hi": 1.760876245297235e-23,
+   "A2_width": 1.0446088438698098e-11,
    "B": [
-    0.022416588789459513,
-    0.02241658879500774
+    0.03211273432973183,
+    0.032112734339504456
    ],
    "B_positive": true,
-   "D_aux": 9261,
+   "D_aux": 15625,
    "L1_LG": [
-    -0.768033045202862,
-    -0.7680330451743881
+    -0.7644770508821489,
+    -0.7644770508418856
    ],
-   "L1_LG_width": 2.847388991256139e-11,
-   "N": 24,
-   "Nprime": 40,
+   "L1_LG_width": 4.026334821105593e-11,
+   "N": 32,
+   "Nprime": 48,
    "c": 1.5,
    "certificate_valid": true,
-   "cg_residual": 8.996541359938573e-13,
+   "cg_residual": 9.53270738561357e-13,
    "hypothesis_rho_gt_Lambda_n": {
-    "Lambda_n": -0.7606518331576381,
+    "Lambda_n": -0.7613496602618813,
     "holds": true,
-    "margin": 0.1244570541590535,
+    "margin": 0.15213112636142856,
     "note": "Lambda_n = sup(A0) - c, using A1 = <v,v> = 1; checked before the pencil was formed",
-    "rho": -0.6361947789985846
+    "rho": -0.6092185339004528
    },
    "lam_min_lb": 0.2812878239368328,
-   "lambda1_lower_certified": -0.768033045202862,
-   "mu1_primary_float_unshifted": -0.7606518331581011,
+   "lambda1_lower_certified": -0.7644770508821489,
+   "mu1_primary_float_unshifted": -0.76134966026262,
    "nu": [
-    -5.552006834264259,
-    -5.5520068328491865
+    -4.737408057527506,
+    -4.7374080560396195
    ],
    "nu_lt_1": true,
-   "peak_rss_gb": 1386.027919769287,
-   "r2_hi": 2.903163681825631e-24,
+   "peak_rss_gb": 1386.2589721679688,
+   "r2_hi": 4.9531304726171996e-24,
    "separator_candidates": {
-    "certified_oee_mu2": -0.6361947789985846,
+    "certified_oee_mu2": -0.6092185339004528,
     "stageA_L2": -1.0828019837875864
    },
-   "separator_rho": -0.6361947789985846,
+   "separator_rho": -0.6092185339004528,
    "separator_source": "certified_oee_mu2",
    "separator_variants": {
     "certified_oee_mu2": {
      "B": [
-      0.022416588789459513,
-      0.02241658879500774
+      0.03211273432973183,
+      0.032112734339504456
      ],
      "B_positive": true,
      "L1_LG": [
-      -0.768033045202862,
-      -0.7680330451743881
+      -0.7644770508821489,
+      -0.7644770508418856
      ],
-     "L1_LG_width": 2.847388991256139e-11,
+     "L1_LG_width": 4.026334821105593e-11,
      "certificate_valid": true,
      "nu": [
-      -5.552006834264259,
-      -5.5520068328491865
+      -4.737408057527506,
+      -4.7374080560396195
      ],
      "nu_lt_1": true,
-     "rho": -0.6361947789985846
+     "rho": -0.6092185339004528
     },
     "stageA_L2": {
      "B": [
-      0.14070989822040283,
-      0.14070989822240032
+      0.1400635484212605,
+      0.1400635484245619
      ],
      "B_positive": true,
      "L1_LG": [
-      -0.7592580644014035,
-      -0.7592580643916128
+      -0.7606528623142512,
+      -0.7606528622981602
      ],
-     "L1_LG_width": 9.790723787261868e-12,
+     "L1_LG_width": 1.6091017407404706e-11,
      "certificate_valid": false,
      "nu": [
-      2.289463319203413,
-      2.289463319242433
+      2.2950462639275186,
+      2.2950462639922042
      ],
      "nu_lt_1": false,
      "rho": -1.0828019837875864
     }
    },
    "stage": "lg",
-   "t_assemble": 68.347703521,
-   "t_cg": 12.845818471,
-   "wall_seconds": 89.51292991638184
+   "t_assemble": 100.062927341,
+   "t_cg": 57.080334044,
+   "wall_seconds": 168.59795093536377
   },
   "mu2": {
    "A0": [
-    0.9147446735742043,
-    0.914744673575164
+    0.9138903655366118,
+    0.9138903655382289
    ],
-   "A0_width": 9.596767824859853e-13,
+   "A0_width": 1.6170398353665405e-12,
    "A2": [
-    1.0949758411973278,
-    1.0949758412492232
+    1.0950303478541303,
+    1.0950303479065955
    ],
-   "A2_residual_corr_hi": 2.679709162984375e-22,
-   "A2_width": 5.189537688465862e-11,
+   "A2_residual_corr_hi": 2.682568947758977e-22,
+   "A2_width": 5.246514334089625e-11,
    "B": [
-    0.0023031302209822746,
-    0.0023031302678592214
+    0.0014970496647153109,
+    0.001497049712753773
    ],
    "B_positive": true,
    "D_aux": 101614,
    "L2_LG": [
-    -0.6361947789985846,
-    -0.6361947775598827
+    -0.6092185339004528,
+    -0.6092185323825601
    ],
-   "L2_LG_width": 1.4387018243411376e-09,
-   "N": 24,
+   "L2_LG_width": 1.5178927004200204e-09,
+   "N": 32,
    "Nprime": 92,
-   "Nprime_sep_configured": 40,
+   "Nprime_sep_configured": 48,
    "Nprime_sep_overridden": true,
    "c": 1.5,
    "certificate_valid": true,
-   "cg_residual": 8.999154023541318e-13,
+   "cg_residual": 9.156405376663716e-13,
    "lam_min_lb": 0.2812878239368328,
    "lehmann_behnke_rho_sigma": {
     "mu2": [
@@ -525,30 +525,30 @@
     -0.5867992100150907
    ],
    "mu2N_width": 2.961964007397455e-11,
-   "mu2_Omega_lower_certified": -0.6361947789985846,
+   "mu2_Omega_lower_certified": -0.6092185339004528,
    "mu3N_galerkin": [
     -0.26648720701926304,
     -0.2664872070126937
    ],
    "mu3N_width": 6.569356170160745e-12,
    "nu": [
-    -11.242665957915808,
-    -11.242665728670618
+    -17.8668967370321,
+    -17.866896162625466
    ],
    "nu_lt_1": true,
    "oee2nd_sharpL_separator": -0.5593620026937112,
-   "peak_rss_gb": 1386.027919769287,
-   "r2_hi": 7.537695592394665e-23,
+   "peak_rss_gb": 1386.2589721679688,
+   "r2_hi": 7.545739818756419e-23,
    "sep_eps": 0.4,
    "sep_valid": true,
    "stage": "mu2",
-   "t_assemble": 1598.744661623,
-   "t_cg": 56.353942552,
-   "wall_seconds": 5921.424705028534
+   "t_assemble": 1636.177507784,
+   "t_cg": 51.695109781,
+   "wall_seconds": 6141.898479938507
   }
  },
  "system": "H3plus",
  "threads": 48,
  "three_centre_note": "Three collinear unit charges at (-d,0,0), (0,0,0), (+d,0,0). No new mathematics and no special branch was required: the centre at the ORIGIN is the case s=0 of the SAME moments_verified.jl routine used for H2+ (moment_smallt integrates cos(kappa(x+L))exp(-t^2(x-s)^2) over [-L,L] with its per-panel Bernstein remainder, and moment_larget is the infinite-domain form plus a Gaussian tail bound; neither has an s-dependent branch). The Coulomb singularity is never evaluated pointwise because the Gaussian representation 1/r = (2/sqrt(pi)) int exp(-t^2 r^2) dt removes it analytically. The only structural addition is the grouping of centres sharing a transverse position, which sums their Bx factors before the Kronecker product and keeps the cost identical to the two-centre case.",
- "wall_seconds_total": 7050.391056060791
+ "wall_seconds_total": 7353.196959972382
 }

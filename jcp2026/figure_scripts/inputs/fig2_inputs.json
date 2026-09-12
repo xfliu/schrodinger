@@ -1,0 +1,174 @@
+{
+ "approx_L14_row": {
+  "mode": "approx",
+  "system": "H2plus",
+  "d_paper": "2",
+  "L": "14",
+  "Ly": "11.200000000000001",
+  "N": "64",
+  "Nprime": "80",
+  "D": "35937",
+  "D_aux": "68921",
+  "npanel": "67",
+  "t_star": "1",
+  "op_terms": "48",
+  "op_MB": "2.404512",
+  "mu1N_Ritz": "-0.55118087464593257",
+  "eee2_Ritz": "-0.19378013951094952",
+  "lambda1D_Ritz": "-0.55116910972043254",
+  "mu2N_oee_Ritz": "-0.33372745053939756",
+  "rho_used": "-0.33995319293939757",
+  "A0": "0.44881912535406748",
+  "A2": "2.2284057413050604",
+  "LG_lower": "-0.55139271073453955",
+  "enclosure_width": "0.00022360101410701105",
+  "truncation_term": "0.00014789027956740863",
+  "LG_discretisation_term": "7.571073453960242e-05",
+  "trunc_gap_discrete": "1.1764925500035162e-05",
+  "cg_iters_total": "1112",
+  "cg_max_relres": "9.9188083556843319e-13",
+  "converged": "true",
+  "status": "ok"
+ },
+ "approx_L14_cost": {
+  "wall_seconds_driver": 13.38892912864685,
+  "wall_clock_OS": 20.25,
+  "peak_rss_gb_OS": 0.46779632568359375,
+  "source": "apx14/apx14_approx_rows.csv and the /usr/bin/time -v block of apx14.log"
+ },
+ "approx_L14_source": "apx14/apx14_approx_rows.csv and the /usr/bin/time -v block of apx14.log",
+ "pointers": {
+  "2_json_pointers_per_endpoint": {
+   "CONFIRMED_resolution_split": "yes -- the Neumann side is at N=64/N'=80 in cert_SL1.json / cert_C2.json, and the new Dirichlet lowers are at N=48/N'=64 in cert_SL1_dirLG.json / cert_C2_dirLG.json. The Dirichlet UPPER, however, is also at N=64 and lives in the Neumann certificate, not in the dirLG file.",
+   "IMPORTANT_correction_to_your_endpoint_list": "in these certificates the 'Neumann upper' is NOT mu_{1,N}. /CERTIFIED_ENCLOSURE/lambda1_upper is the DIRICHLET interval Rayleigh-Ritz value (valid as an upper bound on the Neumann eigenvalue because lambda_1^D >= lambda_1^N), and it is numerically IDENTICAL to the Dirichlet upper -- verified equal to the last bit at both boxes. So your four endpoints are only three distinct numbers per box unless you want mu_{1,N} specifically, which is a different quantity at a different resolution. Both pointers are given below.",
+   "Omega_1": {
+    "neumann_lower_corrected_LG": {
+     "file": "cert_SL1.json",
+     "pointer": "/CERTIFIED_ENCLOSURE/lambda1_lower",
+     "equivalent_pointer": "/stages/lg/lambda1_lower_certified",
+     "value": -0.553458273581282,
+     "N": 64,
+     "Nprime": 80
+    },
+    "neumann_upper_as_shipped": {
+     "file": "cert_SL1.json",
+     "pointer": "/CERTIFIED_ENCLOSURE/lambda1_upper",
+     "value": -0.5507405804827743,
+     "N": 64,
+     "what_it_is": "Dirichlet interval Rayleigh-Ritz sup, same number as the Dirichlet upper"
+    },
+    "neumann_upper_as_mu1N_if_you_want_it": {
+     "file": "cert_SL1.json",
+     "pointer": "/stages/A/mu1N_galerkin  (take index 1 = sup)",
+     "value": -0.551851499658834,
+     "N": 72,
+     "caveat": "this is the Stage-A Galerkin enclosure of mu_{1,N} at N_stageA = 72, a DIFFERENT resolution from the N=64 endpoints -- do not plot it as a peer without saying so"
+    },
+    "dirichlet_lower_corrected_LG_NEW": {
+     "file": "cert_SL1_dirLG.json",
+     "pointer": "/stages/dirlg/CERTIFIED/lower_certified",
+     "equivalent_pointer": "/CERTIFIED_LOWER/lower_certified",
+     "value": -0.5528533308459372,
+     "N": 48,
+     "Nprime": 64,
+     "interval": "/stages/dirlg/CERTIFIED/L_LG",
+     "separator": "sharpL_ooo_second",
+     "eps_prime": 0.65
+    },
+    "dirichlet_upper": {
+     "file": "cert_SL1.json",
+     "pointer": "/stages/dirichlet/lambda1_upper_certified",
+     "interval_pointer": "/stages/dirichlet/RQ_interval",
+     "value": -0.5507405804827743,
+     "N": 64
+    },
+    "theorem9_dirichlet_lower_secondary": {
+     "file": "cert_SL1_dirTHM9.json",
+     "pointer": "/sectors/ooo/L1_certified/lower",
+     "value": -0.5952892906690818,
+     "trial_space_Nprime": 64,
+     "mode_cutoff_mmax": 65
+    },
+    "theorem9_lambda2D": {
+     "file": "cert_SL1_dirTHM9.json",
+     "pointer": "/sectors/eoo/L1_certified/lower",
+     "value": -0.3928575015455047,
+     "trial_space_Nprime": 64,
+     "mode_cutoff_mmax": 65
+    }
+   },
+   "C2": {
+    "neumann_lower_corrected_LG": {
+     "file": "cert_C2.json",
+     "pointer": "/CERTIFIED_ENCLOSURE/lambda1_lower",
+     "equivalent_pointer": "/stages/lg/lambda1_lower_certified",
+     "value": -0.5579503349109411,
+     "N": 64,
+     "Nprime": 80
+    },
+    "neumann_upper_as_shipped": {
+     "file": "cert_C2.json",
+     "pointer": "/CERTIFIED_ENCLOSURE/lambda1_upper",
+     "value": -0.5511691097156336,
+     "N": 64
+    },
+    "neumann_upper_as_mu1N_if_you_want_it": {
+     "file": "cert_C2.json",
+     "pointer": "/stages/A/mu1N_galerkin  (take index 1 = sup)",
+     "value": -0.5511231249994741,
+     "N": 56,
+     "caveat": "Stage-A resolution N_stageA = 56, not 64"
+    },
+    "dirichlet_lower_corrected_LG_NEW": {
+     "file": "cert_C2_dirLG.json",
+     "pointer": "/stages/dirlg/CERTIFIED/lower_certified",
+     "equivalent_pointer": "/CERTIFIED_LOWER/lower_certified",
+     "value": -0.5713604392944918,
+     "N": 48,
+     "Nprime": 64,
+     "interval": "/stages/dirlg/CERTIFIED/L_LG",
+     "separator": "sharpL_ooo_second",
+     "eps_prime": 0.75
+    },
+    "dirichlet_upper": {
+     "file": "cert_C2.json",
+     "pointer": "/stages/dirichlet/lambda1_upper_certified",
+     "interval_pointer": "/stages/dirichlet/RQ_interval",
+     "value": -0.5511691097156336,
+     "N": 64
+    },
+    "theorem9_dirichlet_lower_secondary": {
+     "file": "cert_C2_dirTHM9.json",
+     "pointer": "/sectors/ooo/L1_certified/lower",
+     "value": -0.6744902033959299,
+     "trial_space_Nprime": 64,
+     "mode_cutoff_mmax": 65
+    },
+    "theorem9_lambda2D": {
+     "file": "cert_C2_dirTHM9.json",
+     "pointer": "/sectors/eoo/L1_certified/lower",
+     "value": -0.5101728982922877,
+     "trial_space_Nprime": 64,
+     "mode_cutoff_mmax": 65
+    }
+   }
+  }
+ },
+ "gap_check": {
+  "4_caption_numbers_dirichlet_lower_minus_neumann_upper": {
+   "VERDICT": "CONFIRMED -- do not draw a gap band. At BOTH boxes and under BOTH readings of the Neumann upper, the certified Dirichlet lower sits BELOW the certified Neumann upper, so the two brackets OVERLAP at the certified tier and the truncation gap is NOT resolved there.",
+   "Omega_1": {
+    "dirichlet_lower_minus_neumann_upper_as_shipped": -0.002112750363162899,
+    "dirichlet_lower_minus_mu1N_sup": -0.0010018311871032,
+    "dirichlet_lower_minus_neumann_lower": 0.0006049427353448
+   },
+   "C2": {
+    "dirichlet_lower_minus_neumann_upper_as_shipped": -0.0201913295788582,
+    "dirichlet_lower_minus_mu1N_sup": -0.0202373142950177,
+    "dirichlet_lower_minus_neumann_lower": -0.0134101043835507
+   },
+   "extra_fact_that_affects_the_figure_layout": "the ORDERING of the two lower endpoints flips between boxes. At Omega_1 the Dirichlet lower (-0.5528533308459372) sits ABOVE the Neumann lower (-0.553458273581282) by 6.049e-04, so the Dirichlet bracket is nested inside the Neumann one. At L=14 it sits BELOW (-0.5713604392944918 against -0.5579503349109411) by 1.341e-02, so the Dirichlet bracket is the wider of the two and encloses the Neumann one. A single panel template will not fit both without handling that flip.",
+   "all_computed_from_the_saved_certificates": true
+  }
+ }
+}

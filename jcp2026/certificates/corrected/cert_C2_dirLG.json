@@ -1,0 +1,1001 @@
+{
+  "CERTIFIED_LOWER": {
+    "A2_corrected": [
+      2.241859507435767,
+      2.241859507489808
+    ],
+    "B": [
+      0.015614343426142652,
+      0.015614343443576595
+    ],
+    "L_LG": [
+      -0.5713604392944918,
+      -0.5713604392065558
+    ],
+    "L_LG_width": 8.793599182155276e-11,
+    "eps_prime": 0.75,
+    "lower_certified": -0.5713604392944918,
+    "nu": [
+      -4.62800743380202,
+      -4.628007428458563
+    ],
+    "rho": -0.47874184104641715,
+    "separator": "sharpL_ooo_second",
+    "target": "lambda1D"
+  },
+  "box": {
+    "LX": 14.0,
+    "LY": 11.200000000000001,
+    "LZ": 11.200000000000001,
+    "label": "[-14.0,14.0] x [-11.200000000000001,11.200000000000001]^2"
+  },
+  "config": "C2",
+  "confinement": {
+    "holds": true,
+    "lambda_ref": -0.551317,
+    "margin": 0.37552636151634244,
+    "sigma": -0.17579063848365747
+  },
+  "corrected_goerisch": {
+    "G4_self_consistency": {
+      "dirlg_goerisch_ooo": {
+        "all_pass": true,
+        "checks": {
+          "Kdiag strictly positive (no zero mode)": true,
+          "V2 Nprime == LG Nprime": true,
+          "ceps geometry: LX": true,
+          "ceps geometry: LY": true,
+          "ceps geometry: Ztot": true,
+          "ceps geometry: d_paper": true,
+          "ceps geometry: system": true,
+          "moment closures used this run's npanel/t_star/box": true,
+          "mu_lo_floor <= inf(L1_stageA)": true,
+          "nu_* driver <= nu_* exact Dirichlet": true,
+          "nx*ny*nz == D_aux": true,
+          "primary block size == this sector at N": true,
+          "sector index counts match this run's sector at N'": true
+        },
+        "values": {
+          "D_aux": 35937,
+          "Kdiag_1": [
+            0.051928722135833646,
+            0.0519287221358337
+          ],
+          "LX": 14.0,
+          "LY": 11.200000000000001,
+          "LZ": 11.200000000000001,
+          "N": 48,
+          "Nprime": 64,
+          "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+          "ceps_N_aux": 80,
+          "ceps_file": "ceps_certified_C2g_N80.json",
+          "dims": [
+            33,
+            33,
+            33
+          ],
+          "inf_L1_stageA": -0.7304844421961987,
+          "mu_lo_floor": -0.75,
+          "npanel_dir": 96,
+          "npanel_rule": 67,
+          "nt": 48,
+          "nu_1_dirichlet": 0.051928722135833674,
+          "nu_star_driver": 53.18760024821753,
+          "nu_star_exact_dirichlet": 56.550378405922885,
+          "nx": 33,
+          "nyz": 33,
+          "primary_block": 15625,
+          "sector": "(:odd, :odd, :odd)",
+          "t_star": 1.0
+        }
+      },
+      "stageA_from_file": {
+        "all_pass": true,
+        "checks": {
+          "file N_stageA == this run's N_stageA": true,
+          "file Ztot": true,
+          "file box LX": true,
+          "file box LY": true,
+          "file box LZ": true,
+          "file has L1,L2,Ceps": true,
+          "file rho": true
+        },
+        "values": {
+          "Ceps": {
+            "0.3": [
+              2.9473432043854664,
+              2.9473432043854664
+            ],
+            "0.4": [
+              1.991749904742849,
+              1.991749904742849
+            ]
+          },
+          "L1": [
+            -0.7304844421961987,
+            -0.7304844421880741
+          ],
+          "L2": [
+            -0.5668741093188796,
+            -0.5668741093119447
+          ],
+          "N_stageA": 56,
+          "file": "g1src/cert_C2src_stageA.json",
+          "geometry": {
+            "LX": 14.0,
+            "LY": 11.200000000000001,
+            "LZ": 11.200000000000001,
+            "Ztot": 2.0,
+            "r1_r2_rule": "r1 = rho/2, r2 = rho",
+            "rho": 11.200000000000001,
+            "rho_rule": "rho = min over nuclei of dist(nucleus, boundary), computed from the geometry record"
+          }
+        }
+      }
+    },
+    "ceps_file": "ceps_certified_C2g_N80.json",
+    "ceps_record": {
+      "0.7": {
+        "C_star": [
+          4.695662674640217,
+          4.695662674640221
+        ],
+        "Ceps_cert": 1.04679069216483,
+        "Ceps_cert_interval": [
+          1.046790692138133,
+          1.04679069216483
+        ],
+        "Ceps_point_used_downstream": 1.04679069216483,
+        "Chat_squared": [
+          0.04542035685506048,
+          0.04542035685532456
+        ],
+        "LX": 14.0,
+        "N_aux": 80,
+        "S": [
+          3.74454020513291,
+          3.7445402051691037
+        ],
+        "Ztot": 2.0,
+        "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+        "alpha": 0.3887,
+        "delta": 0.06941071428571428,
+        "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+        "eps": 0.7,
+        "eps_star": [
+          0.5552857142857143,
+          0.5552857142857144
+        ],
+        "etaV_squared": [
+          2.5026372296969512,
+          2.5026372297090744
+        ],
+        "eta_1N_certified": [
+          -0.6657857286551148,
+          -0.6657857286297818
+        ],
+        "eta_1N_width": 2.533295795359436e-11,
+        "eta_lower_certified": -1.04679069216483,
+        "hypotheses": {
+          "0_lt_alpha_lt_eps": true,
+          "S_positive": true,
+          "eps_star_lt_1": true,
+          "r1_lt_r2": true
+        },
+        "identity_eps_nu1N_encloses_eta1N": true,
+        "improvement_over_analytic": 2.0470731722170528,
+        "nu1N_enclosure": [
+          -0.951122469507307,
+          -0.9511224694711169
+        ],
+        "nu1N_width": 3.619005095600869e-11,
+        "nu1_lower_certified": -1.4954152745211857,
+        "r1": 5.6000000000000005,
+        "r2": 11.200000000000001,
+        "sigma_loc_alpha": [
+          3.286963872248152,
+          3.286963872248154
+        ],
+        "sigma_loc_analytic_comparator": 2.142857142857143,
+        "t_enclosure": 548.888026572
+      },
+      "0.75": {
+        "C_star": [
+          4.221957542212567,
+          4.221957542212571
+        ],
+        "Ceps_cert": 0.979558340370842,
+        "Ceps_cert_interval": [
+          0.9795583403452378,
+          0.979558340370842
+        ],
+        "Ceps_point_used_downstream": 0.979558340370842,
+        "Chat_squared": [
+          0.04582210684285111,
+          0.045822106843131455
+        ],
+        "LX": 14.0,
+        "N_aux": 80,
+        "S": [
+          3.365557840186834,
+          3.365557840219162
+        ],
+        "Ztot": 2.0,
+        "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+        "alpha": 0.4078,
+        "delta": 0.07282142857142856,
+        "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+        "eps": 0.75,
+        "eps_star": [
+          0.5437333333333333,
+          0.5437333333333334
+        ],
+        "etaV_squared": [
+          2.4461607164004255,
+          2.4461607164124777
+        ],
+        "eta_1N_certified": [
+          -0.6422997765192998,
+          -0.6422997764950565
+        ],
+        "eta_1N_width": 2.4243274054924768e-11,
+        "eta_lower_certified": -0.979558340370842,
+        "hypotheses": {
+          "0_lt_alpha_lt_eps": true,
+          "S_positive": true,
+          "eps_star_lt_1": true,
+          "r1_lt_r2": true
+        },
+        "identity_eps_nu1N_encloses_eta1N": true,
+        "improvement_over_analytic": 2.0903492556082552,
+        "nu1N_enclosure": [
+          -0.8563997020257331,
+          -0.8563997019934086
+        ],
+        "nu1N_width": 3.232447642886882e-11,
+        "nu1_lower_certified": -1.3060777871611227,
+        "r1": 5.6000000000000005,
+        "r2": 11.200000000000001,
+        "sigma_loc_alpha": [
+          3.1664681566594255,
+          3.1664681566594277
+        ],
+        "sigma_loc_analytic_comparator": 2.0476190476190474,
+        "t_enclosure": 554.436353513
+      },
+      "0.8": {
+        "C_star": [
+          3.8243768426695244,
+          3.824376842669527
+        ],
+        "Ceps_cert": 0.9225954513945934,
+        "Ceps_cert_interval": [
+          0.9225954513699641,
+          0.9225954513945934
+        ],
+        "Ceps_point_used_downstream": 0.9225954513945934,
+        "Chat_squared": [
+          0.04630442038595917,
+          0.04630442038625582
+        ],
+        "LX": 14.0,
+        "N_aux": 80,
+        "S": [
+          3.048142814699962,
+          3.048142814729074
+        ],
+        "Ztot": 2.0,
+        "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+        "alpha": 0.4264,
+        "delta": 0.07614285714285714,
+        "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+        "eps": 0.8,
+        "eps_star": [
+          0.5329999999999999,
+          0.533
+        ],
+        "etaV_squared": [
+          2.3959856477403987,
+          2.3959856477523838
+        ],
+        "eta_1N_certified": [
+          -0.6209872223756498,
+          -0.6209872223523628
+        ],
+        "eta_1N_width": 2.328703896381512e-11,
+        "eta_lower_certified": -0.9225954513945934,
+        "hypotheses": {
+          "0_lt_alpha_lt_eps": true,
+          "S_positive": true,
+          "eps_star_lt_1": true,
+          "r1_lt_r2": true
+        },
+        "identity_eps_nu1N_encloses_eta1N": true,
+        "improvement_over_analytic": 2.129086710016296,
+        "nu1N_enclosure": [
+          -0.7762340279695623,
+          -0.7762340279404534
+        ],
+        "nu1N_width": 2.910893748264698e-11,
+        "nu1_lower_certified": -1.1532443142432416,
+        "r1": 5.6000000000000005,
+        "r2": 11.200000000000001,
+        "sigma_loc_alpha": [
+          3.0595014741356197,
+          3.0595014741356215
+        ],
+        "sigma_loc_analytic_comparator": 1.9642857142857144,
+        "t_enclosure": 567.708203258
+      },
+      "0.85": {
+        "C_star": [
+          3.4864688115462097,
+          3.4864688115462124
+        ],
+        "Ceps_cert": 0.8736412661265551,
+        "Ceps_cert_interval": [
+          0.8736412661028036,
+          0.8736412661265551
+        ],
+        "Ceps_point_used_downstream": 0.8736412661265551,
+        "Chat_squared": [
+          0.046865131088203726,
+          0.04686513108851674
+        ],
+        "LX": 14.0,
+        "N_aux": 80,
+        "S": [
+          2.7788490347455377,
+          2.7788490347719352
+        ],
+        "Ztot": 2.0,
+        "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+        "alpha": 0.4446,
+        "delta": 0.07939285714285714,
+        "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+        "eps": 0.85,
+        "eps_star": [
+          0.5230588235294117,
+          0.5230588235294118
+        ],
+        "etaV_squared": [
+          2.351339537780995,
+          2.3513395377929154
+        ],
+        "eta_1N_certified": [
+          -0.6014768102805709,
+          -0.6014768102581356
+        ],
+        "eta_1N_width": 2.24352758593227e-11,
+        "eta_lower_certified": -0.8736412661265551,
+        "hypotheses": {
+          "0_lt_alpha_lt_eps": true,
+          "S_positive": true,
+          "eps_star_lt_1": true,
+          "r1_lt_r2": true
+        },
+        "identity_eps_nu1N_encloses_eta1N": true,
+        "improvement_over_analytic": 2.1642250381601302,
+        "nu1N_enclosure": [
+          -0.7076197768006717,
+          -0.7076197767742771
+        ],
+        "nu1N_width": 2.6394553209740934e-11,
+        "nu1_lower_certified": -1.0278132542665355,
+        "r1": 5.6000000000000005,
+        "r2": 11.200000000000001,
+        "sigma_loc_alpha": [
+          2.9634984898142784,
+          2.96349848981428
+        ],
+        "sigma_loc_analytic_comparator": 1.8907563025210083,
+        "t_enclosure": 596.505011214
+      },
+      "_N_aux": 80,
+      "_box": {
+        "LX": 14.0,
+        "LY": 11.200000000000001,
+        "LZ": 11.200000000000001,
+        "Ztot": 2.0,
+        "r1": 5.6000000000000005,
+        "r2": 11.200000000000001,
+        "rho": 11.200000000000001
+      },
+      "_centres": [
+        [
+          [
+            -2.0,
+            0.0,
+            0.0
+          ],
+          1.0
+        ],
+        [
+          [
+            2.0,
+            0.0,
+            0.0
+          ],
+          1.0
+        ]
+      ],
+      "_d_paper": 2.0,
+      "_file": "ceps_certified_C2g_N80.json",
+      "_system": "H2plus"
+    },
+    "discretization_term_included": true,
+    "eps_prime_grid": [
+      0.85,
+      0.8,
+      0.75,
+      0.7
+    ],
+    "gate_G1_mode": false,
+    "realization": "X = (L^2)^3 x L^2 x H^1_0(Omega); Tu = {sqrt(1-eps')grad u, sqrt(c-Ceps')u, u}; D = H^1_0(Omega)",
+    "stageA_source": "read from g1src/cert_C2src_stageA.json"
+  },
+  "d_paper": 2.0,
+  "driver": {
+    "core": "cert_core.jl",
+    "dirichlet": "dirichlet_g.jl",
+    "goerisch": "lg_goerisch_correct2.jl",
+    "invocation": "CERT_STAGE=dirlg julia -t <threads> run_cert_gd.jl C2",
+    "moments": "moments_verified.jl (bundle, unmodified)",
+    "provenance": "run_cert_g.jl (the Neumann corrected driver) extended with stage_dirlg; the Dirichlet Rayleigh-Ritz UPPER stage stage_dir and every Neumann stage are byte-identical to that driver",
+    "script": "run_cert_gd.jl"
+  },
+  "goerisch_shift": {
+    "c": 1.0,
+    "certified_lambda_min_lower_bound": 0.2695155578038013,
+    "note": "the configuration's OWN recorded shift; not raised for G3",
+    "raised_for_this_stage": false,
+    "stageA_inf_L1": -0.7304844421961987
+  },
+  "julia": "1.12.7",
+  "lambda2D_separator": null,
+  "peak_rss_gb": 241.6570816040039,
+  "quadrature": {
+    "clearance": 12.0,
+    "moment_tail_bound_at_t_star": 5.941719739612334e-56,
+    "n_p": 24,
+    "npanel_dirichlet": 96,
+    "npanel_note": "the published Dirichlet-LG stages used npanel=96 at every box (certify_lambda1D's own default), so 96 is kept here; npanel_rule(LX)=67. More panels only tighten the moment enclosures, so this is the conservative choice.",
+    "npanel_rule": 67,
+    "nt": 48,
+    "t_star": 1.0
+  },
+  "stages": {
+    "dirlg": {
+      "A0": [
+        0.44899486150345697,
+        0.4489948615062071
+      ],
+      "A0_width": 2.7501334542989753e-12,
+      "A2_corrected_tail_zero": {
+        "0.7": {
+          "A2_corrected_tail_zero": [
+            2.2280045709506395,
+            2.2280045709997953
+          ],
+          "admissible_at_this_eps": false,
+          "correction_sup": 4.3643997895141135e-22,
+          "equals_A2_galerkin_bitwise": true,
+          "sigma2_const_mode": 0.0
+        },
+        "0.75": {
+          "A2_corrected_tail_zero": [
+            2.2280045709506395,
+            2.2280045709997953
+          ],
+          "admissible_at_this_eps": true,
+          "correction_sup": 5.237279747416937e-22,
+          "equals_A2_galerkin_bitwise": true,
+          "sigma2_const_mode": 0.0
+        },
+        "0.8": {
+          "A2_corrected_tail_zero": [
+            2.2280045709506395,
+            2.2280045709997953
+          ],
+          "admissible_at_this_eps": true,
+          "correction_sup": 6.546599684271173e-22,
+          "equals_A2_galerkin_bitwise": true,
+          "sigma2_const_mode": 0.0
+        },
+        "0.85": {
+          "A2_corrected_tail_zero": [
+            2.2280045709506395,
+            2.2280045709997953
+          ],
+          "admissible_at_this_eps": true,
+          "correction_sup": 8.728799579028227e-22,
+          "equals_A2_galerkin_bitwise": true,
+          "sigma2_const_mode": 0.0
+        }
+      },
+      "A2_galerkin": [
+        2.2280045709506395,
+        2.2280045709997953
+      ],
+      "A2_galerkin_width": 4.915579054909358e-11,
+      "A2_residual_corr_hi": 6.81438295532035e-23,
+      "CERTIFIED": {
+        "A2_corrected": [
+          2.241859507435767,
+          2.241859507489808
+        ],
+        "B": [
+          0.015614343426142652,
+          0.015614343443576595
+        ],
+        "L_LG": [
+          -0.5713604392944918,
+          -0.5713604392065558
+        ],
+        "L_LG_width": 8.793599182155276e-11,
+        "eps_prime": 0.75,
+        "lower_certified": -0.5713604392944918,
+        "nu": [
+          -4.62800743380202,
+          -4.628007428458563
+        ],
+        "rho": -0.47874184104641715,
+        "separator": "sharpL_ooo_second",
+        "target": "lambda1D"
+      },
+      "D_aux": 35937,
+      "D_primary": 15625,
+      "Lambda_n": -0.5510051384937928,
+      "N": 48,
+      "Nprime": 64,
+      "c": 1.0,
+      "cg_residual": 8.656232532276871e-13,
+      "dims": [
+        33,
+        33,
+        33
+      ],
+      "galerkin_tier_variants": {
+        "sharpL_ooo_second": {
+          "A2_galerkin": [
+            2.2280045709506395,
+            2.2280045709997953
+          ],
+          "B": [
+            0.011849817687813458,
+            0.011849817703920018
+          ],
+          "B_positive": true,
+          "L_LG": [
+            -0.5521764552462429,
+            -0.5521764551580894
+          ],
+          "L_LG_width": 8.815348451207683e-11,
+          "lower_galerkin_tier": -0.5521764552462429,
+          "note": "reproduces the recorded Galerkin-tier endpoint; NOT a bound on the operator eigenvalue",
+          "nu": [
+            -6.098262382926163,
+            -6.098262374405173
+          ],
+          "nu_lt_1": true,
+          "rho": -0.47874184104641715
+        }
+      },
+      "gate_G2_direction": {
+        "all_pass": true,
+        "per_eps": {
+          "0.75": {
+            "A2_corrected": [
+              2.241859507435767,
+              2.241859507489808
+            ],
+            "A2_corrected_ge_A2_galerkin": true,
+            "A2_galerkin": [
+              2.2280045709506395,
+              2.2280045709997953
+            ],
+            "A2_increase_sup": 0.01385493649001246,
+            "lower_sharpL_ooo_second": {
+              "corrected": -0.5713604392944918,
+              "corrected_le_galerkin": true,
+              "delta": -0.019183984048248837,
+              "galerkin": -0.5521764552462429
+            }
+          },
+          "0.8": {
+            "A2_corrected": [
+              2.2453232415570485,
+              2.245323241612311
+            ],
+            "A2_corrected_ge_A2_galerkin": true,
+            "A2_galerkin": [
+              2.2280045709506395,
+              2.2280045709997953
+            ],
+            "A2_increase_sup": 0.017318670612515685,
+            "lower_sharpL_ooo_second": {
+              "corrected": -0.5759023413526253,
+              "corrected_le_galerkin": true,
+              "delta": -0.023725886106382377,
+              "galerkin": -0.5521764552462429
+            }
+          },
+          "0.85": {
+            "A2_corrected": [
+              2.2510961317591853,
+              2.2510961318164826
+            ],
+            "A2_corrected_ge_A2_galerkin": true,
+            "A2_galerkin": [
+              2.2280045709506395,
+              2.2280045709997953
+            ],
+            "A2_increase_sup": 0.023091560816687284,
+            "lower_sharpL_ooo_second": {
+              "corrected": -0.5832619949189936,
+              "corrected_le_galerkin": true,
+              "delta": -0.03108553967275063,
+              "galerkin": -0.5521764552462429
+            }
+          }
+        }
+      },
+      "gate_G3_admissibility": {
+        "c_raised": false,
+        "n_admissible": 3,
+        "note": "c is the configuration's own recorded shift; it was NOT raised to make G3 pass",
+        "per_eps": {
+          "0.7": {
+            "Ceps_cert": 1.04679069216483,
+            "c_ge_Ceps": false,
+            "c_gt_Ceps_strict": false,
+            "c_recorded": 1.0,
+            "ceps_space": "certified for the NEUMANN problem on H^1(Omega) by run_ceps.jl; H^1_0(Omega) is a subspace of H^1(Omega), so the same constant is admissible for the Dirichlet realization a fortiori and is conservative (Ceps^{D,opt} <= Ceps^{N,opt} <= Ceps_cert)",
+            "eps_prime": 0.7,
+            "margin_c_minus_Ceps": -0.046790692164830006
+          },
+          "0.75": {
+            "Ceps_cert": 0.979558340370842,
+            "c_ge_Ceps": true,
+            "c_gt_Ceps_strict": true,
+            "c_recorded": 1.0,
+            "ceps_space": "certified for the NEUMANN problem on H^1(Omega) by run_ceps.jl; H^1_0(Omega) is a subspace of H^1(Omega), so the same constant is admissible for the Dirichlet realization a fortiori and is conservative (Ceps^{D,opt} <= Ceps^{N,opt} <= Ceps_cert)",
+            "eps_prime": 0.75,
+            "margin_c_minus_Ceps": 0.020441659629158004
+          },
+          "0.8": {
+            "Ceps_cert": 0.9225954513945934,
+            "c_ge_Ceps": true,
+            "c_gt_Ceps_strict": true,
+            "c_recorded": 1.0,
+            "ceps_space": "certified for the NEUMANN problem on H^1(Omega) by run_ceps.jl; H^1_0(Omega) is a subspace of H^1(Omega), so the same constant is admissible for the Dirichlet realization a fortiori and is conservative (Ceps^{D,opt} <= Ceps^{N,opt} <= Ceps_cert)",
+            "eps_prime": 0.8,
+            "margin_c_minus_Ceps": 0.07740454860540658
+          },
+          "0.85": {
+            "Ceps_cert": 0.8736412661265551,
+            "c_ge_Ceps": true,
+            "c_gt_Ceps_strict": true,
+            "c_recorded": 1.0,
+            "ceps_space": "certified for the NEUMANN problem on H^1(Omega) by run_ceps.jl; H^1_0(Omega) is a subspace of H^1(Omega), so the same constant is admissible for the Dirichlet realization a fortiori and is conservative (Ceps^{D,opt} <= Ceps^{N,opt} <= Ceps_cert)",
+            "eps_prime": 0.85,
+            "margin_c_minus_Ceps": 0.12635873387344487
+          }
+        }
+      },
+      "goerisch": {
+        "LX_used": 14.0,
+        "LYZ_used": 11.200000000000001,
+        "Nprime_used": 64,
+        "Vw_norm_sq": [
+          5.096763405176694,
+          5.096763405180668
+        ],
+        "discretization_term_included": true,
+        "dominant_term": "discretization",
+        "grad_phi_sq_algebraic_sup": 1.3093199368542341e-22,
+        "grad_phi_sq_discretization_sup": 0.003463734122503138,
+        "grad_phi_sq_total_sup": 0.0034637341225031383,
+        "momx_calls": 2352,
+        "momyz_calls": 1176,
+        "npanel_used": 96,
+        "nt_used": 48,
+        "nu_1_neumann": 0.012588781123838471,
+        "nu_1_note": "in-space part uses the EXACT modal sum sum_{k!=0} |r_k|^2/nu_k, which is sharper than and implies the brief's ||r||^2/nu_1; nu_1 is reported for reference",
+        "nu_star": 53.18760024821753,
+        "nu_star_convention": "((N'+1)*pi/(2*LX))^2, the driver's own conservative value",
+        "nx_used": 33,
+        "ny_used": 33,
+        "nz_used": 33,
+        "per_eps_prime": {
+          "0.7": {
+            "Ceps_cert": 1.04679069216483,
+            "admissible": false,
+            "c": 1.0,
+            "reason": "c = 1.0 does not exceed Ceps' = 1.04679069216483"
+          },
+          "0.75": {
+            "A2_goerisch": [
+              2.241859507435767,
+              2.241859507489808
+            ],
+            "Ceps_cert": 0.979558340370842,
+            "admissible": true,
+            "c": 1.0,
+            "c_minus_Ceps": 0.020441659629158004,
+            "correction_sup": 0.013854936490012553,
+            "defect_sup": 0.013854936490012553,
+            "sigma2_const_mode_sup": 0.0
+          },
+          "0.8": {
+            "A2_goerisch": [
+              2.2453232415570485,
+              2.245323241612311
+            ],
+            "Ceps_cert": 0.9225954513945934,
+            "admissible": true,
+            "c": 1.0,
+            "c_minus_Ceps": 0.07740454860540658,
+            "correction_sup": 0.017318670612515696,
+            "defect_sup": 0.017318670612515696,
+            "sigma2_const_mode_sup": 0.0
+          },
+          "0.85": {
+            "A2_goerisch": [
+              2.2510961317591853,
+              2.2510961318164826
+            ],
+            "Ceps_cert": 0.8736412661265551,
+            "admissible": true,
+            "c": 1.0,
+            "c_minus_Ceps": 0.12635873387344487,
+            "correction_sup": 0.023091560816687586,
+            "defect_sup": 0.023091560816687586,
+            "sigma2_const_mode_sup": 0.0
+          }
+        },
+        "proj_norm_sq": [
+          4.9125356993068605,
+          4.912535699367843
+        ],
+        "r0_const_mode": 0.0,
+        "r2_sup": 1.7035957388300875e-23,
+        "realization": "corrected: X = (L^2)^3 x L^2 x H^1(Omega), D = H^1(Omega)",
+        "t_star_used": 1.0,
+        "t_vsq": 1153.553781177,
+        "tail_sq": [
+          0.18422770580885128,
+          0.18422770587380732
+        ],
+        "vsq_node_pairs": 1176,
+        "vsq_terms": 2352
+      },
+      "inf_L1_stageA": -0.7304844421961987,
+      "lam_min_lb": 0.25,
+      "lehmann_behnke_rho_sigma": {
+        "float_vals_lowest4": [
+          -0.5511691097204338,
+          -0.16621409637685164,
+          -0.09580684010684952,
+          -0.05605741415599258
+        ],
+        "mu1": [
+          -0.6211691097204338,
+          -0.35869160304864267
+        ],
+        "mu2": [
+          -0.23621409637682347,
+          -0.13101046824183543
+        ],
+        "t_lehmann_behnke": [
+          165.502588311,
+          153.494636701
+        ]
+      },
+      "memory_profile": [
+        {
+          "hwm_delta_gb": 31.309757232666016,
+          "hwm_gb": 31.309757232666016,
+          "rss_gb": 31.004638671875,
+          "step": "dirlg: ooo interval assembly done"
+        },
+        {
+          "hwm_delta_gb": 7.898738861083984,
+          "hwm_gb": 39.20849609375,
+          "rss_gb": 39.20849609375,
+          "step": "dirlg: float midpoint of H formed"
+        },
+        {
+          "hwm_delta_gb": 0.003902435302734375,
+          "hwm_gb": 39.212398529052734,
+          "rss_gb": 39.212398529052734,
+          "step": "after eigs (float midpoint live)"
+        },
+        {
+          "hwm_delta_gb": 135.0785789489746,
+          "hwm_gb": 174.29097747802734,
+          "rss_gb": 174.29097747802734,
+          "step": "after lehmann_behnke verification"
+        },
+        {
+          "hwm_delta_gb": 0.00730133056640625,
+          "hwm_gb": 174.29827880859375,
+          "rss_gb": 174.29827880859375,
+          "step": "after eigs (float midpoint live)"
+        },
+        {
+          "hwm_delta_gb": 67.35880279541016,
+          "hwm_gb": 241.6570816040039,
+          "rss_gb": 174.2957763671875,
+          "step": "after lehmann_behnke verification"
+        },
+        {
+          "hwm_delta_gb": 0.0,
+          "hwm_gb": 241.6570816040039,
+          "rss_gb": 41.4090690612793,
+          "step": "dirlg: primary sub-block taken, float midpoint freed"
+        },
+        {
+          "hwm_delta_gb": 0.0,
+          "hwm_gb": 241.6570816040039,
+          "rss_gb": 51.06568908691406,
+          "step": "dirlg: interval operator released before the V^2 form"
+        }
+      ],
+      "mu1_ooo_galerkin": [
+        -0.5511691097252542,
+        -0.5511691097156092
+      ],
+      "mu2_ooo_galerkin": [
+        -0.166214096379293,
+        -0.16621409637437726
+      ],
+      "mu_lo_floor": -0.75,
+      "mu_lo_floor_le_inf_L1": true,
+      "npanel_dir": 96,
+      "npanel_rule": 67,
+      "nt": 48,
+      "nu_1_dirichlet": 0.051928722135833674,
+      "nu_star_driver_convention": 53.18760024821753,
+      "nu_star_exact_dirichlet_complement": 56.550378405922885,
+      "nu_star_note": "the driver divides by ((N'+1)pi/(2LX))^2. The exact smallest Dirichlet-Laplacian eigenvalue on the complement of the retained single-parity sine set is min_i[(pi/2L_i)^2 (N'+3)^2 + sum_{j!=i}(pi/2L_j)^2]; the driver's value is a rigorous under-estimate of it, hence a valid (weaker) divisor, used for consistency with the Neumann side",
+      "peak_rss_gb": 241.6570816040039,
+      "per_separator_per_eps": {
+        "sharpL_ooo_second|eps=0.75": {
+          "A2_corrected": [
+            2.241859507435767,
+            2.241859507489808
+          ],
+          "B": [
+            0.015614343426142652,
+            0.015614343443576595
+          ],
+          "B_positive": true,
+          "Ceps_cert": 0.979558340370842,
+          "L_LG": [
+            -0.5713604392944918,
+            -0.5713604392065558
+          ],
+          "L_LG_width": 8.793599182155276e-11,
+          "c": 1.0,
+          "certificate_valid": true,
+          "correction_sup": 0.013854936490012553,
+          "defect_sup": 0.013854936490012553,
+          "eps_prime": 0.75,
+          "lower": -0.5713604392944918,
+          "nu": [
+            -4.62800743380202,
+            -4.628007428458563
+          ],
+          "nu_lt_1": true,
+          "rho": -0.47874184104641715,
+          "separator": "sharpL_ooo_second",
+          "separator_operator_level": true,
+          "sigma2_const_mode_sup": 0.0
+        },
+        "sharpL_ooo_second|eps=0.8": {
+          "A2_corrected": [
+            2.2453232415570485,
+            2.245323241612311
+          ],
+          "B": [
+            0.01655547486072484,
+            0.01655547487849074
+          ],
+          "B_positive": true,
+          "Ceps_cert": 0.9225954513945934,
+          "L_LG": [
+            -0.5759023413526253,
+            -0.5759023412647869
+          ],
+          "L_LG_width": 8.783840321768821e-11,
+          "c": 1.0,
+          "certificate_valid": true,
+          "correction_sup": 0.017318670612515696,
+          "defect_sup": 0.017318670612515696,
+          "eps_prime": 0.8,
+          "lower": -0.5759023413526253,
+          "nu": [
+            -4.364918436834377,
+            -4.364918431984208
+          ],
+          "nu_lt_1": true,
+          "rho": -0.47874184104641715,
+          "separator": "sharpL_ooo_second",
+          "separator_operator_level": true,
+          "sigma2_const_mode_sup": 0.0
+        },
+        "sharpL_ooo_second|eps=0.85": {
+          "A2_corrected": [
+            2.2510961317591853,
+            2.2510961318164826
+          ],
+          "B": [
+            0.018124027251695374,
+            0.018124027270014165
+          ],
+          "B_positive": true,
+          "Ceps_cert": 0.8736412661265551,
+          "L_LG": [
+            -0.5832619949189936,
+            -0.583261994831353
+          ],
+          "L_LG_width": 8.764056147470001e-11,
+          "c": 1.0,
+          "certificate_valid": true,
+          "correction_sup": 0.023091560816687586,
+          "defect_sup": 0.023091560816687586,
+          "eps_prime": 0.85,
+          "lower": -0.5832619949189936,
+          "nu": [
+            -3.987154535058767,
+            -3.9871545308770258
+          ],
+          "nu_lt_1": true,
+          "rho": -0.47874184104641715,
+          "separator": "sharpL_ooo_second",
+          "separator_operator_level": true,
+          "sigma2_const_mode_sup": 0.0
+        }
+      },
+      "r2_hi": 1.7035957388300875e-23,
+      "realization": "corrected: X = (L^2)^3 x L^2 x H^1_0(Omega), D = H^1_0(Omega); Tu = {sqrt(1-eps')grad u, sqrt(c-Ceps')u, u}",
+      "ritz_primary_float": -0.5510051384951741,
+      "sector": "ooo (all-odd sine indices: even in x, y and z)",
+      "sector_symbols": "(:odd, :odd, :odd)",
+      "separators": [
+        {
+          "eps_prime": 0.7,
+          "margin_rho_minus_Lambda_n": 0.0722632974473757,
+          "name": "sharpL_ooo_second",
+          "note": "operator-level lower bound on the SECOND eigenvalue of the ooo sector, which is the eigenvalue the LG hypothesis refers to inside that invariant subspace; from THIS run's verified mu_1,mu_2(V_{N'}) and this configuration's certified C_eps'",
+          "operator_level": true,
+          "rho": -0.47874184104641715,
+          "rho_gt_Lambda_n": true
+        }
+      ],
+      "solvability": {
+        "consequences": [
+          "skip_const = false: no index excluded from the modal sum",
+          "has_const = false: sigma^2 == 0, the s-block correction is absent",
+          "nu_* built from the Dirichlet spectrum, which starts at nu_1^D > 0"
+        ],
+        "dirichlet_replacement": "Poincare coercivity of (grad .,grad .) on H^1_0(Omega): nu_1^D = (pi/2LX)^2+(pi/2LY)^2+(pi/2LZ)^2 > 0, so the Dirichlet auxiliary Poisson problem is uniquely solvable for EVERY R in H^{-1}(Omega) by Lax-Milgram. No compatibility condition, and none is needed.",
+        "goes_through": true,
+        "neumann_step": "1 in V_{N'} forces <R,1> = 0; the Neumann Laplacian's zero mode needs the s-block sigma term"
+      },
+      "stage": "dirlg",
+      "t_assemble": 496.369257412,
+      "t_cg": 8.698123667,
+      "t_primary_eigen": 152.292822801,
+      "t_star": 1.0,
+      "target": "lambda1D",
+      "wall_seconds": 2293.79865193367
+    }
+  },
+  "system": "H2plus",
+  "target": "CERTIFIED lower bound on lambda_1^D(Omega), Dirichlet box eigenvalue, ooo sector",
+  "threads": 32,
+  "units": "paper units: energies half-hartree, lengths twice bohr",
+  "wall_seconds_total": 2303.7634370326996
+}

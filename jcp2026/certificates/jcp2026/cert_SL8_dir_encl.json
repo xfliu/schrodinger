@@ -1,0 +1,221 @@
+{
+  "D_aux": 35937,
+  "D_primary": 15625,
+  "Kdiag_1": [
+    0.15903171154099058,
+    0.1590317115409907
+  ],
+  "N": 48,
+  "Nprime": 64,
+  "basis": "sine (Dirichlet, H^1_0): psi_n(x) = (1/sqrt(L)) sin(n pi (x+L)/(2L))",
+  "box": {
+    "LX": 8.0,
+    "LY": 6.4,
+    "LZ": 6.4
+  },
+  "c": 1.0,
+  "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+  "dims": [
+    33,
+    33,
+    33
+  ],
+  "inf_L1_stageA": -0.6881358489710667,
+  "lehmann_behnke_rho_sigma": {
+    "float_vals_lowest4": [
+      -0.5473483990373303,
+      -0.006927156867362879,
+      0.0929537498618475,
+      0.2165989236735771
+    ],
+    "mu1": [
+      -0.6173483990373304,
+      -0.2771377779523466
+    ],
+    "mu2": [
+      -0.07692715686731011,
+      0.04301329649725323
+    ],
+    "t_lehmann_behnke": [
+      145.232053662,
+      148.170228736
+    ]
+  },
+  "memory_profile": [
+    {
+      "hwm_delta_gb": 61.10701370239258,
+      "hwm_gb": 61.10701370239258,
+      "rss_gb": 58.04592514038086,
+      "step": "eee assembly done (interval matrix live)"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 61.10701370239258,
+      "rss_gb": 58.048118591308594,
+      "step": "eee form_H_inplace!"
+    },
+    {
+      "hwm_delta_gb": 16.06047821044922,
+      "hwm_gb": 77.1674919128418,
+      "rss_gb": 77.1674919128418,
+      "step": "eee mid_matrix formed"
+    },
+    {
+      "hwm_delta_gb": 0.016376495361328125,
+      "hwm_gb": 77.18386840820312,
+      "rss_gb": 77.18386840820312,
+      "step": "after eigs (float midpoint live)"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 77.18386840820312,
+      "rss_gb": 77.14482879638672,
+      "step": "float midpoint freed"
+    },
+    {
+      "hwm_delta_gb": 268.0020561218262,
+      "hwm_gb": 345.1859245300293,
+      "rss_gb": 345.1859245300293,
+      "step": "after lehmann_behnke verification"
+    },
+    {
+      "hwm_delta_gb": 0.00017547607421875,
+      "hwm_gb": 345.1861000061035,
+      "rss_gb": 77.55998229980469,
+      "step": "eee mu1 enclosure complete"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.1861000061035,
+      "rss_gb": 96.68436050415039,
+      "step": "eta diag eps=0.40 mid formed"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.1861000061035,
+      "rss_gb": 96.69207382202148,
+      "step": "eta diag eps=0.40 done"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.1861000061035,
+      "rss_gb": 115.8056526184082,
+      "step": "eta diag eps=0.30 mid formed"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.1861000061035,
+      "rss_gb": 96.68951034545898,
+      "step": "eta diag eps=0.30 done"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.1861000061035,
+      "rss_gb": 96.68951034545898,
+      "step": "eee block released"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.1861000061035,
+      "rss_gb": 166.02125930786133,
+      "step": "oee assembly done"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.1861000061035,
+      "rss_gb": 169.14168167114258,
+      "step": "oee mid_matrix formed"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.1861000061035,
+      "rss_gb": 169.14366912841797,
+      "step": "after eigs (float midpoint live)"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.1861000061035,
+      "rss_gb": 169.14384078979492,
+      "step": "float midpoint freed"
+    },
+    {
+      "hwm_delta_gb": 77.32052230834961,
+      "hwm_gb": 422.5066223144531,
+      "rss_gb": 422.5066223144531,
+      "step": "after lehmann_behnke verification"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 422.5066223144531,
+      "rss_gb": 169.0702667236328,
+      "step": "oee mu2 enclosure complete, block released"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 422.5066223144531,
+      "rss_gb": 207.45076370239258,
+      "step": "dirlg: ooo interval assembly done"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 422.5066223144531,
+      "rss_gb": 207.60480880737305,
+      "step": "dirlg: float midpoint of H formed"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 422.5066223144531,
+      "rss_gb": 207.61184692382812,
+      "step": "after eigs (float midpoint live)"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 422.5066223144531,
+      "rss_gb": 174.38527297973633,
+      "step": "after lehmann_behnke verification"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 422.5066223144531,
+      "rss_gb": 174.38653182983398,
+      "step": "after eigs (float midpoint live)"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 422.5066223144531,
+      "rss_gb": 174.3891944885254,
+      "step": "after lehmann_behnke verification"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 422.5066223144531,
+      "rss_gb": 41.49860382080078,
+      "step": "dirlg: primary sub-block taken, float midpoint freed"
+    }
+  ],
+  "mode_cutoff_mmax": 65,
+  "moment_routine": "CertCore.sin_moment_matrix_1d (NOT cos_moment_matrix_1d)",
+  "mu1_galerkin": [
+    -0.5473483990401843,
+    -0.5473483990343442
+  ],
+  "mu1_width": 5.840106176435711e-12,
+  "mu2_galerkin": [
+    -0.0069271568692667014,
+    -0.006927156865363949
+  ],
+  "mu2_width": 3.902752253315267e-12,
+  "npanel_dir": 96,
+  "npanel_rule": 38,
+  "nt": 48,
+  "nu_1_dirichlet": 0.15903171154099063,
+  "nu_star_driver_convention": 162.88702576016618,
+  "nu_star_exact_dirichlet_complement": 173.1855338681388,
+  "peak_rss_gb": 422.5066223144531,
+  "sector": "(:odd, :odd, :odd)",
+  "sname": "ooo",
+  "stage": "dir_encl",
+  "t_assemble": 494.799610033,
+  "t_star": 1.0,
+  "wall_seconds": 964.208655834198
+}

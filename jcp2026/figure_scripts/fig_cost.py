@@ -85,11 +85,11 @@ PUB_T = 8.5 * 3600
 # be inlined were the pre-certification ones, obtained before the coercivity shift was
 # certified, and they are 1.02x-2.97x smaller than the certified widths.
 CERT_FILES = {"C1": "../certificates/cert_cmin_C1.json", "C2": "../certificates/cert_cmatch_C2.json",
-              "C3a": "../certificates/cert_cmin_C3a.json", "C3c": "../certificates/cert_cmin_C3c.json"}
+              "D3a": "../certificates/cert_cmin_D3a.json", "D3c": "../certificates/cert_cmin_D3c.json"}
 GEOM = {"C1": dict(system="H2plus", d=2.0, L=12, N=48, Np=64),
         "C2": dict(system="H2plus", d=2.0, L=14, N=64, Np=80),
-        "C3a": dict(system="H3plus", d=4.0, L=12, N=32, Np=48),
-        "C3c": dict(system="H3plus", d=4.0, L=12, N=24, Np=40)}
+        "D3a": dict(system="H3plus", d=4.0, L=12, N=32, Np=48),
+        "D3c": dict(system="H3plus", d=4.0, L=12, N=24, Np=40)}
 CERT = {}
 for _lab, _fn in CERT_FILES.items():
     _d = json.load(open(_fn))
@@ -122,7 +122,7 @@ nice2 = {"A": "Stage A\n(projection)", "mu2": "separator\n(oee LG)",
          "lg": "LG bound\n(eee)", "dirichlet": "Dirichlet\nupper"}
 order2 = [nice2[s] for s in stages]
 
-pts = [("our earlier run\n$L$=20, $N$=64", PUB_T, PUB_W, "#c1440e", "s", 8),
+pts = [("$L$=20 comparison\n$N$=64", PUB_T, PUB_W, "#c1440e", "s", 8),
        ("C1  $L$=12, $N$=48", tot1, CERT["C1"]["w"], "#7b2d8e", "*", 15),
        ("C2  $L$=14, $N$=64", tot2, CERT["C2"]["w"], "#7b2d8e", "*", 15)]
 
@@ -147,7 +147,7 @@ set_frame(ax); panel_letter(ax, "a")
 ax = axes[1]
 for lab, t, wv, col, mk, ms in pts:
     ax.plot([t / 3600], [wv], mk, color=col, ms=ms, mec="white", mew=0.8, zorder=6, clip_on=False)
-ax.annotate("our earlier run\n$L$=20, $N$=64", (PUB_T / 3600, PUB_W), xytext=(9, 2),
+ax.annotate("$L$=20 comparison\n$N$=64", (PUB_T / 3600, PUB_W), xytext=(9, 2),
             textcoords="offset points", ha="left", va="center", fontsize=7.5, color="#c1440e")
 ax.annotate("C1  $L$=12, $N$=48\nsame width, smaller basis", (tot1 / 3600, CERT["C1"]["w"]),
             xytext=(7, -13), textcoords="offset points", ha="left", va="top",
@@ -170,5 +170,5 @@ set_frame(ax); panel_letter(ax, "b")
 fig.tight_layout(w_pad=2.6)
 fig.savefig("fig_cost.png", dpi=300, bbox_inches="tight")
 
-ax.annotate("horizontal axis mixes two implementations:\nthe earlier point predates the threaded assembly", (0.5, 0.02), xycoords="axes fraction", fontsize=6.0, color="#6a6a6a", ha="center", va="bottom")
+ax.annotate("horizontal axis mixes two implementations:\nthe comparison point predates the threaded assembly", (0.5, 0.02), xycoords="axes fraction", fontsize=6.0, color="#6a6a6a", ha="center", va="bottom")
 fig.savefig("fig_cost.pdf", bbox_inches="tight")

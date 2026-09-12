@@ -1,0 +1,1136 @@
+{
+  "CERTIFIED_ENCLOSURE": {
+    "contains_reference": true,
+    "lambda1_lower": -0.5532907722271889,
+    "lambda1_upper": -0.5507405804827743,
+    "lower_source": "cert_SL1_stagelg.json : lambda1_lower_certified (eee Lehmann-Goerisch, separator certified_oee_mu2)",
+    "upper_source": "cert_SL1_stagedir.json : lambda1_upper_certified (Dirichlet Rayleigh quotient sup)",
+    "valid": true,
+    "width": 0.0025501917444146205
+  },
+  "N": 64,
+  "Nprime": 80,
+  "box": {
+    "LX": 10.0,
+    "LY": 8.0,
+    "LZ": 8.0,
+    "label": "[-10.0,10.0] x [-8.0,8.0]^2"
+  },
+  "config": "SL1",
+  "confinement": {
+    "formula": "sigma = inf_{x notin Omega} V, evaluated at the six face centres",
+    "holds": true,
+    "lambda_ref": -0.551317,
+    "margin": 0.308781374963667,
+    "sigma": -0.24253562503633297
+  },
+  "corrected_goerisch": {
+    "G4_self_consistency": {
+      "lg_goerisch": {
+        "all_pass": true,
+        "checks": {
+          "V2 Nprime == LG Nprime": true,
+          "ceps geometry: LX": true,
+          "ceps geometry: Ztot": true,
+          "ceps geometry: d_paper": true,
+          "ceps geometry: system": true,
+          "npanel/t_star from this run": true,
+          "nx*ny*nz == D_aux": true
+        },
+        "values": {
+          "D_aux": 68921,
+          "LX": 10.0,
+          "LY": 8.0,
+          "Nprime": 80,
+          "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+          "ceps_N_aux": 80,
+          "ceps_file": "<campaign_workdir>/ceps_certified_SL1g_N80.json",
+          "n_per_axis": 41,
+          "npanel": 48,
+          "nt": 48,
+          "t_star": 1.0
+        }
+      },
+      "mu2_goerisch": {
+        "all_pass": true,
+        "checks": {
+          "V2 Nprime == separator Nprime": true,
+          "V2 sector == oee separator sector": true,
+          "ceps geometry: LX": true,
+          "ceps geometry: Ztot": true,
+          "ceps geometry: d_paper": true,
+          "ceps geometry: system": true,
+          "npanel/t_star from this run": true,
+          "nx*ny*nz == D_aux": true
+        },
+        "values": {
+          "D_aux": 15000,
+          "LX": 10.0,
+          "LY": 8.0,
+          "Nprime_sep": 48,
+          "centres": "[((-2.0, 0.0, 0.0), 1.0), ((2.0, 0.0, 0.0), 1.0)]",
+          "ceps_N_aux": 80,
+          "ceps_file": "<campaign_workdir>/ceps_certified_SL1g_N80.json",
+          "npanel": 48,
+          "nt": 48,
+          "nx": 24,
+          "ny": 25,
+          "t_star": 1.0
+        }
+      },
+      "stageA_from_file": {
+        "all_pass": true,
+        "checks": {
+          "file N_stageA == this run's N_stageA": true,
+          "file Ztot": true,
+          "file box LX": true,
+          "file box LY": true,
+          "file box LZ": true,
+          "file has L1,L2,Ceps": true,
+          "file rho": true
+        },
+        "values": {
+          "Ceps": {
+            "0.3": [
+              2.399159524082602,
+              2.399159524082602
+            ],
+            "0.4": [
+              1.6326092627386717,
+              1.6326092627386717
+            ]
+          },
+          "L1": [
+            -0.5947135910938899,
+            -0.5947135910802055
+          ],
+          "L2": [
+            -0.3981732566900993,
+            -0.39817325667910985
+          ],
+          "N_stageA": 72,
+          "file": "<campaign_workdir>/reuse/cert_SL1x_stageA.json",
+          "geometry": {
+            "LX": 10.0,
+            "LY": 8.0,
+            "LZ": 8.0,
+            "Ztot": 2.0,
+            "r1_r2_rule": "r1 = rho/2, r2 = rho",
+            "rho": 8.0,
+            "rho_rule": "rho = min over nuclei of dist(nucleus, boundary), computed from the geometry record"
+          }
+        }
+      },
+      "stagedir_from_file": {
+        "all_pass": true,
+        "checks": {
+          "file N == config N": true,
+          "file has certified upper": true
+        },
+        "values": {
+          "N": 64,
+          "file": "<campaign_workdir>/reuse/cert_SL1x_stagedir.json",
+          "upper": -0.5507405804827743
+        }
+      }
+    },
+    "ceps_file": "<campaign_workdir>/ceps_certified_SL1g_N80.json",
+    "ceps_record": {
+      "0.65": {
+        "C_star": [
+          5.879492967529083,
+          5.879492967529086
+        ],
+        "Ceps_cert": 0.9721831346972867,
+        "Ceps_cert_interval": [
+          0.972183134672365,
+          0.9721831346972867
+        ],
+        "Ceps_point_used_downstream": 0.9721831346972867,
+        "Chat_squared": [
+          0.020410712409316356,
+          0.020410712409395577
+        ],
+        "LX": 10.0,
+        "N_aux": 80,
+        "S": [
+          4.814624916201068,
+          4.814624916238179
+        ],
+        "Ztot": 2.0,
+        "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+        "alpha": 0.3544,
+        "delta": 0.0886,
+        "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+        "eps": 0.65,
+        "eps_star": [
+          0.5452307692307692,
+          0.5452307692307693
+        ],
+        "etaV_squared": [
+          2.420091082174634,
+          2.4200910821840487
+        ],
+        "eta_1N_certified": [
+          -0.6921642333632092,
+          -0.6921642333390899
+        ],
+        "eta_1N_width": 2.4119262143074138e-11,
+        "eta_lower_certified": -0.9721831346972867,
+        "hypotheses": {
+          "0_lt_alpha_lt_eps": true,
+          "S_positive": true,
+          "eps_star_lt_1": true,
+          "r1_lt_r2": true
+        },
+        "identity_eps_nu1N_encloses_eta1N": true,
+        "improvement_over_analytic": 2.6110939882247095,
+        "nu1N_enclosure": [
+          -1.0648680513280142,
+          -1.0648680512909074
+        ],
+        "nu1N_width": 3.710676210744168e-11,
+        "nu1_lower_certified": -1.4956663610727485,
+        "r1": 4.0,
+        "r2": 8.0,
+        "sigma_loc_alpha": [
+          3.821670428893904,
+          3.821670428893906
+        ],
+        "sigma_loc_analytic_comparator": 2.5384615384615383,
+        "t_enclosure": 555.012576855
+      },
+      "0.7": {
+        "C_star": [
+          5.25441885377611,
+          5.254418853776113
+        ],
+        "Ceps_cert": 0.910297297208696,
+        "Ceps_cert_interval": [
+          0.9102972971850748,
+          0.910297297208696
+        ],
+        "Ceps_point_used_downstream": 0.910297297208696,
+        "Chat_squared": [
+          0.020514258220218375,
+          0.020514258220302103
+        ],
+        "LX": 10.0,
+        "N_aux": 80,
+        "S": [
+          4.303026649370152,
+          4.303026649402797
+        ],
+        "Ztot": 2.0,
+        "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+        "alpha": 0.3734,
+        "delta": 0.09335,
+        "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+        "eps": 0.7,
+        "eps_star": [
+          0.5334285714285715,
+          0.5334285714285716
+        ],
+        "etaV_squared": [
+          2.3643929259791716,
+          2.3643929259884375
+        ],
+        "eta_1N_certified": [
+          -0.6659745430841699,
+          -0.6659745430613216
+        ],
+        "eta_1N_width": 2.284827882448326e-11,
+        "eta_lower_certified": -0.910297297208696,
+        "hypotheses": {
+          "0_lt_alpha_lt_eps": true,
+          "S_positive": true,
+          "eps_star_lt_1": true,
+          "r1_lt_r2": true
+        },
+        "identity_eps_nu1N_encloses_eta1N": true,
+        "improvement_over_analytic": 2.667888211926275,
+        "nu1N_enclosure": [
+          -0.9513922044059572,
+          -0.9513922043733166
+        ],
+        "nu1N_width": 3.26405569239796e-11,
+        "nu1_lower_certified": -1.3004247102981372,
+        "r1": 4.0,
+        "r2": 8.0,
+        "sigma_loc_alpha": [
+          3.678093197643277,
+          3.6780931976432787
+        ],
+        "sigma_loc_analytic_comparator": 2.428571428571429,
+        "t_enclosure": 561.434163239
+      },
+      "0.75": {
+        "C_star": [
+          4.733826404828698,
+          4.733826404828701
+        ],
+        "Ceps_cert": 0.8583210001127385,
+        "Ceps_cert_interval": [
+          0.8583210000902451,
+          0.8583210001127385
+        ],
+        "Ceps_point_used_downstream": 0.8583210001127385,
+        "Chat_squared": [
+          0.020678684535408387,
+          0.020678684535496785
+        ],
+        "LX": 10.0,
+        "N_aux": 80,
+        "S": [
+          3.8771782258685312,
+          3.877178225897539
+        ],
+        "Ztot": 2.0,
+        "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+        "alpha": 0.3921,
+        "delta": 0.098025,
+        "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+        "eps": 0.75,
+        "eps_star": [
+          0.5227999999999999,
+          0.5228
+        ],
+        "etaV_squared": [
+          2.3165037171070857,
+          2.3165037171162224
+        ],
+        "eta_1N_certified": [
+          -0.6424861342201251,
+          -0.6424861341983714
+        ],
+        "eta_1N_width": 2.1753709944505317e-11,
+        "eta_lower_certified": -0.8583210001127385,
+        "hypotheses": {
+          "0_lt_alpha_lt_eps": true,
+          "S_positive": true,
+          "eps_star_lt_1": true,
+          "r1_lt_r2": true
+        },
+        "identity_eps_nu1N_encloses_eta1N": true,
+        "improvement_over_analytic": 2.7184856633204304,
+        "nu1N_enclosure": [
+          -0.8566481789601669,
+          -0.8566481789311619
+        ],
+        "nu1N_width": 2.9005020607542065e-11,
+        "nu1_lower_certified": -1.144428000150318,
+        "r1": 4.0,
+        "r2": 8.0,
+        "sigma_loc_alpha": [
+          3.550369803621524,
+          3.5503698036215257
+        ],
+        "sigma_loc_analytic_comparator": 2.333333333333333,
+        "t_enclosure": 570.205914123
+      },
+      "0.8": {
+        "C_star": [
+          4.300268423621277,
+          4.30026842362128
+        ],
+        "Ceps_cert": 0.8139222153364644,
+        "Ceps_cert_interval": [
+          0.8139222153149639,
+          0.8139222153364644
+        ],
+        "Ceps_point_used_downstream": 0.8139222153364644,
+        "Chat_squared": [
+          0.020825268781725595,
+          0.02082526878181819
+        ],
+        "LX": 10.0,
+        "N_aux": 80,
+        "S": [
+          3.523773956786609,
+          3.5237739568126036
+        ],
+        "Ztot": 2.0,
+        "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+        "alpha": 0.4098,
+        "delta": 0.10245,
+        "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+        "eps": 0.8,
+        "eps_star": [
+          0.5122499999999999,
+          0.51225
+        ],
+        "etaV_squared": [
+          2.270589412981606,
+          2.270589412990611
+        ],
+        "eta_1N_certified": [
+          -0.621195573467734,
+          -0.6211955734469417
+        ],
+        "eta_1N_width": 2.0792367827482394e-11,
+        "eta_lower_certified": -0.8139222153364644,
+        "hypotheses": {
+          "0_lt_alpha_lt_eps": true,
+          "S_positive": true,
+          "eps_star_lt_1": true,
+          "r1_lt_r2": true
+        },
+        "identity_eps_nu1N_encloses_eta1N": true,
+        "improvement_over_analytic": 2.7643919254248153,
+        "nu1N_enclosure": [
+          -0.7764944668346675,
+          -0.776494466808677
+        ],
+        "nu1N_width": 2.599054305107984e-11,
+        "nu1_lower_certified": -1.0174027691705803,
+        "r1": 4.0,
+        "r2": 8.0,
+        "sigma_loc_alpha": [
+          3.440214738897022,
+          3.440214738897024
+        ],
+        "sigma_loc_analytic_comparator": 2.25,
+        "t_enclosure": 594.230554078
+      },
+      "_N_aux": 80,
+      "_box": {
+        "LX": 10.0,
+        "LY": 8.0,
+        "LZ": 8.0,
+        "Ztot": 2.0,
+        "r1": 4.0,
+        "r2": 8.0,
+        "rho": 8.0
+      },
+      "_centres": [
+        [
+          [
+            -2.0,
+            0.0,
+            0.0
+          ],
+          1.0
+        ],
+        [
+          [
+            2.0,
+            0.0,
+            0.0
+          ],
+          1.0
+        ]
+      ],
+      "_d_paper": 2.0,
+      "_file": "<campaign_workdir>/ceps_certified_SL1g_N80.json",
+      "_system": "H2plus"
+    },
+    "discretization_term_included": true,
+    "eps_prime_grid": [
+      0.8,
+      0.75,
+      0.7,
+      0.65
+    ],
+    "gate_G1_mode": false,
+    "realization": "X = (L^2)^3 x L^2 x H^1(Omega); Tu = {sqrt(1-eps')grad u, sqrt(c-Ceps')u, u}; D = H^1(Omega)",
+    "stageA_dirichlet_source": "read from <campaign_workdir>/reuse/cert_SL1x_stage{A,dir}.json",
+    "uncorrected_A2_used": false
+  },
+  "d_paper": 2.0,
+  "decisive_test": null,
+  "driver": {
+    "core": "cert_core.jl",
+    "invocation": "julia -t <threads> run_cert.jl SL1",
+    "moments": "moments_verified.jl (bundle, unmodified)",
+    "output_file": "cert_SL1.json",
+    "script": "run_cert.jl",
+    "stage_files": {
+      "A": "cert_SL1_stageA.json",
+      "dirichlet": "cert_SL1_stagedir.json",
+      "lg": "cert_SL1_stagelg.json",
+      "mu2": "cert_SL1_stagemu2.json"
+    }
+  },
+  "float_comparison": {
+    "certified_contains_float_lower": null,
+    "certified_contains_float_upper": null,
+    "certified_width": 0.0025501917444146205,
+    "float_LG_lower": null,
+    "float_dirichlet_upper": null,
+    "float_width": null,
+    "interval_inflation_width_ratio": null,
+    "lower_endpoint_gap_certified_minus_float": null,
+    "source": "optimal_box_surface.csv, same (system, d_paper, L, N, N') cell",
+    "upper_endpoint_gap_certified_minus_float": null
+  },
+  "goerisch_shift": {
+    "c": 1.0,
+    "certified_lambda_min_lower_bound": 0.4052864089061101,
+    "raised_above_H2plus_default": false,
+    "rule": "c = max(1.0, ceil((-inf(L1)+0.25)*4)/4). H+cI must be CERTIFIED positive definite, i.e. c + inf(L1) > 0. c=1.0 is an H2+-tuned value that FAILS for H3^2+ at d_paper=2.8 (c+inf(L1) = -0.0515). c is a free parameter of the Goerisch construction, so raising it to satisfy the prerequisite is required by the method and is not a tuning of the result.",
+    "stageA_inf_L1": -0.5947135910938899
+  },
+  "julia": "1.12.7",
+  "peak_rss_gb": 123.47748947143555,
+  "purpose": "sigma_loc rerun on Omega_1: rigorous closed-form coercivity shift, Stage A at N=80",
+  "quadrature": {
+    "clearance": 8.0,
+    "moment_tail_bound_at_t_star": 4.009527226371595e-29,
+    "n_p": 24,
+    "npanel": 48,
+    "npanel_rule": "npanel = round(4.8*LX); reproduces the published defaults 48 at LX=10 and 96 at LX=20",
+    "nt": 48,
+    "t_star": 1.0,
+    "t_star_rule": "t_star = 1.0 raised in 0.25 steps until the large-t moment tail bound <= 1e-13"
+  },
+  "reference": {
+    "error": 0.0,
+    "kind": "exact_prolate_spheroidal_half_of_-1.1026342",
+    "value": -0.551317
+  },
+  "relative_accuracy": {
+    "abs_lambda_ref": 0.551317,
+    "certified_relative_width": 0.004625635966992893,
+    "certified_relative_width_percent": 0.4625635966992893,
+    "certified_width": 0.0025501917444146205,
+    "factor_inside_target": null,
+    "meets_target": null,
+    "reference_status": "exact",
+    "target_absolute_width": null,
+    "target_relative": null
+  },
+  "separator_resolution": {
+    "N_sep": 32,
+    "Nprime_sep": 48,
+    "note": "Stage-A (C_eps, L1, L2) and the certified oee mu2 separator are computed at N_sep/Nprime_sep, not at N/Nprime. Both are rigorous lower bounds on their targets at ANY resolution, so this is sound; it is also the published pattern (the Omega2 N=64/N'=80 run used the N=48/N'=64 oee separator). It is required here because the Lehmann-Behnke path needs several dense interval copies and only ~159 GB is available on this host."
+  },
+  "stages": {
+    "A": {
+      "Ceps": {
+        "0.3": [
+          2.399159524082602,
+          2.399159524082602
+        ],
+        "0.4": [
+          1.6326092627386717,
+          1.6326092627386717
+        ]
+      },
+      "L1": [
+        -0.5947135910938899,
+        -0.5947135910802055
+      ],
+      "L2": [
+        -0.3981732566900993,
+        -0.39817325667910985
+      ],
+      "N_stageA": 72,
+      "geometry": {
+        "LX": 10.0,
+        "LY": 8.0,
+        "LZ": 8.0,
+        "Ztot": 2.0,
+        "r1_r2_rule": "r1 = rho/2, r2 = rho",
+        "rho": 8.0,
+        "rho_rule": "rho = min over nuclei of dist(nucleus, boundary), computed from the geometry record"
+      },
+      "mu1N_galerkin": [
+        -0.551851499671972,
+        -0.551851499658834
+      ],
+      "mu2N_galerkin": [
+        -0.33706319310822785,
+        -0.33706319309801763
+      ],
+      "source": "READ FROM <campaign_workdir>/reuse/cert_SL1x_stageA.json (unchanged by this repair)",
+      "stage": "A"
+    },
+    "dirichlet": {
+      "N": 64,
+      "RQ_interval": [
+        -0.5507405804920263,
+        -0.5507405804827743
+      ],
+      "lambda1_upper_certified": -0.5507405804827743,
+      "source": "READ FROM <campaign_workdir>/reuse/cert_SL1x_stagedir.json (unchanged by this repair)",
+      "stage": "dirichlet"
+    },
+    "lg": {
+      "A0": [
+        0.44816447843557805,
+        0.4481644784406583
+      ],
+      "A0_width": 5.080269538382254e-12,
+      "A2": [
+        2.2334026753840948,
+        2.2334026754811256
+      ],
+      "A2_galerkin": [
+        2.231446745111753,
+        2.2314467452068047
+      ],
+      "A2_galerkin_width": 9.50519662978877e-11,
+      "A2_residual_corr_hi": 1.0275808357452378e-22,
+      "A2_width": 9.703082781697958e-11,
+      "B": [
+        0.07273490980587305,
+        0.0727349098491834
+      ],
+      "B_positive": true,
+      "D_aux": 68921,
+      "L1_LG": [
+        -0.5532907722271889,
+        -0.5532907721468495
+      ],
+      "L1_LG_width": 8.033940179785759e-11,
+      "N": 64,
+      "Nprime": 80,
+      "c": 1.0,
+      "certificate_valid": true,
+      "cg_residual": 9.232709506901973e-13,
+      "corrected_realization_used": true,
+      "eps_prime_used": 0.65,
+      "goerisch": {
+        "LX_used": 10.0,
+        "LYZ_used": 8.0,
+        "Nprime_used": 80,
+        "Vw_norm_sq": [
+          5.109512220892241,
+          5.109512220895775
+        ],
+        "discretization_term_included": true,
+        "dominant_term": "discretization",
+        "grad_phi_sq_algebraic_sup": 1.569562900047975e-22,
+        "grad_phi_sq_discretization_sup": 0.0006845755960124328,
+        "grad_phi_sq_total_sup": 0.0006845755960124329,
+        "momx_calls": 2352,
+        "momyz_calls": 1176,
+        "npanel_used": 48,
+        "nt_used": 48,
+        "nu_1_neumann": 0.0246740110027234,
+        "nu_1_note": "in-space part uses the EXACT modal sum sum_{k!=0} |r_k|^2/nu_k, which is sharper than and implies the brief's ||r||^2/nu_1; nu_1 is reported for reference",
+        "nu_star": 161.8861861888682,
+        "nu_star_convention": "((N'+1)*pi/(2*LX))^2, the driver's own conservative value",
+        "nx_used": 41,
+        "ny_used": 41,
+        "nz_used": 41,
+        "per_eps_prime": {
+          "0.65": {
+            "A2_goerisch": [
+              2.2334026753840948,
+              2.2334026754811256
+            ],
+            "Ceps_cert": 0.9721831346972867,
+            "admissible": true,
+            "c": 1.0,
+            "c_minus_Ceps": 0.027816865302713323,
+            "correction_sup": 0.0019559302743212374,
+            "defect_sup": 0.001955930274321237,
+            "sigma2_const_mode_sup": 1.4979136681559204e-22
+          },
+          "0.7": {
+            "A2_goerisch": [
+              2.2337286637628186,
+              2.2337286638601794
+            ],
+            "Ceps_cert": 0.910297297208696,
+            "admissible": true,
+            "c": 1.0,
+            "c_minus_Ceps": 0.08970270279130399,
+            "correction_sup": 0.0022819186533747766,
+            "defect_sup": 0.002281918653374776,
+            "sigma2_const_mode_sup": 4.6450398310880986e-23
+          },
+          "0.75": {
+            "A2_goerisch": [
+              2.234185047493032,
+              2.2341850475908545
+            ],
+            "Ceps_cert": 0.8583210001127385,
+            "admissible": true,
+            "c": 1.0,
+            "c_minus_Ceps": 0.14167899988726151,
+            "correction_sup": 0.002738302384049732,
+            "defect_sup": 0.0027383023840497314,
+            "sigma2_const_mode_sup": 2.940962512111352e-23
+          },
+          "0.8": {
+            "A2_goerisch": [
+              2.234869623088352,
+              2.2348696231868668
+            ],
+            "Ceps_cert": 0.8139222153364644,
+            "admissible": true,
+            "c": 1.0,
+            "c_minus_Ceps": 0.18607778466353564,
+            "correction_sup": 0.003422877980062166,
+            "defect_sup": 0.0034228779800621655,
+            "sigma2_const_mode_sup": 2.2392389729665404e-23
+          }
+        },
+        "proj_norm_sq": [
+          4.998688888499351,
+          4.9986888886079415
+        ],
+        "r0_const_mode": 9.71445146547012e-16,
+        "r2_sup": 4.164645467799268e-23,
+        "realization": "corrected: X = (L^2)^3 x L^2 x H^1(Omega), D = H^1(Omega)",
+        "t_star_used": 1.0,
+        "t_vsq": 835.590088075,
+        "tail_sq": [
+          0.11082333228429952,
+          0.11082333239642406
+        ],
+        "vsq_node_pairs": 1176,
+        "vsq_terms": 2352
+      },
+      "goerisch_variants": {
+        "0.65": {
+          "A2_goerisch": [
+            2.2334026753840948,
+            2.2334026754811256
+          ],
+          "B": [
+            0.07273490980587305,
+            0.0727349098491834
+          ],
+          "B_positive": true,
+          "Ceps_cert": 0.9721831346972867,
+          "L1_LG": [
+            -0.5532907722271889,
+            -0.5532907721468495
+          ],
+          "L1_LG_width": 8.033940179785759e-11,
+          "certificate_valid": true,
+          "correction_sup": 0.0019559302743212374,
+          "defect_sup": 0.001955930274321237,
+          "eps_prime": 0.65,
+          "nu": [
+            -2.468242968065803,
+            -2.4682429665262293
+          ],
+          "nu_lt_1": true,
+          "sigma2_const_mode_sup": 1.4979136681559204e-22
+        },
+        "0.7": {
+          "A2_goerisch": [
+            2.2337286637628186,
+            2.2337286638601794
+          ],
+          "B": [
+            0.07286334829198937,
+            0.07286334833542973
+          ],
+          "B_positive": true,
+          "Ceps_cert": 0.910297297208696,
+          "L1_LG": [
+            -0.5535180969236931,
+            -0.5535180968431991
+          ],
+          "L1_LG_width": 8.049405586518787e-11,
+          "certificate_valid": true,
+          "correction_sup": 0.0022819186533747766,
+          "defect_sup": 0.002281918653374776,
+          "eps_prime": 0.7,
+          "nu": [
+            -2.4638921195580563,
+            -2.4638921180193862
+          ],
+          "nu_lt_1": true,
+          "sigma2_const_mode_sup": 4.6450398310880986e-23
+        },
+        "0.75": {
+          "A2_goerisch": [
+            2.234185047493032,
+            2.2341850475908545
+          ],
+          "B": [
+            0.07304316217255225,
+            0.07304316221617457
+          ],
+          "B_positive": true,
+          "Ceps_cert": 0.8583210001127385,
+          "L1_LG": [
+            -0.5538359630817417,
+            -0.5538359630010317
+          ],
+          "L1_LG_width": 8.070999424347747e-11,
+          "certificate_valid": true,
+          "correction_sup": 0.002738302384049732,
+          "defect_sup": 0.0027383023840497314,
+          "eps_prime": 0.75,
+          "nu": [
+            -2.457826637312649,
+            -2.457826635775251
+          ],
+          "nu_lt_1": true,
+          "sigma2_const_mode_sup": 2.940962512111352e-23
+        },
+        "0.8": {
+          "A2_goerisch": [
+            2.234869623088352,
+            2.2348696231868668
+          ],
+          "B": [
+            0.07331288299339644,
+            0.07331288303729155
+          ],
+          "B_positive": true,
+          "Ceps_cert": 0.8139222153364644,
+          "L1_LG": [
+            -0.5543119145987624,
+            -0.5543119145177302
+          ],
+          "L1_LG_width": 8.103218096522369e-11,
+          "certificate_valid": true,
+          "correction_sup": 0.003422877980062166,
+          "defect_sup": 0.0034228779800621655,
+          "eps_prime": 0.8,
+          "nu": [
+            -2.4487842017809784,
+            -2.4487842002455054
+          ],
+          "nu_lt_1": true,
+          "sigma2_const_mode_sup": 2.2392389729665404e-23
+        }
+      },
+      "hypothesis_rho_gt_Lambda_n": {
+        "Lambda_n": -0.5518355215593417,
+        "holds": true,
+        "margin": 0.1795274296561663,
+        "note": "Lambda_n = sup(A0) - c, using A1 = <v,v> = 1; checked before the pencil was formed",
+        "rho": -0.3723080919031754
+      },
+      "lam_min_lb": 0.4052864089061101,
+      "lambda1_lower_certified": -0.5532907722271889,
+      "mu1_primary_float_unshifted": -0.55183552156188,
+      "nu": [
+        -2.468242968065803,
+        -2.4682429665262293
+      ],
+      "nu_lt_1": true,
+      "peak_rss_gb": 123.47748947143555,
+      "r2_hi": 4.164645467799268e-23,
+      "separator_candidates": {
+        "certified_oee_mu2": -0.3723080919031754,
+        "stageA_L2": -0.3981732566900993
+      },
+      "separator_rho": -0.3723080919031754,
+      "separator_source": "certified_oee_mu2",
+      "separator_variants": {
+        "certified_oee_mu2": {
+          "B": [
+            0.07273490980587305,
+            0.0727349098491834
+          ],
+          "B_positive": true,
+          "L1_LG": [
+            -0.5532907722271889,
+            -0.5532907721468495
+          ],
+          "L1_LG_width": 8.033940179785759e-11,
+          "certificate_valid": true,
+          "nu": [
+            -2.468242968065803,
+            -2.4682429665262293
+          ],
+          "nu_lt_1": true,
+          "rho": -0.3723080919031754
+        },
+        "stageA_L2": {
+          "B": [
+            0.053439231873633086,
+            0.05343923191385769
+          ],
+          "B_positive": true,
+          "L1_LG": [
+            -0.5534650310483613,
+            -0.5534650309578228
+          ],
+          "L1_LG_width": 9.053846561357659e-11,
+          "certificate_valid": true,
+          "nu": [
+            -2.8754579638735343,
+            -2.8754579616140625
+          ],
+          "nu_lt_1": true,
+          "rho": -0.3981732566900993
+        }
+      },
+      "stage": "lg",
+      "t_assemble": 1469.993126729,
+      "t_cg": 6179.635259685,
+      "wall_seconds": 9396.495429039001
+    },
+    "mu2": {
+      "A0": [
+        0.6632980768099921,
+        0.6632980768112549
+      ],
+      "A0_width": 1.262767668208653e-12,
+      "A2": [
+        1.5118321043589644,
+        1.5118321043692184
+      ],
+      "A2_galerkin": [
+        1.5082668390288465,
+        1.5082668390385698
+      ],
+      "A2_galerkin_width": 9.723333249667121e-12,
+      "A2_residual_corr_hi": 9.133143476601164e-24,
+      "A2_width": 1.0254019855437946e-11,
+      "B": [
+        0.0038333326356539965,
+        0.003833332641908216
+      ],
+      "B_positive": true,
+      "D_aux": 15000,
+      "L2_LG": [
+        -0.3723080919031754,
+        -0.3723080917981315
+      ],
+      "L2_LG_width": 1.0504386249721165e-10,
+      "N": 32,
+      "Nprime": 48,
+      "Nprime_sep_configured": 48,
+      "Nprime_sep_overridden": false,
+      "c": 1.0,
+      "certificate_valid": true,
+      "cg_residual": 9.663840796941497e-13,
+      "corrected_realization_used": true,
+      "eps_prime_used": 0.65,
+      "goerisch": {
+        "LX_used": 10.0,
+        "LYZ_used": 8.0,
+        "Nprime_used": 48,
+        "Vw_norm_sq": [
+          1.8747792823458307,
+          1.8747792823467484
+        ],
+        "discretization_term_included": true,
+        "dominant_term": "discretization",
+        "grad_phi_sq_algebraic_sup": 1.5921761166911966e-23,
+        "grad_phi_sq_discretization_sup": 0.0012478428657270778,
+        "grad_phi_sq_total_sup": 0.001247842865727078,
+        "momx_calls": 2352,
+        "momyz_calls": 1176,
+        "npanel_used": 48,
+        "nt_used": 48,
+        "nu_1_neumann": 0.0246740110027234,
+        "nu_1_note": "in-space part uses the EXACT modal sum sum_{k!=0} |r_k|^2/nu_k, which is sharper than and implies the brief's ||r||^2/nu_1; nu_1 is reported for reference",
+        "nu_star": 59.242300417538885,
+        "nu_star_convention": "((N'+1)*pi/(2*LX))^2, the driver's own conservative value",
+        "nx_used": 24,
+        "ny_used": 25,
+        "nz_used": 25,
+        "per_eps_prime": {
+          "0.65": {
+            "A2_goerisch": [
+              1.5118321043589644,
+              1.5118321043692184
+            ],
+            "Ceps_cert": 0.9721831346972867,
+            "admissible": true,
+            "c": 1.0,
+            "c_minus_Ceps": 0.027816865302713323,
+            "correction_sup": 0.0035652653306487946,
+            "defect_sup": 0.0035652653306487946,
+            "sigma2_const_mode_sup": 0.0
+          },
+          "0.7": {
+            "A2_goerisch": [
+              1.5124263152473176,
+              1.51242631525766
+            ],
+            "Ceps_cert": 0.910297297208696,
+            "admissible": true,
+            "c": 1.0,
+            "c_minus_Ceps": 0.08970270279130399,
+            "correction_sup": 0.0041594762190902594,
+            "defect_sup": 0.0041594762190902594,
+            "sigma2_const_mode_sup": 0.0
+          },
+          "0.75": {
+            "A2_goerisch": [
+              1.5132582104910117,
+              1.513258210501478
+            ],
+            "Ceps_cert": 0.8583210001127385,
+            "admissible": true,
+            "c": 1.0,
+            "c_minus_Ceps": 0.14167899988726151,
+            "correction_sup": 0.004991371462908312,
+            "defect_sup": 0.004991371462908312,
+            "sigma2_const_mode_sup": 0.0
+          },
+          "0.8": {
+            "A2_goerisch": [
+              1.514506053356553,
+              1.5145060533672052
+            ],
+            "Ceps_cert": 0.8139222153364644,
+            "admissible": true,
+            "c": 1.0,
+            "c_minus_Ceps": 0.18607778466353564,
+            "correction_sup": 0.006239214328635392,
+            "defect_sup": 0.006239214328635392,
+            "sigma2_const_mode_sup": 0.0
+          }
+        },
+        "proj_norm_sq": [
+          1.8008542004214623,
+          1.8008542004315478
+        ],
+        "r0_const_mode": 0.0,
+        "r2_sup": 3.701538921655952e-24,
+        "realization": "corrected: X = (L^2)^3 x L^2 x H^1(Omega), D = H^1(Omega)",
+        "t_star_used": 1.0,
+        "t_vsq": 472.368861189,
+        "tail_sq": [
+          0.07392508191428293,
+          0.07392508192528613
+        ],
+        "vsq_node_pairs": 1176,
+        "vsq_terms": 2352
+      },
+      "goerisch_variants": {
+        "0.65": {
+          "A2_goerisch": [
+            1.5118321043589644,
+            1.5118321043692184
+          ],
+          "B": [
+            0.0038333326356539965,
+            0.003833332641908216
+          ],
+          "B_positive": true,
+          "Ceps_cert": 0.9721831346972867,
+          "L2_LG": [
+            -0.3723080919031754,
+            -0.3723080917981315
+          ],
+          "certificate_valid": true,
+          "correction_sup": 0.0035652653306487946,
+          "eps_prime": 0.65,
+          "nu": [
+            -8.968765772554772,
+            -8.96876575759249
+          ],
+          "nu_lt_1": true
+        },
+        "0.7": {
+          "A2_goerisch": [
+            1.5124263152473176,
+            1.51242631525766
+          ],
+          "B": [
+            0.004122567795353804,
+            0.004122567801650878
+          ],
+          "B_positive": true,
+          "Ceps_cert": 0.910297297208696,
+          "L2_LG": [
+            -0.37702334446290864,
+            -0.37702334435857177
+          ],
+          "certificate_valid": true,
+          "correction_sup": 0.0041594762190902594,
+          "eps_prime": 0.7,
+          "nu": [
+            -8.339526296260745,
+            -8.33952628321611
+          ],
+          "nu_lt_1": true
+        },
+        "0.75": {
+          "A2_goerisch": [
+            1.5132582104910117,
+            1.513258210501478
+          ],
+          "B": [
+            0.00452749701893318,
+            0.00452749702529065
+          ],
+          "B_positive": true,
+          "Ceps_cert": 0.8583210001127385,
+          "L2_LG": [
+            -0.38350692142327314,
+            -0.38350692131990405
+          ],
+          "certificate_valid": true,
+          "correction_sup": 0.004991371462908312,
+          "eps_prime": 0.75,
+          "nu": [
+            -7.593657686288615,
+            -7.593657675346758
+          ],
+          "nu_lt_1": true
+        },
+        "0.8": {
+          "A2_goerisch": [
+            1.514506053356553,
+            1.5145060533672052
+          ],
+          "B": [
+            0.00513489085430241,
+            0.005134890860750363
+          ],
+          "B_positive": true,
+          "Ceps_cert": 0.8139222153364644,
+          "L2_LG": [
+            -0.39298313657975814,
+            -0.3929831364778097
+          ],
+          "certificate_valid": true,
+          "correction_sup": 0.006239214328635392,
+          "eps_prime": 0.8,
+          "nu": [
+            -6.695422261734012,
+            -6.695422253080558
+          ],
+          "nu_lt_1": true
+        }
+      },
+      "lam_min_lb": 0.4052864089061101,
+      "lehmann_behnke_rho_sigma": {
+        "mu2": [
+          -0.40699142026285456,
+          -0.2513896392066825
+        ],
+        "mu3": [
+          -0.23578785815049833,
+          -0.10347091544689664
+        ]
+      },
+      "mu2N_galerkin": [
+        -0.3369914202644923,
+        -0.3369914202612131
+      ],
+      "mu2N_width": 3.2792102366840936e-12,
+      "mu2_Omega_lower_certified": -0.3723080919031754,
+      "mu3N_galerkin": [
+        -0.16578785815117264,
+        -0.16578785814986674
+      ],
+      "mu3N_width": 1.3058998327153404e-12,
+      "nu": [
+        -8.968765772554772,
+        -8.96876575759249
+      ],
+      "nu_lt_1": true,
+      "oee2nd_sharpL_separator": -0.3023216606525372,
+      "peak_rss_gb": 31.310794830322266,
+      "r2_hi": 3.701538921655952e-24,
+      "sep_eps": 0.4,
+      "sep_valid": true,
+      "stage": "mu2",
+      "t_assemble": 117.359824809,
+      "t_cg": 1.760428673,
+      "wall_seconds": 723.4714307785034
+    }
+  },
+  "system": "H2plus",
+  "threads": 32,
+  "three_centre_note": null,
+  "wall_seconds_total": 10135.689535140991
+}

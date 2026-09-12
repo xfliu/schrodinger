@@ -35,8 +35,8 @@ axA.legend(loc="lower left",fontsize=8.5)
 axA.set_title("(a) second stage tightens the bracket",loc="left",pad=6)
 
 c1="#c0504d"; c2="#4f81bd"
-axB.plot(f4["Omega1"]["N"],f4["Omega1"]["gap"],"o-",color=c1,ms=6,label="$\\Omega_1$ (small box)")
-axB.plot(f4["Omega2"]["N"],f4["Omega2"]["gap"],"s-",color=c2,ms=6,label="$\\Omega_2$ (doubled box)")
+axB.plot(f4["Omega1"]["N"],f4["Omega1"]["gap"],"o-",color=c1,ms=6,label="$\\Omega_2$ ($L=10$, the working box)")
+axB.plot(f4["Omega2"]["N"],f4["Omega2"]["gap"],"s-",color=c2,ms=6,label="$\\Omega_3$ ($L=20$ comparison)")
 axB.set_yscale("log"); axB.set_xticks([32,48]); axB.set_xlim(28,52); axB.set_ylim(1.5e-5,2.2e-3)
 axB.set_xlabel("spectral order $N$ (per axis)")
 axB.set_ylabel(r"Dirichlet–Neumann gap" "\n" r"(paper units, $=\frac{1}{2}$ Ha)")

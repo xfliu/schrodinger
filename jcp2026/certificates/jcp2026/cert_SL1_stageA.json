@@ -1,0 +1,270 @@
+{
+  "Ceps": {
+    "0.3": [
+      2.399159524082602,
+      2.399159524082602
+    ],
+    "0.4": [
+      1.6326092627386717,
+      1.6326092627386717
+    ]
+  },
+  "Ceps_width": {
+    "0.3": 0.0,
+    "0.4": 0.0
+  },
+  "Deee": 50653,
+  "Doee": 49284,
+  "L1": [
+    -0.5947135910938899,
+    -0.5947135910802055
+  ],
+  "L1_width": 1.3684386956924754e-11,
+  "L2": [
+    -0.3981732566900993,
+    -0.39817325667910985
+  ],
+  "L2_width": 1.098943158694965e-11,
+  "N": 72,
+  "N_stageA": 72,
+  "N_stageA_configured": 80,
+  "N_stageA_overridden": true,
+  "eps1": 0.4,
+  "eps2": 0.4,
+  "eta_1N_ritz_diagnostic_not_a_bound": {
+    "COMMENT": "DIAGNOSTIC ONLY -- NOT A BOUND AND NOT THE SHIFT. eta_1N is the auxiliary Rayleigh-Ritz value lambda_1(eps*K + P) on the cosine space, which is a subspace of H^1(Omega); Rayleigh-Ritz therefore bounds it from ABOVE, eta_1N >= eta, so -eta_1N <= C_eps^opt and using it DIRECTLY as a coercivity shift is INADMISSIBLE. Reported in the paper only as an estimate that locates the optimum. The shift actually used is under the 'sigma_loc' key with its source named by 'shift_source'; when that is 'certified_eta_based' the shift derives from a VERIFIED ENCLOSURE of eta_1N pushed through the projection bound on the normalised operator B = A_eps/eps, which is admissible -- not from this float Ritz value.",
+    "computed_as": "float Ritz value from eigs(Symmetric(mid(H_aux)); nev=1, which=:SR); NOT a verified enclosure, since it is explicitly not a bound",
+    "minus_eta_would_have_been": {
+      "0.3": 1.092540890054828,
+      "0.4": 0.904634398922804
+    },
+    "shift_actually_used": {
+      "0.3": 2.399159524082602,
+      "0.4": 1.6326092627386717
+    },
+    "shift_source": "certified_eta_based",
+    "values": {
+      "0.3": -1.092540890054828,
+      "0.4": -0.904634398922804
+    }
+  },
+  "geometry": {
+    "LX": 10.0,
+    "LY": 8.0,
+    "LZ": 8.0,
+    "Ztot": 2.0,
+    "r1_r2_rule": "r1 = rho/2, r2 = rho",
+    "rho": 8.0,
+    "rho_rule": "rho = min over nuclei of dist(nucleus, boundary), computed from the geometry record"
+  },
+  "goerisch_shift_admissibility": {
+    "adaptive_rule_would_give": 1.0,
+    "admissible_at_c_1": true,
+    "inf_L1": -0.5947135910938899,
+    "lambda_min_at_c_1": 0.4052864089061101
+  },
+  "lehmann_behnke_rho_sigma": {
+    "eee": [
+      -0.6218514996654229,
+      -0.38610982201940813
+    ],
+    "oee": [
+      -0.4070631931030924,
+      -0.25143719657404995
+    ],
+    "source": "auto from approximate spectrum"
+  },
+  "memory_profile": [
+    {
+      "hwm_delta_gb": 62.84178161621094,
+      "hwm_gb": 62.84178161621094,
+      "rss_gb": 59.59487533569336,
+      "step": "eee assembly done (interval matrix live)"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 62.84178161621094,
+      "rss_gb": 59.597076416015625,
+      "step": "eee form_H_inplace!"
+    },
+    {
+      "hwm_delta_gb": 14.34505844116211,
+      "hwm_gb": 77.18684005737305,
+      "rss_gb": 77.18684005737305,
+      "step": "eee mid_matrix formed"
+    },
+    {
+      "hwm_delta_gb": 0.014202117919921875,
+      "hwm_gb": 77.20104217529297,
+      "rss_gb": 77.20104217529297,
+      "step": "after eigs (float midpoint live)"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 77.20104217529297,
+      "rss_gb": 77.19356155395508,
+      "step": "float midpoint freed"
+    },
+    {
+      "hwm_delta_gb": 267.99462127685547,
+      "hwm_gb": 345.19566345214844,
+      "rss_gb": 345.19566345214844,
+      "step": "after lehmann_behnke verification"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.19566345214844,
+      "rss_gb": 77.56954193115234,
+      "step": "eee mu1 enclosure complete"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.19566345214844,
+      "rss_gb": 96.69092559814453,
+      "step": "eta diag eps=0.40 mid formed"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.19566345214844,
+      "rss_gb": 96.69874954223633,
+      "step": "eta diag eps=0.40 done"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.19566345214844,
+      "rss_gb": 115.81612396240234,
+      "step": "eta diag eps=0.30 mid formed"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.19566345214844,
+      "rss_gb": 96.70012664794922,
+      "step": "eta diag eps=0.30 done"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.19566345214844,
+      "rss_gb": 96.70012664794922,
+      "step": "eee block released"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.19566345214844,
+      "rss_gb": 155.35149002075195,
+      "step": "oee assembly done"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.19566345214844,
+      "rss_gb": 169.14323806762695,
+      "step": "oee mid_matrix formed"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.19566345214844,
+      "rss_gb": 169.14423370361328,
+      "step": "after eigs (float midpoint live)"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 345.19566345214844,
+      "rss_gb": 169.14423370361328,
+      "step": "float midpoint freed"
+    },
+    {
+      "hwm_delta_gb": 77.3121566772461,
+      "hwm_gb": 422.50782012939453,
+      "rss_gb": 422.50782012939453,
+      "step": "after lehmann_behnke verification"
+    },
+    {
+      "hwm_delta_gb": 0.0,
+      "hwm_gb": 422.50782012939453,
+      "rss_gb": 169.0768699645996,
+      "step": "oee mu2 enclosure complete, block released"
+    }
+  ],
+  "mu1N_galerkin": [
+    -0.551851499671972,
+    -0.551851499658834
+  ],
+  "mu1N_width": 1.3138046206506715e-11,
+  "mu2N_galerkin": [
+    -0.33706319310822785,
+    -0.33706319309801763
+  ],
+  "mu2N_width": 1.0210221557116483e-11,
+  "peak_rss_gb": 422.50782012939453,
+  "separation_certificate": {
+    "L2_gt_U1": true,
+    "U1_sup_mu1N": -0.551851499658834,
+    "inf_L2": -0.3981732566900993,
+    "margin": 0.15367824296873467,
+    "note": "L_2 > U_1 is required for the separator to separate. Under the analytic sigma_loc shift this failed at N_stageA=64 and forced 80 (72 used in practice); under the certified eta-based shift the margin is far larger. Verified here, not assumed."
+  },
+  "shift_description": "CERTIFIED eta-based shift: Ceps_cert = -eps*inf(nu_1 lower bound), where nu_1 = lambda_min(B) with B = A_eps/eps = -Lap + V/eps. ADMISSIBLE because the projection bound is applied to an operator whose Laplacian coefficient is normalised to 1. Distinct from the INADMISSIBLE raw -eta_1N: Rayleigh-Ritz bounds eta from above on the cosine subspace of H^1(Omega), so -eta_1N <= C_eps^opt at every N. Here the verified ENCLOSURE of eta_1N feeds the projection bound rather than being used as the shift directly.",
+  "shift_source": "certified_eta_based",
+  "sigma_loc": {
+    "0.3": {
+      "C_star": [
+        20.18537243006403,
+        20.18537243006405
+      ],
+      "Ceps_cert": 2.399159524082602,
+      "N_aux": 80,
+      "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+      "alpha": 0.1978,
+      "analytic_comparator": 4.333333333333334,
+      "delta": 0.04945,
+      "eps_star": [
+        0.6593333333333333,
+        0.6593333333333334
+      ],
+      "eta_1N_certified": [
+        -1.0932272060486499,
+        -1.0932272059988093
+      ],
+      "file": "<campaign_workdir>/ceps1lo/ceps_certified_SL1lo_N80.json",
+      "improvement_over_analytic": 1.8061880795485359,
+      "nu1N_enclosure": [
+        -3.644090686828833,
+        -3.6440906866626976
+      ],
+      "nu1_lower_certified": -7.997198413608672,
+      "source": "certified_eta_based"
+    },
+    "0.4": {
+      "C_star": [
+        12.617361392148924,
+        12.617361392148934
+      ],
+      "Ceps_cert": 1.6326092627386717,
+      "N_aux": 80,
+      "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+      "alpha": 0.2471,
+      "analytic_comparator": 3.5,
+      "delta": 0.061775,
+      "eps_star": [
+        0.6177499999999999,
+        0.61775
+      ],
+      "eta_1N_certified": [
+        -0.9048526460554288,
+        -0.9048526460186616
+      ],
+      "file": "<campaign_workdir>/ceps1lo/ceps_certified_SL1lo_N80.json",
+      "improvement_over_analytic": 2.1438075110077564,
+      "nu1N_enclosure": [
+        -2.262131615138572,
+        -2.2621316150466537
+      ],
+      "nu1_lower_certified": -4.0815231568466785,
+      "source": "certified_eta_based"
+    }
+  },
+  "stage": "A",
+  "t_assemble": 1880.483339944,
+  "t_eta": 78.6405737,
+  "t_ritz": 570.042454383,
+  "wall_seconds": 3102.156038045883
+}

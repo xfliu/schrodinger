@@ -1,6 +1,6 @@
 # LG_lower and the columns listed in derived_from_LG are FLOAT ESTIMATES, not certified bounds.
 # H2plus: validated against certified runs C1/C2 to ~1e-6 -- usable for cell selection.
-# H3plus: UNRELIABLE at the 1e-4 level (certified/float ratio 0.9845 at C3a but 2.39 at D1);
+# H3plus: UNRELIABLE at the 1e-4 level (certified/float ratio 0.9845 at D3a but 2.39 at D1);
 #   at d_paper=2.8, L=12, N=64 the float LG_lower -0.93640124532559 exceeds a four-way-verified
 #   variational upper bound -0.936444734 by 4.3489e-05, so it is not a bound. DO NOT QUOTE as a width.
 # Ritz columns (mu1N_Ritz, lambda1D_Ritz, trunc_gap_discrete, truncation_term, sigma_confinement)

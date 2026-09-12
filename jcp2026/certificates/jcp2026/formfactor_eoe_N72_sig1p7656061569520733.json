@@ -1,0 +1,124 @@
+{
+  "D": 49284,
+  "LX": 10.0,
+  "N": 72,
+  "box": [
+    10.0,
+    8.0,
+    8.0
+  ],
+  "certification_route": {
+    "direction": "an UPPER bound on eta'^2, i.e. conservative in the safe direction",
+    "perturbation_bound": "||A_true - Ahat||_2 <= mu r1 + r2 + 2 pn r1 + r1^2 + D u pn^2, with r1 = max row sum of rad(P), r2 = max row sum of rad(P2), pn = max row sum of |Pm|, from A_true - Ahat = mu E1 - E2 + (Pm E1 + E1 Pm + E1^2) + (Pm^2 - Chat)",
+    "psd_test": "lambda_min(Ahat) > rho_tot certified by float Cholesky of Ahat - (rho_tot + c)I completing with positive pivots, c = (D+1)u max|Ahat_ii|/(1-(D+1)u), u = 2^-53",
+    "rejected_route": "the Schur block [[mu S - P2, P],[P, I]] encodes mu S - P2 - P^2 -- the Schur complement SUBTRACTS, so the sign of P^2 is wrong. Measured: it is unverifiable for every mu up to 1.0 at N=16 and N=24, where the true lambda_max is 0.35. Recorded so the mistake is not repeated.",
+    "statement": "lambda_max(Q',S) <= mu  iff  mu S - P2 + P^2 >= 0. P^2 is formed as a FLOAT gemm and the whole perturbation is bounded rigorously, so no interval matrix product is needed and the dimension stays D."
+  },
+  "definition": {
+    "Pi_0_N_ASSUMED": "L^2-orthogonal projection onto V_N (the paper's Remark app:rem:si-tail is NOT in the reproduction bundle, so this could not be checked)",
+    "consequence": "eta'^2 = lambda_max(Q', S), Q' = P2 - P^2, S = K + P + sigma I, M = I because the cosine basis is orthonormal",
+    "eta_prime": "sup_{v_N in V_N} ||(I - Pi^0_N) V v_N|| / ||v_N||_{a_sigma}",
+    "if_a0_projection": "the (2,2) block of the Schur matrix changes from I to the a_0 Gram matrix; same cost, one extra Cholesky, not done here"
+  },
+  "direct_float_eta_prime": null,
+  "direct_float_lambda_max": null,
+  "direct_note": "forms Q' = P2 - P^2 densely in FLOAT and solves the generalised eigenproblem; only affordable for D <= 9000, and is the cross-check that the certified upper bound brackets the true value from above",
+  "eta_prime_certified_upper": 0.2,
+  "eta_prime_sq_certified_upper": 0.04,
+  "galerkin": {
+    "interval_radius_2norm_bound": 1.938535553205659e-12,
+    "mu1_lower": -0.2410055472754865,
+    "mu1_upper": -0.24100554727160944,
+    "mu2_lower": -0.10347818847589266
+  },
+  "geometry": {
+    "FF_GEOM": "h2:2.0",
+    "centres": [
+      {
+        "Z": 1.0,
+        "x": -2.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      {
+        "Z": 1.0,
+        "x": 2.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    ],
+    "tag": ""
+  },
+  "host": {
+    "julia": "1.12.7",
+    "threads": 32
+  },
+  "nt": 48,
+  "peak_rss_gb": 143.74629974365234,
+  "quadrature": {
+    "cell_tail": 4.009527226371595e-29,
+    "n_p": 24,
+    "npanel": 48,
+    "t_star": 1.0
+  },
+  "sector": "eoe",
+  "sigma": 1.7656061569520733,
+  "theorem8_evaluation": {
+    "CAVEAT": "the paper's Theorem 8 statement is NOT in the reproduction bundle. These two rows are the EXISTING code path (CertCore.sharp_L_iv) with the certified eta'^2 substituted for its analytic etaV^2, under the two readings of the (1-eps) factor. Neither is claimed to be the paper's Theorem 8; compare against the independent verifier's L_1 = -0.673784 / L_2 = -0.476988 before use.",
+    "keeps_1_minus_eps_0p4": {
+      "Ch2": 0.013008004585689823,
+      "L1_lower": -0.2706534665552991,
+      "L2_lower": -0.13865445944901778
+    },
+    "no_eps_factor": {
+      "Ch2": 0.007804802751413893,
+      "L1_lower": -0.2589337541279173,
+      "L2_lower": -0.12476414429737659
+    },
+    "verifier_reference": {
+      "L1": -0.673784,
+      "L2": -0.476988,
+      "U1": -0.551851,
+      "eta_prime": 0.4555
+    }
+  },
+  "timings": {
+    "V2_matrix": 2024.581711857,
+    "V_matrix": 767.559894558,
+    "total": 5248.923671007156
+  },
+  "trials": {
+    "mu=0.01": {
+      "cholesky_allowance": 2.858525841023525e-11,
+      "max_abs_diag": 5.224167966883246,
+      "radius_bound_2norm": 3.0242654617727126e-9,
+      "seconds": 46.742240968,
+      "total_diag_shift": 3.0528507201829477e-9,
+      "verified": false
+    },
+    "mu=0.02": {
+      "cholesky_allowance": 5.7235773419914215e-11,
+      "max_abs_diag": 10.460262061267215,
+      "radius_bound_2norm": 3.0242848471282445e-9,
+      "seconds": 63.413646168,
+      "total_diag_shift": 3.0815206205481587e-9,
+      "verified": false
+    },
+    "mu=0.03": {
+      "cholesky_allowance": 8.588628842959316e-11,
+      "max_abs_diag": 15.696356155651184,
+      "radius_bound_2norm": 3.024304232483777e-9,
+      "seconds": 74.353587274,
+      "total_diag_shift": 3.11019052091337e-9,
+      "verified": false
+    },
+    "mu=0.04": {
+      "cholesky_allowance": 1.1453680343927215e-10,
+      "max_abs_diag": 20.932450250035156,
+      "radius_bound_2norm": 3.024323617839309e-9,
+      "seconds": 74.05238148,
+      "total_diag_shift": 3.138860421278581e-9,
+      "verified": true
+    }
+  }
+}

@@ -1,0 +1,755 @@
+{
+ "scheme": {
+  "summary": "Ceps_cert = -eps * (certified lower bound on nu_1), where nu_1 = lambda_min(B) and B := A_eps/eps = -Lap + V/eps on H^1(Omega) with Neumann conditions.",
+  "why_admissible": "The projection bound (thm:coulomb-bound) is applied to B, whose Laplacian coefficient is normalised to 1 -- which is what the theorem assumes. The preliminary form bound at any alpha in (0,eps) is divided through by eps, giving eps_star = alpha/eps in (0,1) and C_star = sigma_loc(alpha)/eps, so the budget 1 - eps_star is O(1) and does NOT collapse. Failing to normalise before applying the bound is what made the analytic constant look optimal.",
+  "contrast_with_v0": "The ORIGINAL shift Ceps = -eta_{1,N} is INADMISSIBLE: the cosine space is a subspace of H^1(Omega), so Rayleigh-Ritz bounds eta from ABOVE, eta_{1,N} >= eta, hence -eta_{1,N} <= Ceps^opt -- it sits BELOW the quantity it must bound. The scheme here uses a VERIFIED ENCLOSURE of eta_{1,N} as INPUT to the projection bound rather than as the shift, which is what restores admissibility.",
+  "identity_used": "nu_{1,N} = eta_{1,N}/eps EXACTLY: same trial space, operator scaled by 1/eps. So the existing H_aux = eps*K + P verified enclosure divides straight through. Verified numerically at every row (identity_eps_nu1N_encloses_eta1N).",
+  "alpha_and_delta": "alpha is free -- EVERY alpha in (0,eps) gives a valid bound -- so it is optimised in float and the single chosen alpha is then certified in interval arithmetic, costing nothing in rigour. delta is free too and has a closed-form optimum: since (1+1/delta)/(1+delta) = 1/delta identically, sigma_loc(alpha,delta) = Z^2(1+delta)/(4 alpha) + alpha/((r2-r1)^2 delta) + Z/r1, minimised at delta = 2 alpha/(Z (r2-r1)), giving sigma_loc^opt(alpha) = Z^2/(4 alpha) + Z/(r2-r1) + Z/r1. On Omega_1 (Z=2, r1=4, r2=8) that is exactly 1/alpha + 1, and it reproduces the author's pairs: alpha=0.4 -> delta=1/10 -> 7/2, alpha=0.3 -> delta=3/40 -> 13/3. The author's (alpha,delta) choices were already delta-optimal.",
+  "sector_justification": "Step 2 uses the eee block, and that is a THEOREM here, not an assumption: B commutes with the three coordinate reflections; its Neumann ground state on a connected domain is unique and strictly positive (positivity-improving semigroup); a reflection maps the one-dimensional ground eigenspace to itself so Ru = +-u; and u > 0 excludes the minus sign. Hence the ground state is even under all three reflections. Unlike the lambda_2 sector assignment this needs no hypothesis.",
+  "standing_caveat": "sharp_L_iv downstream uses the form factor etaV = sqrt(e/(1-e) + Ceps/ms1), not the manuscript's proved etaV = Ztot*(C_grad/(1-e) + C_L2/ms1)^{1/2}. With the proved form the separation certificate would need N ~ 186, out of reach. These runs therefore carry exactly the same conditional status as the published ones. Not switched."
+ },
+ "validation_eps_1": {
+  "statement": "At eps = 1, B = H exactly, so nu_{1,N} = mu_{1,N} and the scheme must reduce to the Stage-A sharp-L expression. This is the gate: if it fails the scheme is wrong.",
+  "identity_bit_exact": {
+   "N_aux": 72,
+   "certified_eta_1N": [
+    -0.5518514996719721,
+    -0.551851499658834
+   ],
+   "recorded_stageA_mu1N": [
+    -0.5518514996719721,
+    -0.551851499658834
+   ],
+   "bit_identical": true,
+   "comment": "the certified eta_1N enclosure at eps=1 is bit-identical to the recorded Stage-A mu1N enclosure"
+  },
+  "cross_check_N64": {
+   "certified_eta_1N_sup": -0.5518355215571835,
+   "LG_stage_Lambda_n": -0.55183552155934,
+   "agreement": 2.16e-12,
+   "comment": "independent: Lambda_n = sup(A_0) - c from the eee LG stage at N=64"
+  },
+  "reduces_to_sharp_L": {
+   "alpha": 0.4,
+   "delta": 0.1,
+   "sigma_loc": 3.5,
+   "N": 72,
+   "scheme_float": -0.7210021706796423,
+   "recorded_L1": -0.7210021706803551,
+   "difference": 7.128e-13,
+   "comment": "at alpha=0.4 the scheme reproduces sharp_L_iv to 7.1e-13, in float"
+  },
+  "optimised": {
+   "N_aux": 72,
+   "nu1_lower_certified": -0.7137771572737597,
+   "alpha": 0.4778,
+   "recorded_L1": -0.7210021706803551,
+   "improvement": 0.007225013406595426,
+   "delegator_predicted": -0.72051,
+   "difference_from_prediction": 0.006732842726240307,
+   "comment": "MEASUREMENT DISAGREES WITH THE PREDICTION IN THE FAVOURABLE DIRECTION: the optimised bound is -0.7137771572737597, which is 6.73e-03 HIGHER (better) than the predicted -0.72051. The prediction appears to have optimised over a coarse alpha grid or held delta fixed; the identity check at alpha=0.4 is exact, so the scheme itself is confirmed and only the optimisation differs."
+  },
+  "verdict": "GATE PASSES, three independent ways"
+ },
+ "results": {
+  "N_aux=48": {
+   "eps=1.0": {
+    "C_star": [
+     3.052545155993431,
+     3.0525451559934327
+    ],
+    "Ceps_cert": 0.8850611979574499,
+    "Ceps_cert_interval": [
+     0.8850611979529246,
+     0.8850611979574499
+    ],
+    "Ceps_point_used_downstream": 0.8850611979574499,
+    "Chat_squared": [
+     0.06148940904716933,
+     0.06148940904724517
+    ],
+    "LX": 10.0,
+    "N_aux": 48,
+    "S": [
+     2.500781365585678,
+     2.5007813655899196
+    ],
+    "Ztot": 2.0,
+    "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+    "alpha": 0.4872,
+    "delta": 0.1218,
+    "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+    "eps": 1.0,
+    "eps_star": [
+     0.4872,
+     0.4872
+    ],
+    "etaV_squared": [
+     2.17071456015611,
+     2.1707145601581823
+    ],
+    "eta_1N_certified": [
+     -0.5517637904077528,
+     -0.5517637904035132
+    ],
+    "eta_1N_width": 4.239608664136085e-12,
+    "eta_lower_certified": -0.8850611979574499,
+    "hypotheses": {
+     "0_lt_alpha_lt_eps": true,
+     "S_positive": true,
+     "eps_star_lt_1": true,
+     "r1_lt_r2": true
+    },
+    "identity_eps_nu1N_encloses_eta1N": true,
+    "improvement_over_analytic": 2.259730744739023,
+    "nu1N_enclosure": [
+     -0.5517637904077528,
+     -0.5517637904035132
+    ],
+    "nu1N_width": 4.239608664136085e-12,
+    "nu1_lower_certified": -0.8850611979574499,
+    "r1": 4.0,
+    "r2": 8.0,
+    "sigma_loc_alpha": [
+     3.052545155993431,
+     3.0525451559934327
+    ],
+    "sigma_loc_analytic_comparator": 2.0,
+    "t_enclosure": 46.334315016,
+    "predicted": null,
+    "difference_from_prediction": null,
+    "provenance": {
+     "host": "ssh:hpc",
+     "julia": "1.12.6",
+     "cores": 96,
+     "memory_gb": 251,
+     "note": "fit on hpc: peak 33.6 GB against 32-161 GB available"
+    },
+    "D_eee": 15625,
+    "peak_rss_gb": 33.58663558959961,
+    "wall_seconds": 289.33818101882935
+   },
+   "eps=0.4": {
+    "C_star": [
+     12.056574923547394,
+     12.056574923547405
+    ],
+    "Ceps_cert": 2.418181220855065,
+    "Ceps_cert_interval": [
+     2.418181220847052,
+     2.418181220855065
+    ],
+    "Ceps_point_used_downstream": 2.418181220855065,
+    "Chat_squared": [
+     0.06431919857760937,
+     0.06431919857765706
+    ],
+    "LX": 10.0,
+    "N_aux": 48,
+    "S": [
+     9.800164951758354,
+     9.800164951779866
+    ],
+    "Ztot": 2.0,
+    "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+    "alpha": 0.2616,
+    "delta": 0.0654,
+    "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+    "eps": 0.4,
+    "eps_star": [
+     0.6539999999999999,
+     0.654
+    ],
+    "etaV_squared": [
+     3.1204154504998494,
+     3.1204154505025525
+    ],
+    "eta_1N_certified": [
+     -0.9025639887156156,
+     -0.9025639887070163
+    ],
+    "eta_1N_width": 8.599343459536612e-12,
+    "eta_lower_certified": -2.418181220855065,
+    "hypotheses": {
+     "0_lt_alpha_lt_eps": true,
+     "S_positive": true,
+     "eps_star_lt_1": true,
+     "r1_lt_r2": true
+    },
+    "identity_eps_nu1N_encloses_eta1N": true,
+    "improvement_over_analytic": 1.4473687785741738,
+    "nu1N_enclosure": [
+     -2.256409971789039,
+     -2.2564099717675403
+    ],
+    "nu1N_width": 2.149880273805138e-11,
+    "nu1_lower_certified": -6.0454530521376615,
+    "r1": 4.0,
+    "r2": 8.0,
+    "sigma_loc_alpha": [
+     4.8226299694189585,
+     4.822629969418962
+    ],
+    "sigma_loc_analytic_comparator": 3.5,
+    "t_enclosure": 27.075899712,
+    "predicted": 2.419127,
+    "difference_from_prediction": -0.0009457791449349884,
+    "provenance": {
+     "host": "ssh:hpc",
+     "julia": "1.12.6",
+     "cores": 96,
+     "memory_gb": 251,
+     "note": "fit on hpc: peak 33.6 GB against 32-161 GB available"
+    },
+    "D_eee": 15625,
+    "peak_rss_gb": 33.58663558959961,
+    "wall_seconds": 289.33818101882935
+   },
+   "eps=0.3": {
+    "C_star": [
+     18.873348873348863,
+     18.87334887334888
+    ],
+    "Ceps_cert": 3.5089574877991407,
+    "Ceps_cert_interval": [
+     3.5089574877901164,
+     3.5089574877991407
+    ],
+    "Ceps_point_used_downstream": 3.5089574877991407,
+    "Chat_squared": [
+     0.07377434391899243,
+     0.07377434391904117
+    ],
+    "LX": 10.0,
+    "N_aux": 48,
+    "S": [
+     15.252491672950198,
+     15.252491672988478
+    ],
+    "Ztot": 2.0,
+    "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+    "alpha": 0.2145,
+    "delta": 0.053625,
+    "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+    "eps": 0.3,
+    "eps_star": [
+     0.715,
+     0.7150000000000001
+    ],
+    "etaV_squared": [
+     3.7461664013634484,
+     3.7461664013665574
+    ],
+    "eta_1N_certified": [
+     -1.0862571601195996,
+     -1.086257160108121
+    ],
+    "eta_1N_width": 1.1478595851599493e-11,
+    "eta_lower_certified": -3.5089574877991407,
+    "hypotheses": {
+     "0_lt_alpha_lt_eps": true,
+     "S_positive": true,
+     "eps_star_lt_1": true,
+     "r1_lt_r2": true
+    },
+    "identity_eps_nu1N_encloses_eta1N": true,
+    "improvement_over_analytic": 1.234934691685664,
+    "nu1N_enclosure": [
+     -3.6208572003986657,
+     -3.6208572003604034
+    ],
+    "nu1N_width": 3.8262282231471545e-11,
+    "nu1_lower_certified": -11.69652495933047,
+    "r1": 4.0,
+    "r2": 8.0,
+    "sigma_loc_alpha": [
+     5.66200466200466,
+     5.662004662004664
+    ],
+    "sigma_loc_analytic_comparator": 4.333333333333334,
+    "t_enclosure": 26.585350772,
+    "predicted": null,
+    "difference_from_prediction": null,
+    "provenance": {
+     "host": "ssh:hpc",
+     "julia": "1.12.6",
+     "cores": 96,
+     "memory_gb": 251,
+     "note": "fit on hpc: peak 33.6 GB against 32-161 GB available"
+    },
+    "D_eee": 15625,
+    "peak_rss_gb": 33.58663558959961,
+    "wall_seconds": 289.33818101882935
+   }
+  },
+  "N_aux=64": {
+   "eps=1.0": {
+    "C_star": [
+     3.08420175072947,
+     3.0842017507294712
+    ],
+    "Ceps_cert": 0.7527238279945747,
+    "Ceps_cert_interval": [
+     0.7527238279847368,
+     0.7527238279945747
+    ],
+    "Ceps_point_used_downstream": 0.7527238279945747,
+    "Chat_squared": [
+     0.03402489838316305,
+     0.034024898383253885
+    ],
+    "LX": 10.0,
+    "N_aux": 64,
+    "S": [
+     2.5323662291628866,
+     2.532366229172288
+    ],
+    "Ztot": 2.0,
+    "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+    "alpha": 0.4798,
+    "delta": 0.11995,
+    "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+    "eps": 1.0,
+    "eps_star": [
+     0.4798,
+     0.4798
+    ],
+    "etaV_squared": [
+     2.140250562262558,
+     2.1402505622670804
+    ],
+    "eta_1N_certified": [
+     -0.5518355215665832,
+     -0.5518355215571835
+    ],
+    "eta_1N_width": 9.399703237988888e-12,
+    "eta_lower_certified": -0.7527238279945747,
+    "hypotheses": {
+     "0_lt_alpha_lt_eps": true,
+     "S_positive": true,
+     "eps_star_lt_1": true,
+     "r1_lt_r2": true
+    },
+    "identity_eps_nu1N_encloses_eta1N": true,
+    "improvement_over_analytic": 2.657016990319609,
+    "nu1N_enclosure": [
+     -0.5518355215665832,
+     -0.5518355215571835
+    ],
+    "nu1N_width": 9.399703237988888e-12,
+    "nu1_lower_certified": -0.7527238279945747,
+    "r1": 4.0,
+    "r2": 8.0,
+    "sigma_loc_alpha": [
+     3.08420175072947,
+     3.0842017507294712
+    ],
+    "sigma_loc_analytic_comparator": 2.0,
+    "t_enclosure": 170.286730367,
+    "predicted": null,
+    "difference_from_prediction": null,
+    "provenance": {
+     "host": "ssh:waseda-hpc (luzin2)",
+     "julia": "1.12.7",
+     "cores": 224,
+     "memory_gb": 3022,
+     "note": "peak 174.3 GB; hpc had 161 GB available at launch, so this genuinely did not fit there"
+    },
+    "D_eee": 35937,
+    "peak_rss_gb": 174.30321884155273,
+    "wall_seconds": 1026.9808151721954
+   },
+   "eps=0.4": {
+    "C_star": [
+     12.428514694201741,
+     12.428514694201752
+    ],
+    "Ceps_cert": 1.9336986511623429,
+    "Ceps_cert_interval": [
+     1.933698651143077,
+     1.9336986511623429
+    ],
+    "Ceps_point_used_downstream": 1.9336986511623429,
+    "Chat_squared": [
+     0.03332958255689973,
+     0.03332958255694997
+    ],
+    "LX": 10.0,
+    "N_aux": 64,
+    "S": [
+     10.167904974618121,
+     10.167904974666474
+    ],
+    "Ztot": 2.0,
+    "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+    "alpha": 0.2518,
+    "delta": 0.06295,
+    "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+    "eps": 0.4,
+    "eps_star": [
+     0.6295,
+     0.6295000000000001
+    ],
+    "etaV_squared": [
+     2.9213833052925398,
+     2.9213833052983547
+    ],
+    "eta_1N_certified": [
+     -0.9042438878334476,
+     -0.9042438878141118
+    ],
+    "eta_1N_width": 1.933575521917419e-11,
+    "eta_lower_certified": -1.9336986511623429,
+    "hypotheses": {
+     "0_lt_alpha_lt_eps": true,
+     "S_positive": true,
+     "eps_star_lt_1": true,
+     "r1_lt_r2": true
+    },
+    "identity_eps_nu1N_encloses_eta1N": true,
+    "improvement_over_analytic": 1.8100028139835316,
+    "nu1N_enclosure": [
+     -2.260609719583619,
+     -2.260609719535279
+    ],
+    "nu1N_width": 4.8339998670599016e-11,
+    "nu1_lower_certified": -4.8342466279058565,
+    "r1": 4.0,
+    "r2": 8.0,
+    "sigma_loc_alpha": [
+     4.971405877680697,
+     4.9714058776807
+    ],
+    "sigma_loc_analytic_comparator": 3.5,
+    "t_enclosure": 154.156162279,
+    "predicted": 1.933949,
+    "difference_from_prediction": -0.00025034883765706617,
+    "provenance": {
+     "host": "ssh:waseda-hpc (luzin2)",
+     "julia": "1.12.7",
+     "cores": 224,
+     "memory_gb": 3022,
+     "note": "peak 174.3 GB; hpc had 161 GB available at launch, so this genuinely did not fit there"
+    },
+    "D_eee": 35937,
+    "peak_rss_gb": 174.30321884155273,
+    "wall_seconds": 1026.9808151721954
+   },
+   "eps=0.3": {
+    "C_star": [
+     19.729463846532212,
+     19.729463846532227
+    ],
+    "Ceps_cert": 2.859457757320759,
+    "Ceps_cert_interval": [
+     2.859457757296731,
+     2.859457757320759
+    ],
+    "Ceps_point_used_downstream": 2.859457757320759,
+    "Chat_squared": [
+     0.035915238161452104,
+     0.0359152381614977
+    ],
+    "LX": 10.0,
+    "N_aux": 64,
+    "S": [
+     16.09170962950144,
+     16.091709629588447
+    ],
+    "Ztot": 2.0,
+    "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+    "alpha": 0.2033,
+    "delta": 0.050825,
+    "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+    "eps": 0.3,
+    "eps_star": [
+     0.6776666666666666,
+     0.6776666666666668
+    ],
+    "etaV_squared": [
+     3.3284423641009733,
+     3.3284423641076053
+    ],
+    "eta_1N_certified": [
+     -1.0913262651092313,
+     -1.0913262650831344
+    ],
+    "eta_1N_width": 2.609690241683893e-11,
+    "eta_lower_certified": -2.859457757320759,
+    "hypotheses": {
+     "0_lt_alpha_lt_eps": true,
+     "S_positive": true,
+     "eps_star_lt_1": true,
+     "r1_lt_r2": true
+    },
+    "identity_eps_nu1N_encloses_eta1N": true,
+    "improvement_over_analytic": 1.5154388352963675,
+    "nu1N_enclosure": [
+     -3.6377542170307713,
+     -3.637754216943781
+    ],
+    "nu1N_width": 8.699041487147952e-11,
+    "nu1_lower_certified": -9.531525857735863,
+    "r1": 4.0,
+    "r2": 8.0,
+    "sigma_loc_alpha": [
+     5.918839153959664,
+     5.918839153959667
+    ],
+    "sigma_loc_analytic_comparator": 4.333333333333334,
+    "t_enclosure": 147.833543696,
+    "predicted": null,
+    "difference_from_prediction": null,
+    "provenance": {
+     "host": "ssh:waseda-hpc (luzin2)",
+     "julia": "1.12.7",
+     "cores": 224,
+     "memory_gb": 3022,
+     "note": "peak 174.3 GB; hpc had 161 GB available at launch, so this genuinely did not fit there"
+    },
+    "D_eee": 35937,
+    "peak_rss_gb": 174.30321884155273,
+    "wall_seconds": 1026.9808151721954
+   }
+  },
+  "N_aux=72": {
+   "eps=1.0": {
+    "C_star": [
+     3.09292591042277,
+     3.092925910422772
+    ],
+    "Ceps_cert": 0.7137771572737597,
+    "Ceps_cert_interval": [
+     0.7137771572601084,
+     0.7137771572737597
+    ],
+    "Ceps_point_used_downstream": 0.7137771572737597,
+    "Chat_squared": [
+     0.026784077325055725,
+     0.026784077325155038
+    ],
+    "LX": 10.0,
+    "N_aux": 72,
+    "S": [
+     2.541074410750798,
+     2.541074410763938
+    ],
+    "Ztot": 2.0,
+    "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+    "alpha": 0.4778,
+    "delta": 0.11945,
+    "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+    "eps": 1.0,
+    "eps_star": [
+     0.4778,
+     0.4778
+    ],
+    "etaV_squared": [
+     2.132147612087384,
+     2.1321476120936795
+    ],
+    "eta_1N_certified": [
+     -0.5518514996719721,
+     -0.551851499658834
+    ],
+    "eta_1N_width": 1.3138157228809177e-11,
+    "eta_lower_certified": -0.7137771572737597,
+    "hypotheses": {
+     "0_lt_alpha_lt_eps": true,
+     "S_positive": true,
+     "eps_star_lt_1": true,
+     "r1_lt_r2": true
+    },
+    "identity_eps_nu1N_encloses_eta1N": true,
+    "improvement_over_analytic": 2.8019949638608663,
+    "nu1N_enclosure": [
+     -0.5518514996719721,
+     -0.551851499658834
+    ],
+    "nu1N_width": 1.3138157228809177e-11,
+    "nu1_lower_certified": -0.7137771572737597,
+    "r1": 4.0,
+    "r2": 8.0,
+    "sigma_loc_alpha": [
+     3.09292591042277,
+     3.092925910422772
+    ],
+    "sigma_loc_analytic_comparator": 2.0,
+    "t_enclosure": 337.344384559,
+    "predicted": null,
+    "difference_from_prediction": null,
+    "provenance": {
+     "host": "ssh:waseda-hpc (luzin2)",
+     "julia": "1.12.7",
+     "cores": 224,
+     "memory_gb": 3022,
+     "note": "peak 345.2 GB; far beyond hpc"
+    },
+    "D_eee": 50653,
+    "peak_rss_gb": 345.2125549316406,
+    "wall_seconds": 1989.5749108791351
+   },
+   "eps=0.4": {
+    "C_star": [
+     12.53613006824568,
+     12.53613006824569
+    ],
+    "Ceps_cert": 1.7656061569520733,
+    "Ceps_cert_interval": [
+     1.7656061569247385,
+     1.7656061569520733
+    ],
+    "Ceps_point_used_downstream": 1.7656061569520733,
+    "Chat_squared": [
+     0.025792725616252274,
+     0.025792725616305287
+    ],
+    "LX": 10.0,
+    "N_aux": 72,
+    "S": [
+     10.274544070904751,
+     10.274544070972551
+    ],
+    "Ztot": 2.0,
+    "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+    "alpha": 0.2491,
+    "delta": 0.062275,
+    "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+    "eps": 0.4,
+    "eps_star": [
+     0.6227499999999999,
+     0.62275
+    ],
+    "etaV_squared": [
+     2.8708775543746428,
+     2.8708775543826968
+    ],
+    "eta_1N_certified": [
+     -0.9046343989363712,
+     -0.9046343989092559
+    ],
+    "eta_1N_width": 2.7115309997327586e-11,
+    "eta_lower_certified": -1.7656061569520733,
+    "hypotheses": {
+     "0_lt_alpha_lt_eps": true,
+     "S_positive": true,
+     "eps_star_lt_1": true,
+     "r1_lt_r2": true
+    },
+    "identity_eps_nu1N_encloses_eta1N": true,
+    "improvement_over_analytic": 1.9823220406310613,
+    "nu1N_enclosure": [
+     -2.2615859973409282,
+     -2.2615859972731394
+    ],
+    "nu1N_width": 6.778888561598251e-11,
+    "nu1_lower_certified": -4.414015392380183,
+    "r1": 4.0,
+    "r2": 8.0,
+    "sigma_loc_alpha": [
+     5.014452027298272,
+     5.014452027298276
+    ],
+    "sigma_loc_analytic_comparator": 3.5,
+    "t_enclosure": 288.415447303,
+    "predicted": 1.765612,
+    "difference_from_prediction": -5.843047926612499e-06,
+    "provenance": {
+     "host": "ssh:waseda-hpc (luzin2)",
+     "julia": "1.12.7",
+     "cores": 224,
+     "memory_gb": 3022,
+     "note": "peak 345.2 GB; far beyond hpc"
+    },
+    "D_eee": 50653,
+    "peak_rss_gb": 345.2125549316406,
+    "wall_seconds": 1989.5749108791351
+   },
+   "eps=0.3": {
+    "C_star": [
+     19.983349983349978,
+     19.983349983349992
+    ],
+    "Ceps_cert": 2.607944257054998,
+    "Ceps_cert_interval": [
+     2.607944257020012,
+     2.607944257054998
+    ],
+    "Ceps_point_used_downstream": 2.607944257054998,
+    "Chat_squared": [
+     0.027378654128823076,
+     0.02737865412886975
+    ],
+    "LX": 10.0,
+    "N_aux": 72,
+    "S": [
+     16.341547016439364,
+     16.341547016561705
+    ],
+    "Ztot": 2.0,
+    "admissibility": "Ceps_cert = -eps*inf(nu_1 lower bound) >= -eta = Ceps^opt. Every alpha in (0,eps) yields a valid bound, so the alpha chosen by float optimisation is certified here without weakening rigour. Contrast the INADMISSIBLE v0 shift -eta_{1,N}, which by Ritz ordering satisfies -eta_{1,N} <= Ceps^opt.",
+    "alpha": 0.2002,
+    "delta": 0.05005,
+    "delta_rule": "delta = 2*alpha/(Ztot*(r2-r1)), the closed-form optimum",
+    "eps": 0.3,
+    "eps_star": [
+     0.6673333333333332,
+     0.6673333333333333
+    ],
+    "etaV_squared": [
+     3.22886748339337,
+     3.228867483402528
+    ],
+    "eta_1N_certified": [
+     -1.0925408900731837,
+     -1.0925408900364866
+    ],
+    "eta_1N_width": 3.6697089811355e-11,
+    "eta_lower_certified": -2.607944257054998,
+    "hypotheses": {
+     "0_lt_alpha_lt_eps": true,
+     "S_positive": true,
+     "eps_star_lt_1": true,
+     "r1_lt_r2": true
+    },
+    "identity_eps_nu1N_encloses_eta1N": true,
+    "improvement_over_analytic": 1.6615897067626433,
+    "nu1N_enclosure": [
+     -3.6418029669106127,
+     -3.6418029667882883
+    ],
+    "nu1N_width": 1.2232437285319975e-10,
+    "nu1_lower_certified": -8.693147523516659,
+    "r1": 4.0,
+    "r2": 8.0,
+    "sigma_loc_alpha": [
+     5.995004995004994,
+     5.995004995004997
+    ],
+    "sigma_loc_analytic_comparator": 4.333333333333334,
+    "t_enclosure": 309.770550942,
+    "predicted": 2.607951,
+    "difference_from_prediction": -6.74294500191408e-06,
+    "provenance": {
+     "host": "ssh:waseda-hpc (luzin2)",
+     "julia": "1.12.7",
+     "cores": 224,
+     "memory_gb": 3022,
+     "note": "peak 345.2 GB; far beyond hpc"
+    },
+    "D_eee": 50653,
+    "peak_rss_gb": 345.2125549316406,
+    "wall_seconds": 1989.5749108791351
+   }
+  }
+ },
+ "convergence": {
+  "Ceps_cert_eps_0p4": {
+   "48": 2.4181812209,
+   "64": 1.9336986512,
+   "72": 1.765606157
+  },
+  "analytic_comparator": 3.5,
+  "comment": "Ceps_cert falls monotonically with N_aux and is already 1.982x below the analytic constant at N_aux=72. It is still decreasing, so a larger auxiliary resolution would sharpen the shift further -- but the auxiliary cost is the binding constraint: N_aux=72 already peaks at 345.2 GB."
+ }
+}

@@ -272,7 +272,7 @@ function get_config(tag::String)
     # (3a) de-risking run: the three-centre INTERVAL assembly has not been run in
     # production before, only as a moment containment test and a zero-charge
     # regression.  Cheap, and it fails fast if anything is wrong.
-    tag == "C3a" && return Config("C3a","H3plus",4.0,12.0,32,48,32,48,32,
+    tag == "D3a" && return Config("D3a","H3plus",4.0,12.0,32,48,32,48,32,
         -0.76207999734, 1.5e-7, "floating_gaussian_variational_upper_bound", false,
         0.0013106719624234001, -0.76265656780735147, -0.76134589584492807,
         NaN,
@@ -283,7 +283,7 @@ function get_config(tag::String)
     # sweep, so it has NO float LG lower bound and NO float width -- those stay NaN
     # and the driver emits null rather than a fabricated comparison.  If the
     # certificate fails here, that is the reportable finding; nothing is tuned.
-    tag == "C3c" && return Config("C3c","H3plus",4.0,12.0,24,40,24,40,24,
+    tag == "D3c" && return Config("D3c","H3plus",4.0,12.0,24,40,24,40,24,
         -0.76207999734, 1.5e-7, "floating_gaussian_variational_upper_bound", false,
         NaN, NaN, -0.7608465196784,
         NaN,
@@ -322,11 +322,11 @@ function get_config(tag::String)
         NaN, NaN, NaN,
         NaN,
         "sigma_loc rerun on Omega_1: rigorous closed-form coercivity shift, Stage A at N=80")
-    tag == "C3b" && error("CONFIG C3b (H3^2+ N=48/N'=64) was CANCELLED by the second scope " *
-                          "change; the deliverable is C3a (N=32/N'=48) and the robustness " *
-                          "cell is C3c (N=24/N'=40).")
+    tag == "D3b" && error("CONFIG D3b (H3^2+ N=48/N'=64) was CANCELLED by the second scope " *
+                          "change; the deliverable is D3a (N=32/N'=48) and the robustness " *
+                          "cell is D3c (N=24/N'=40).")
     tag == "C3" && error("CONFIG C3 (H3^2+ N=64/N'=80) was CANCELLED by a scope change; " *
-                         "use C3a (N=32/N'=48 de-risk) then C3b (N=48/N'=64 deliverable).")
+                         "use D3a (N=32/N'=48 de-risk) then D3b (N=48/N'=64 deliverable).")
     tag == "SELFTEST" && return Config("SELFTEST","H2plus",2.0,10.0,32,48,32,48,32,
         -0.5513170, 0.0, "exact_prolate_spheroidal_half_of_-1.1026342", true,
         NaN, NaN, NaN,
@@ -362,7 +362,7 @@ function memlog!(label::String)
 end
 
 # JSON has no NaN/Inf literal: a non-finite Float64 anywhere in the output dict makes
-# JSON.print fail and leaves a 0-byte file.  Configs legitimately carry NaN (e.g. C3c
+# JSON.print fail and leaves a 0-byte file.  Configs legitimately carry NaN (e.g. D3c
 # has no float LG comparison), so map every non-finite number to null recursively.
 jsan(x) = x
 jsan(x::Float64) = isfinite(x) ? x : nothing

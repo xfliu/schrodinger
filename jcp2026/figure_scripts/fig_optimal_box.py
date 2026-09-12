@@ -63,7 +63,7 @@ apply_figure_style(frame="open")
 
 SWEEP = "../data/optimal_box_surface.csv"
 CERTS = {"C1": "../certificates/cert_cmin_C1.json", "C2": "../certificates/cert_cmatch_C2.json",
-         "C3a": "../certificates/cert_cmin_C3a.json", "C3c": "../certificates/cert_cmin_C3c.json"}
+         "D3a": "../certificates/cert_cmin_D3a.json", "D3c": "../certificates/cert_cmin_D3c.json"}
 NGRID = [32, 48, 64]
 GREYS = {32: "#b8b8b8", 48: "#6e6e6e", 64: "#1f3f6e"}
 STAR, PRIOR = "#7b3294", "#c0392b"
@@ -77,6 +77,8 @@ def load():
         cw[lab] = dict(width=d["CERTIFIED_ENCLOSURE"]["width"],
                        L=d["box"]["LX"], N=d["N"])
     return sw, cw
+
+DISP = {"C1": "$L=12$", "C2": "$L=14$", "D3a": "D3a", "D3c": "D3c"}
 
 def panel(ax, sub, stars, cw, ref_lambda=None, prior=None):
     for N in NGRID:
@@ -92,11 +94,11 @@ def panel(ax, sub, stars, cw, ref_lambda=None, prior=None):
         ax.plot([c["L"]], [c["width"]], "*", color=STAR, ms=15, zorder=5,
                 mec="white", mew=0.6,
                 label="Galerkin-tier enclosure" if k == 0 else None)
-        ax.annotate(lab, (c["L"], c["width"]), xytext=(9, -1),
+        ax.annotate(DISP.get(lab, lab), (c["L"], c["width"]), xytext=(9, -1),
                     textcoords="offset points", color=STAR, fontsize=6, va="center")
     if prior is not None:
         ax.plot([prior[0]], [prior[1]], "s", color=PRIOR, ms=7, mfc="none", mew=1.6,
-                zorder=4, label="our earlier configuration")
+                zorder=4, label="$L=20$ comparison run")
     if ref_lambda is not None:
         thr = 0.05 * abs(ref_lambda)
         ax.axhline(thr, ls=":", color=PRIOR, lw=1.1, zorder=1)
@@ -116,7 +118,7 @@ def build():
     axa.set_title("H$_2^+$: the balance point is interior in $L$", fontsize=8, loc="left")
     axa.legend(frameon=False, fontsize=6, loc="upper left")
     b = sw[(sw.system == "H3plus") & (sw.d_paper == 4.0)]
-    panel(axb, b, ["C3a", "C3c"], cw, ref_lambda=float(b.lambda_ref.dropna().iloc[0]))
+    panel(axb, b, ["D3a", "D3c"], cw, ref_lambda=float(b.lambda_ref.dropna().iloc[0]))
     axb.set_title("Linear H$_3^{2+}$, $d=4$: Galerkin-tier widths exceed the float estimates",
                   fontsize=8, loc="left")
     for ax, L in ((axa, "a"), (axb, "b")):

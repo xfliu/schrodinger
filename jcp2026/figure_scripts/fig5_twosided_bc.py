@@ -52,15 +52,15 @@ ax.axhspan(neu1[1], dir1[0], color="#dddddd", alpha=0.6, zorder=0)
 ax.text(0.5, (neu1[1] + dir1[0]) / 2 + 0.00012, f"truncation gap ({gap1:.1e})", ha="center", va="center", fontsize=7.2)
 ax.text(1.42, REF - 0.00004, f"ref {REF:.6f}", ha="right", va="top", fontsize=6.8, color=GREY)
 ax.set_ylabel(r"box eigenvalue  (paper units, $=\frac{1}{2}$ Ha)", fontsize=8)
-ax.set_title(r"(a) $\Omega_1$, $N=48$: truncation limits the bound", fontsize=8.5, loc="left")
+ax.set_title(r"(a) $\Omega_1$, $N=48$", fontsize=8.5, loc="left")
 
 bracket(bx, 0, *neu2, BLUE, r"$\mu_1(\Omega)$")
 bracket(bx, 1, *dir2, RED,  r"$\lambda_1^D(\Omega)$")
 bx.annotate("", xy=(0.5, enc2[1]), xytext=(0.5, enc2[0]), arrowprops=dict(arrowstyle="<->", lw=1.1))
-bx.text(0.56, (enc2[0] + enc2[1]) / 2, "$\\mathbb{R}^3$ enclosure\n" + f"GAP={enc2[1]-enc2[0]:.2e}", fontsize=7.2, va="center")
+bx.text(0.56, (enc2[0] + enc2[1]) / 2, "Neumann lower to\nDirichlet upper\n" + f"{enc2[1]-enc2[0]:.2e}", fontsize=7.2, va="center")
 bx.text(-0.45, REF + 0.00002, f"ref {REF:.6f}", fontsize=6.8, color=GREY)
 bx.set_ylabel(r"$\lambda_1(\mathbb{R}^3)$  (paper units, $=\frac{1}{2}$ Ha)", fontsize=8)
-bx.set_title(r"(b) $\Omega_2$, $N=64$: both two-sided; enclosure between them", fontsize=8.5, loc="left")
+bx.set_title(r"(b) $\Omega_2$, $N=64$", fontsize=8.5, loc="left")
 
 for a in (ax, bx):
     lo_, hi_ = a.get_ylim(); a.set_ylim(lo_ - 0.25*(hi_-lo_), hi_ + 0.05*(hi_-lo_))

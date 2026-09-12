@@ -1,0 +1,307 @@
+{
+  "A0": [
+    0.44816447843557805,
+    0.4481644784406583
+  ],
+  "A0_width": 5.080269538382254e-12,
+  "A2": [
+    2.2334026753840948,
+    2.2334026754811256
+  ],
+  "A2_galerkin": [
+    2.231446745111753,
+    2.2314467452068047
+  ],
+  "A2_galerkin_width": 9.50519662978877e-11,
+  "A2_residual_corr_hi": 1.0275808357452378e-22,
+  "A2_width": 9.703082781697958e-11,
+  "B": [
+    0.07273490980587305,
+    0.0727349098491834
+  ],
+  "B_positive": true,
+  "D_aux": 68921,
+  "L1_LG": [
+    -0.5532907722271889,
+    -0.5532907721468495
+  ],
+  "L1_LG_width": 8.033940179785759e-11,
+  "N": 64,
+  "Nprime": 80,
+  "c": 1.0,
+  "certificate_valid": true,
+  "cg_residual": 9.232709506901973e-13,
+  "corrected_realization_used": true,
+  "eps_prime_used": 0.65,
+  "goerisch": {
+    "LX_used": 10.0,
+    "LYZ_used": 8.0,
+    "Nprime_used": 80,
+    "Vw_norm_sq": [
+      5.109512220892241,
+      5.109512220895775
+    ],
+    "discretization_term_included": true,
+    "dominant_term": "discretization",
+    "grad_phi_sq_algebraic_sup": 1.569562900047975e-22,
+    "grad_phi_sq_discretization_sup": 0.0006845755960124328,
+    "grad_phi_sq_total_sup": 0.0006845755960124329,
+    "momx_calls": 2352,
+    "momyz_calls": 1176,
+    "npanel_used": 48,
+    "nt_used": 48,
+    "nu_1_neumann": 0.0246740110027234,
+    "nu_1_note": "in-space part uses the EXACT modal sum sum_{k!=0} |r_k|^2/nu_k, which is sharper than and implies the brief's ||r||^2/nu_1; nu_1 is reported for reference",
+    "nu_star": 161.8861861888682,
+    "nu_star_convention": "((N'+1)*pi/(2*LX))^2, the driver's own conservative value",
+    "nx_used": 41,
+    "ny_used": 41,
+    "nz_used": 41,
+    "per_eps_prime": {
+      "0.65": {
+        "A2_goerisch": [
+          2.2334026753840948,
+          2.2334026754811256
+        ],
+        "Ceps_cert": 0.9721831346972867,
+        "admissible": true,
+        "c": 1.0,
+        "c_minus_Ceps": 0.027816865302713323,
+        "correction_sup": 0.0019559302743212374,
+        "defect_sup": 0.001955930274321237,
+        "sigma2_const_mode_sup": 1.4979136681559204e-22
+      },
+      "0.7": {
+        "A2_goerisch": [
+          2.2337286637628186,
+          2.2337286638601794
+        ],
+        "Ceps_cert": 0.910297297208696,
+        "admissible": true,
+        "c": 1.0,
+        "c_minus_Ceps": 0.08970270279130399,
+        "correction_sup": 0.0022819186533747766,
+        "defect_sup": 0.002281918653374776,
+        "sigma2_const_mode_sup": 4.6450398310880986e-23
+      },
+      "0.75": {
+        "A2_goerisch": [
+          2.234185047493032,
+          2.2341850475908545
+        ],
+        "Ceps_cert": 0.8583210001127385,
+        "admissible": true,
+        "c": 1.0,
+        "c_minus_Ceps": 0.14167899988726151,
+        "correction_sup": 0.002738302384049732,
+        "defect_sup": 0.0027383023840497314,
+        "sigma2_const_mode_sup": 2.940962512111352e-23
+      },
+      "0.8": {
+        "A2_goerisch": [
+          2.234869623088352,
+          2.2348696231868668
+        ],
+        "Ceps_cert": 0.8139222153364644,
+        "admissible": true,
+        "c": 1.0,
+        "c_minus_Ceps": 0.18607778466353564,
+        "correction_sup": 0.003422877980062166,
+        "defect_sup": 0.0034228779800621655,
+        "sigma2_const_mode_sup": 2.2392389729665404e-23
+      }
+    },
+    "proj_norm_sq": [
+      4.998688888499351,
+      4.9986888886079415
+    ],
+    "r0_const_mode": 9.71445146547012e-16,
+    "r2_sup": 4.164645467799268e-23,
+    "realization": "corrected: X = (L^2)^3 x L^2 x H^1(Omega), D = H^1(Omega)",
+    "t_star_used": 1.0,
+    "t_vsq": 835.590088075,
+    "tail_sq": [
+      0.11082333228429952,
+      0.11082333239642406
+    ],
+    "vsq_node_pairs": 1176,
+    "vsq_terms": 2352
+  },
+  "goerisch_variants": {
+    "0.65": {
+      "A2_goerisch": [
+        2.2334026753840948,
+        2.2334026754811256
+      ],
+      "B": [
+        0.07273490980587305,
+        0.0727349098491834
+      ],
+      "B_positive": true,
+      "Ceps_cert": 0.9721831346972867,
+      "L1_LG": [
+        -0.5532907722271889,
+        -0.5532907721468495
+      ],
+      "L1_LG_width": 8.033940179785759e-11,
+      "certificate_valid": true,
+      "correction_sup": 0.0019559302743212374,
+      "defect_sup": 0.001955930274321237,
+      "eps_prime": 0.65,
+      "nu": [
+        -2.468242968065803,
+        -2.4682429665262293
+      ],
+      "nu_lt_1": true,
+      "sigma2_const_mode_sup": 1.4979136681559204e-22
+    },
+    "0.7": {
+      "A2_goerisch": [
+        2.2337286637628186,
+        2.2337286638601794
+      ],
+      "B": [
+        0.07286334829198937,
+        0.07286334833542973
+      ],
+      "B_positive": true,
+      "Ceps_cert": 0.910297297208696,
+      "L1_LG": [
+        -0.5535180969236931,
+        -0.5535180968431991
+      ],
+      "L1_LG_width": 8.049405586518787e-11,
+      "certificate_valid": true,
+      "correction_sup": 0.0022819186533747766,
+      "defect_sup": 0.002281918653374776,
+      "eps_prime": 0.7,
+      "nu": [
+        -2.4638921195580563,
+        -2.4638921180193862
+      ],
+      "nu_lt_1": true,
+      "sigma2_const_mode_sup": 4.6450398310880986e-23
+    },
+    "0.75": {
+      "A2_goerisch": [
+        2.234185047493032,
+        2.2341850475908545
+      ],
+      "B": [
+        0.07304316217255225,
+        0.07304316221617457
+      ],
+      "B_positive": true,
+      "Ceps_cert": 0.8583210001127385,
+      "L1_LG": [
+        -0.5538359630817417,
+        -0.5538359630010317
+      ],
+      "L1_LG_width": 8.070999424347747e-11,
+      "certificate_valid": true,
+      "correction_sup": 0.002738302384049732,
+      "defect_sup": 0.0027383023840497314,
+      "eps_prime": 0.75,
+      "nu": [
+        -2.457826637312649,
+        -2.457826635775251
+      ],
+      "nu_lt_1": true,
+      "sigma2_const_mode_sup": 2.940962512111352e-23
+    },
+    "0.8": {
+      "A2_goerisch": [
+        2.234869623088352,
+        2.2348696231868668
+      ],
+      "B": [
+        0.07331288299339644,
+        0.07331288303729155
+      ],
+      "B_positive": true,
+      "Ceps_cert": 0.8139222153364644,
+      "L1_LG": [
+        -0.5543119145987624,
+        -0.5543119145177302
+      ],
+      "L1_LG_width": 8.103218096522369e-11,
+      "certificate_valid": true,
+      "correction_sup": 0.003422877980062166,
+      "defect_sup": 0.0034228779800621655,
+      "eps_prime": 0.8,
+      "nu": [
+        -2.4487842017809784,
+        -2.4487842002455054
+      ],
+      "nu_lt_1": true,
+      "sigma2_const_mode_sup": 2.2392389729665404e-23
+    }
+  },
+  "hypothesis_rho_gt_Lambda_n": {
+    "Lambda_n": -0.5518355215593417,
+    "holds": true,
+    "margin": 0.1795274296561663,
+    "note": "Lambda_n = sup(A0) - c, using A1 = <v,v> = 1; checked before the pencil was formed",
+    "rho": -0.3723080919031754
+  },
+  "lam_min_lb": 0.4052864089061101,
+  "lambda1_lower_certified": -0.5532907722271889,
+  "mu1_primary_float_unshifted": -0.55183552156188,
+  "nu": [
+    -2.468242968065803,
+    -2.4682429665262293
+  ],
+  "nu_lt_1": true,
+  "peak_rss_gb": 123.47748947143555,
+  "r2_hi": 4.164645467799268e-23,
+  "separator_candidates": {
+    "certified_oee_mu2": -0.3723080919031754,
+    "stageA_L2": -0.3981732566900993
+  },
+  "separator_rho": -0.3723080919031754,
+  "separator_source": "certified_oee_mu2",
+  "separator_variants": {
+    "certified_oee_mu2": {
+      "B": [
+        0.07273490980587305,
+        0.0727349098491834
+      ],
+      "B_positive": true,
+      "L1_LG": [
+        -0.5532907722271889,
+        -0.5532907721468495
+      ],
+      "L1_LG_width": 8.033940179785759e-11,
+      "certificate_valid": true,
+      "nu": [
+        -2.468242968065803,
+        -2.4682429665262293
+      ],
+      "nu_lt_1": true,
+      "rho": -0.3723080919031754
+    },
+    "stageA_L2": {
+      "B": [
+        0.053439231873633086,
+        0.05343923191385769
+      ],
+      "B_positive": true,
+      "L1_LG": [
+        -0.5534650310483613,
+        -0.5534650309578228
+      ],
+      "L1_LG_width": 9.053846561357659e-11,
+      "certificate_valid": true,
+      "nu": [
+        -2.8754579638735343,
+        -2.8754579616140625
+      ],
+      "nu_lt_1": true,
+      "rho": -0.3981732566900993
+    }
+  },
+  "stage": "lg",
+  "t_assemble": 1469.993126729,
+  "t_cg": 6179.635259685,
+  "wall_seconds": 9396.495429039001
+}
